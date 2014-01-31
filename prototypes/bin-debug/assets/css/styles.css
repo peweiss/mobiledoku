@@ -1,0 +1,48 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+
+
+s|ActionBar
+{
+	chromeColor: #303030;
+}
+
+s|View
+{
+	backgroundColor: #464646;
+}
+
+s|Application
+{
+	backgroundColor: #464646;
+}
+
+s|List
+{
+	alternatingItemColors: #303030;
+	selectionColor: #000000;
+	downColor: #FA5B0F; /* "onClick/onPress" */
+	contentBackgroundColor: #464646;
+	color: #FFFFFF;
+}
+
+s|TextArea
+{
+	color: #FFFFFF;
+	contentBackgroundColor: #303030;
+}
+
+s|CheckBox
+{
+	color: #FFFFFF;	
+}
+
+s|RadioButton
+{
+	color: #FFFFFF;	
+}
+
+s|Label
+{
+	color: #FFFFFF;
+}
