@@ -1,0 +1,60 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+
+/* Typo */
+@font-face {
+	src:url("../fonts/Nunito-Bold.ttf");
+	fontFamily: NunitoBold;
+	embedAsCFF: true;
+}
+@font-face {
+	src:url("../fonts/OpenSans-Regular.ttf");
+	fontFamily: OpenSansRegular;
+	embedAsCFF: true;
+}
+@font-face {
+	src:url("../fonts/fontawesome-webfont.ttf");
+	fontFamily: FontAwesome;
+	embedAsCFF: true;
+}
+
+
+
+/* Header-Leiste */
+s|ActionBar {
+	chromeColor: #2f2f2f;
+	titleAlign: center;
+	color: #e6e9e9;
+}
+
+s|ActionBar .headernav_btn {
+	fontFamily: FontAwesome;
+	fontSize: 85px;
+	paddingLeft: 0;
+}
+
+.headernav_title {
+	fontFamily: NunitoBold;
+	fontSize: 36px;
+	typographicCase: uppercase;
+}
+
+s|View {
+	backgroundColor: #f7f8f8;
+}
+
+s|Application {
+	backgroundColor: #f7f8f8;
+}
+
+s|List {
+	alternatingItemColors: #303030;
+	selectionColor: #000000;
+	downColor: #FA5B0F; /* "onClick/onPress" */
+	contentBackgroundColor: #464646;
+	color: #FFFFFF;
+}
+
+s|Label {
+	color: #FFFFFF;
+}
