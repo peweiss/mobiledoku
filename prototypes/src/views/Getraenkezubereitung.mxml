@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:mx="library://ns.adobe.com/flex/mx" 		
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Getraenkezubereitung">
+
+	<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+		<s:Label text="Success!" />
+		<s:Button label="Back" click="navigator.popView()" styleName="back" />
+	</s:VGroup>
+
+<!--	<s:HGroup paddingLeft="8">
+		<s:Image  left="-1" height="35" width="35" id="menuBtn" source="/assets/menuButton.png"/>
+	</s:HGroup>
+	
+	<fx:Script>
+		import com.greensock.TweenLite;
+		
+		import flash.events.Event;
+		import flash.events.MouseEvent;
+		import flash.events.TransformGestureEvent;
+		
+		import spark.components.Label;
+		import spark.components.ViewNavigator;
+		import spark.events.IndexChangeEvent;
+		
+		import events.PanelSlideEvent;
+		import events.SelectedMenuItemEvent;
+		
+		import org.robotlegs.mvcs.Mediator;
+	</fx:Script>-->
+</s:View>

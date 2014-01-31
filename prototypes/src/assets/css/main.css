@@ -1,0 +1,36 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+
+/* Typo */
+@font-face {
+	src:url("../fonts/Nunito-Bold.ttf");
+	fontFamily: NunitoBold;
+	embedAsCFF: true;
+}
+@font-face {
+	src:url("../fonts/OpenSans-Regular.ttf");
+	fontFamily: OpenSansRegular;
+	embedAsCFF: true;
+}
+
+
+s|VGroup {
+	Color: #d1d1d1;
+	fontFamily: OpenSansRegular;
+	fontSize: 48px;	
+}
+
+s|Label {
+	backgroundColor: #ffff00;
+	Color: #d1d1d1;
+	fontFamily: NunitoBold;
+	fontSize: 48px;
+	typographicCase: uppercase;
+}
+
+s|List {
+	fontSize: 24px;
+	lineHeight: 30px;
+	paddingTop: 0;
+	paddingBottom: 0;
+}

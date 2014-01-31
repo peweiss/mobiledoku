@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
+							xmlns:mx="library://ns.adobe.com/flex/mx" 
+							xmlns:s="library://ns.adobe.com/flex/spark" 
+							firstView="views.PrototypeProjectHomeView" 
+							applicationDPI="480"
+							initialize="onInit()">
+	
+	<!-- Start Header -->
+	<s:navigationContent>
+		<s:Button label="Nav" click="navigator.popToFirstView()"/>
+	</s:navigationContent>
+	
+	<s:titleContent>
+		<s:Label text="{resourceManager.getString('resources', 'TITLE')}" />
+	</s:titleContent>
+	
+	<s:actionContent>
+		<s:Button label="S1" click="navigator.popToFirstView()"/>
+		<s:Button label="S2" click="navigator.popToFirstView()"/>
+	</s:actionContent>
+	<!-- End Header -->
+
+	<fx:Script>
+		import com.adobe.utils.LocaleUtil;
+		// ResourceManager: für Lokalisierungs-Ressourcen (Multilanguage)
+		import mx.resources.ResourceManager;
+		
+		private function onInit():void {
+			// definiere Array mit den Sprachen, die unterstützt werden. Fallback-Sprache ist "de_CH"
+			var sortedLocales:Array = LocaleUtil.sortLanguagesByPreference(['de_CH', 'en_US'], Capabilities.languages, 'de_CH');
+			// verwendeten Sprachraum erkennen
+			ResourceManager.getInstance().localeChain = sortedLocales;
+			// ResourceManager.getInstance().localeChain=["en_US"];
+		}		
+	</fx:Script>
+
+	<!-- Aktiviere Ressourcen-Bundle für die Sprachen -->
+	<fx:Metadata>
+		[ResourceBundle("resources")]
+	</fx:Metadata>
+	
+	<!-- Definiere Style-Sheet -->
+	<fx:Style source="/assets/css/main.css"/>
+</s:ViewNavigatorApplication>

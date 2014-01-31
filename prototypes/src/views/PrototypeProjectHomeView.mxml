@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:mx="library://ns.adobe.com/flex/mx" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:vo="model.vo.*"
+		title="Home"
+		creationComplete="onCreationComplete()">
+	<!-- xmlns:vo referenziert zur erstellten AS-Klasse -->
+
+	<fx:Script>
+		<![CDATA[
+			import org.osmf.events.TimeEvent;
+			
+			[Bindable]
+			private var basePath:String = "/ressources/movies/";
+			
+			protected function onCreationComplete():void {
+				this.addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
+			}
+			protected function onAddedToStage(e:Event):void {
+				e.target.stage.addEventListener( StageOrientationEvent.ORIENTATION_CHANGE,
+					onOrientationChange );
+				updateLayout();
+			}
+			protected function onOrientationChange(e:StageOrientationEvent):void {
+				updateLayout();
+			}
+			
+			protected function updateLayout():void {
+				var w:int;
+				var h:int;
+				switch(currentState)
+				{
+					case "portrait":
+					{
+						actionBarVisible = true;
+						w = systemManager.screen.width;
+						h = w / (4/3);
+					}
+						break;
+					case "landscape":
+					{
+						actionBarVisible = false;
+						w = systemManager.screen.width;
+						h = systemManager.screen.height;
+					}
+						break;
+				}
+				mediaPlayer.width = w;
+				mediaPlayer.height = h;
+			}
+			
+			protected function onComplete(e:TimeEvent):void
+			{
+				var index:int = mediaPlaylist.selectedIndex;
+				index++;
+				if(index < arrList.source.length)
+				{
+					mediaPlaylist.selectedIndex = index;
+					mediaPlayer.source = basePath + arrList.source[index].url;
+					mediaPlayer.play();
+				}
+			}
+			
+			// onClick auf Playlist
+			protected function onClick(e:Event):void
+			{
+				var mediaItem:MediaItemVO;
+				mediaItem = arrList.source[mediaPlaylist.selectedIndex];
+				mediaPlayer.source = basePath + mediaItem.url;
+			}
+			
+		
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		
+		<!-- Definiere verschiedene Stati -->
+		<s:State name="portrait"/>
+		<s:State name="landscape"/>
+		
+		<!-- ArrayList mit Video-Objekten -->
+		<s:ArrayList id="arrList">
+			<vo:MediaItemVO id="mediaItem1"
+							title="Movie 1"
+							description="The search for a baby dragon."
+							url="movie1.mp4"
+							duration="0:20"/>
+			<vo:MediaItemVO id="mediaItem2"
+							title="Movie 2"
+							description="Meet three bullying rodents."
+							url="movie2.mp4"
+							duration="0:20"/>
+		</s:ArrayList>
+	</fx:Declarations>
+	
+	<!-- Layout-Eigenschaften für Portrait und Landscape definieren -->
+	<s:Group width="100%">
+		<s:layout.portrait>
+			<s:VerticalLayout gap="0"
+							  paddingBottom="0"
+							  paddingLeft="0"
+							  paddingRight="0"
+							  paddingTop="0"/>
+		</s:layout.portrait>
+		<s:layout.landscape>
+			<s:HorizontalLayout gap="0"
+								paddingBottom="0"
+								paddingLeft="0"
+								paddingRight="0"
+								paddingTop="0"/>
+		</s:layout.landscape>
+		<!-- Video Player hinzufügen -->
+		<s:VideoPlayer id="mediaPlayer"
+					   complete="onComplete(event)"
+					   autoDisplayFirstFrame="true"
+					   autoPlay="false"
+					   autoRewind="true"
+					   fontSize="16"
+					   fontWeight="normal"
+					   interactionMode="touch"
+					   scaleMode="letterbox"
+					   source="{basePath}{mediaItem1.url}"
+					   volume="5"/>
+		<s:List id="mediaPlaylist"
+				itemRenderer="views.MediaItemRenderer"
+				width="100%"
+				height.landscape="100%"
+				dataProvider="{arrList}"
+				click="onClick(event)"/>
+	</s:Group>
+	
+	
+	<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">       
+		<s:Label text="{resourceManager.getString('resources', 'INIT_WELCOME_MSG')}" />
+		<s:Button label="Continue" click="navigator.pushView(NeueView)" styleName="next" />   
+	</s:VGroup>
+<!--	
+	<s:List> 
+		<mx:ArrayCollection>
+			<fx:String>{resourceManager.getString('resources', 'SLIDE_121_1')}</fx:String> 
+			<fx:String>{resourceManager.getString('resources', 'SLIDE_121_2')}</fx:String> 
+			<fx:String>{resourceManager.getString('resources', 'SLIDE_121_3')}</fx:String> 
+		</mx:ArrayCollection>
+	</s:List>
+-->
+	
+	
+</s:View>
