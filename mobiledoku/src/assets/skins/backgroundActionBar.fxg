@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Graphic version="2.0" xmlns="http://ns.adobe.com/fxg/2008"
+    scaleGridLeft="2" scaleGridTop="3" scaleGridRight="88" scaleGridBottom="61">
+
+      <Rect y="0" width="89.8335" height="57">
+        <fill>
+          <SolidColor color="#2F2F2F"/>
+        </fill>
+      </Rect>
+      <Rect x="0.0830078" y="35" visible="false" width="89.8335" height="26.6665">
+        <fill>
+          <LinearGradient x="44.9165" y="0" scaleX="26.6665" rotation="90">
+            <GradientEntry ratio="0" color="#FFFFFF" alpha="0"/>
+            <GradientEntry ratio="0.160132" color="#E2E2E2" alpha="0.126504"/>
+            <GradientEntry ratio="0.400165" color="#A9A9A9" alpha="0.31613"/>
+            <GradientEntry ratio="1" alpha="0.79"/>
+          </LinearGradient>
+        </fill>
+      </Rect>
+      <Rect width="1" height="57">
+        <fill>
+          <LinearGradient x="0.5" y="0" scaleX="57" rotation="90">
+            <GradientEntry ratio="0" color="#FFFFFF" alpha="0.25"/>
+            <GradientEntry ratio="1" color="#FFFFFF" alpha="0.1"/>
+          </LinearGradient>
+        </fill>
+      </Rect>
+      <Rect x="89" width="1" height="57" >
+        <fill>
+          <LinearGradient x="0.5" y="0" scaleX="57" rotation="90">
+            <GradientEntry ratio="0" color="#FFFFFF" alpha="0.25"/>
+            <GradientEntry ratio="1" color="#FFFFFF" alpha="0.1"/>
+          </LinearGradient>
+        </fill>
+      </Rect>
+
+</Graphic>

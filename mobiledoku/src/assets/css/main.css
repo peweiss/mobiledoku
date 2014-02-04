@@ -1,7 +1,10 @@
-/* CSS file */
+/* CSS Mobile Doku */
+/** Autor: Petra Weiss **/
+/** Datum: 4.2.14 **/
+
 @namespace s "library://ns.adobe.com/flex/spark";
 
-/* Typo */
+/* Typo einbinden */
 @font-face {
 	src:url("../fonts/Nunito-Bold.ttf");
 	fontFamily: NunitoBold;
@@ -19,21 +22,23 @@
 }
 
 
-
 /* Header-Leiste */
 s|ActionBar {
-	chromeColor: #2f2f2f;
-	titleAlign: center;
+/*	chromeColor: #2f2f2f; */
+	skinClass: ClassReference("assets.skins.CustomActionBarSkin");
+/*	chromeColor:PropertyReference("someColorConstant"); */ /* Variable für Farbe */
+	titleAlign: left;
+	titleLeft: 0;
 	color: #e6e9e9;
 }
 
-s|ActionBar .headernav_btn {
+.headernav-btn {
 	fontFamily: FontAwesome;
 	fontSize: 85px;
 	paddingLeft: 0;
 }
 
-.headernav_title {
+.headernav-title {
 	fontFamily: NunitoBold;
 	fontSize: 36px;
 	typographicCase: uppercase;
@@ -48,13 +53,20 @@ s|Application {
 }
 
 s|List {
-	alternatingItemColors: #303030;
-	selectionColor: #000000;
-	downColor: #FA5B0F; /* "onClick/onPress" */
-	contentBackgroundColor: #464646;
-	color: #FFFFFF;
+    fontFamily: NunitoBold;
+	fontSize: 36px;
+	typographicCase: uppercase;
+	alpha: 0.95;
+	alternatingItemColors: #2f2f2f; /* Hintergrund alle Listenpunkte */
+	selectionColor: #e6e9e9; /* aktiver Navigationspunkt */
+	downColor: #e6e9e9; /* "onClick/onPress" */
+	contentBackgroundColor: #e6e9e9;
+	color: #e6e9e9;
+}
+.list {
+	padding: 60px;
 }
 
 s|Label {
-	color: #FFFFFF;
+	color: #e6e9e9;
 }

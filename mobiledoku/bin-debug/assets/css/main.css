@@ -19,17 +19,25 @@
 }
 
 
-
 /* Header-Leiste */
 s|ActionBar {
-	chromeColor: #2f2f2f;
+/*	chromeColor: #2f2f2f; */
+	skinClass: ClassReference("assets.skins.CustomActionBarSkin");
+/*	chromeColor:PropertyReference("someColorConstant"); */ /* Variable für Farbe */
 	titleAlign: center;
+	color: #e6e9e9;
 }
 
-s|ActionBar .headernav_btn {
+.headernav_btn {
 	fontFamily: FontAwesome;
 	fontSize: 85px;
-	color: #e6e9e9;
+	paddingLeft: 0;
+}
+
+.headernav_title {
+	fontFamily: NunitoBold;
+	fontSize: 36px;
+	typographicCase: uppercase;
 }
 
 s|View {
@@ -41,13 +49,20 @@ s|Application {
 }
 
 s|List {
-	alternatingItemColors: #303030;
-	selectionColor: #000000;
-	downColor: #FA5B0F; /* "onClick/onPress" */
-	contentBackgroundColor: #464646;
-	color: #FFFFFF;
+	fontFamily: NunitoBold;
+	fontSize: 36px;
+	typographicCase: uppercase;
+	alpha: 0.95;
+	alternatingItemColors: #2f2f2f; /* Hintergrund alle Listenpunkte */
+	selectionColor: #e6e9e9; /* aktiver Navigationspunkt */
+	downColor: #e6e9e9; /* "onClick/onPress" */
+	contentBackgroundColor: #e6e9e9;
+	color: #e6e9e9;
+}
+.list {
+	padding: 60px;
 }
 
 s|Label {
-	color: #FFFFFF;
+	color: #e6e9e9;
 }
