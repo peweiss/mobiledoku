@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	Main-MXML. Hier werden Multilanguage, die Navigation und der Start-Screen initialisiert.
+
+	Autor: 		Petra Weiss
+	Datum:		4.2.2014
+	Gesehen:	http://www.adobe.com/devnet/air/flex/articles/localizing_flex_air_apps.html (Multilanguage)
+				https://issues.apache.org/jira/browse/FLEX-33839 (Navigation)
+-->
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
 			   xmlns:mx="library://ns.adobe.com/flex/mx"
@@ -20,14 +28,20 @@
 			import views.Home;
 			
 			// Farb-Konstante für Headernavigation
-			public var someColorConstant:uint = style;
+			public var someColorConstant:uint;
 			
-			// Standard-Farbe Headernavigation
-			private var style:uint;
-
-			[Bindable]
-			private var titelNeu2:String;
-			
+	/*		public var _style:uint;
+			public var dataProviderChanged:Boolean;
+			public function set style(value:uint):void
+			{
+				_style = value;
+				dataProviderChanged = true;
+				invalidateProperties();
+			}
+			[Bindable] public function get style():uint {
+				return _style;
+			}
+*/		
 			// deklariere Variablen für Navigation
 			private var isOpen:Boolean;	
 			
@@ -43,10 +57,10 @@
 				stage.addEventListener(Event.RESIZE, orientationHandler);
 				
 				currentStageWidth = stage.stageWidth*-1;
-				lateralMenu.x = currentStageWidth;
+				lateralMenu.x = currentStageWidth-500; // currentStageWidth-500 -> die Navigation wird ausserhalb des sichtbaren Bereichs geschoben
 				currentStageHeight = navigator.height-45;
 				lateralMenu.height = currentStageHeight;			
-				lateralMenu.x = currentStageWidth;
+				lateralMenu.x = currentStageWidth-500;
 				isOpen = false;
 				
 				// definiere Array mit den Sprachen, die unterstützt werden. Fallback-Sprache ist "de_CH"
@@ -58,13 +72,12 @@
 				
 			}
 			
-
 			// Orientierung Gerät Portrait/Landscape -> evtl. deaktivieren
 			private function orientationHandler(event:Event):void {
 				currentStageWidth = stage.stageWidth*-1;
 				
 				if(isOpen == false){
-					lateralMenu.x = currentStageWidth;
+					lateralMenu.x = currentStageWidth-500;
 				}
 				
 				currentStageHeight = navigator.height-45;
@@ -88,25 +101,9 @@
 				moveOut.play();
 				// zeige ausgewählte View
 				navigator.pushView(componentsList.selectedItem.view);
-				
-				// wechselt anhand ausgewählter View Color .. 
-				// siehe CustomActionBarSkin -> wird aber scheinbar früher instanziert
-				testFunction(componentsList.selectedItem.view);
+
 			}
-			
-			public function testFunction(ausgewaehlt:Class):String {
-				var jetzt:Class = ausgewaehlt;
-				if (jetzt == views.Getraenkezubereitung) {
-					style = 0xff0000; 
-					titelNeu2 = "Getr";
-				} else if (jetzt == views.Home) {
-					style = 0x333333; 
-					titelNeu2 = "Home";
-				}
-				
-				return titelNeu2;
-			}
-			
+
 			protected function menuBackgroundHandler(event:MouseEvent):void {
 				isOpen = false;
 				moveOut.play();
@@ -114,6 +111,7 @@
 		
 			// rendert das Menu
 			import renderers.MenuRenderer;
+			
 		]]>
 	</fx:Script>
 
@@ -126,11 +124,11 @@
 	
 	<fx:Declarations>
 		<s:Move id="moveIn" duration="200" target="{lateralMenu}" xTo="0"/>
-		<s:Move id="moveOut" duration="200" target="{lateralMenu}" xTo="{currentStageWidth}"/>
+		<s:Move id="moveOut" duration="200" target="{lateralMenu}" xTo="{currentStageWidth-500}"/>
 	</fx:Declarations>
 	
-	<s:TextArea text="{titelNeu2}" top="430" color="yellow" />
-	
+	<s:TextArea id="myTAMain" top="430"  />
+
 	<!-- Header-Leiste / firstView ist der HomeScreen --> 
 	<s:ViewNavigator id="navigator" firstView="views.Home" width="100%" height="100%">
 		<s:navigationContent>
@@ -166,7 +164,7 @@
 						   iconActive="@Embed('assets/icons/nav_ibn_b.svg')" label="{resourceManager.getString('resources', 'IBN')}" type="view" view="{Home}" />				
 				
 				<fx:Object iconNormal="@Embed('assets/icons/nav_gzb_w.svg')" 
-						   iconActive="@Embed('assets/icons/nav_gzb_b.svg')" label="{resourceManager.getString('resources', 'GZB')}" type="view" view="{Getraenkezubereitung}"/>
+						   iconActive="@Embed('assets/icons/nav_gzb_b.svg')" label="{resourceManager.getString('resources', 'GZB')}" type="view" view="{Getraenkezubereitung}" />
 			
 				<fx:Object iconNormal="@Embed('assets/icons/nav_reinigung_w.svg')" 
 						   iconActive="@Embed('assets/icons/nav_reinigung_b.svg')" label="{resourceManager.getString('resources', 'REINIGUNG')}" type="view" view="{Getraenkezubereitung}"/>

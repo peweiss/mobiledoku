@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
 		xmlns:s="library://ns.adobe.com/flex/spark" 
-		title="Getraenkezubereitung">
+		title="Getraenkezubereitung"
+		viewActivate="onViewActivated()">
 
 	
 	<fx:Script>
 		<![CDATA[
+			import mx.core.FlexGlobals;
 	//		import mx.core.FlexGlobals;
 	//		private var testtext:String = FlexGlobals.topLevelApplication.getSalutation();
 
-		
+			
+			protected function onViewActivated():void{
+				FlexGlobals.topLevelApplication.myTAMain.text="t2";
+				
+			//	FlexGlobals.topLevelApplication._style = 0xffffff;
+			}
+			
 		]]>
 	</fx:Script>
 	

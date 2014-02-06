@@ -21,12 +21,27 @@
 	embedAsCFF: true;
 }
 
+/* Global */
+s|View {
+	backgroundColor: #f7f8f8;
+}
+
+s|Application {
+	backgroundColor: #f7f8f8;
+}
+
+s|Label {
+	fontFamily: NunitoBold;
+	fontSize: 36px;
+	typographicCase: uppercase;
+	color: #1d1d1b;
+}
 
 /* Header-Leiste */
 s|ActionBar {
 /*	chromeColor: #2f2f2f; */
-	skinClass: ClassReference("assets.skins.CustomActionBarSkin");
-/*	chromeColor:PropertyReference("someColorConstant"); */ /* Variable für Farbe */
+	/*	skinClass: ClassReference("assets.skins.CustomActionBarSkin"); */
+	chromeColor:PropertyReference("someColorConstant");  /* Variable für Farbe */
 	titleAlign: left;
 	titleLeft: 0;
 	color: #e6e9e9;
@@ -42,31 +57,38 @@ s|ActionBar {
 	fontFamily: NunitoBold;
 	fontSize: 36px;
 	typographicCase: uppercase;
+	color: #e6e9e9;
 }
 
-s|View {
-	backgroundColor: #f7f8f8;
-}
-
-s|Application {
-	backgroundColor: #f7f8f8;
-}
-
+/* Navigation */
 s|List {
     fontFamily: NunitoBold;
 	fontSize: 36px;
 	typographicCase: uppercase;
-	alpha: 0.95;
 	alternatingItemColors: #2f2f2f; /* Hintergrund alle Listenpunkte */
 	selectionColor: #e6e9e9; /* aktiver Navigationspunkt */
 	downColor: #e6e9e9; /* "onClick/onPress" */
 	contentBackgroundColor: #e6e9e9;
 	color: #e6e9e9;
-}
-.list {
-	padding: 60px;
+	contentBackgroundAlpha: 0.5; /* Alpha der Navigation */
 }
 
-s|Label {
-	color: #e6e9e9;
+/* Home-Screen */
+.homebtn-ibn {
+	skinClass: ClassReference("assets.skins.HomeBtn_IBN_Skin"); 
+}
+.homebtn-gzb {
+	skinClass: ClassReference("assets.skins.HomeBtn_GZB_Skin"); 
+}
+.homebtn-reinigung {
+	skinClass: ClassReference("assets.skins.HomeBtn_Reinigung_Skin"); 
+}
+.homebtn-entkalkung {
+	skinClass: ClassReference("assets.skins.HomeBtn_Entkalkung_Skin"); 
+}
+.homebtn-sbh {
+	skinClass: ClassReference("assets.skins.HomeBtn_SBH_Skin"); 
+}
+.homebtn-hotline {
+	skinClass: ClassReference("assets.skins.HomeBtn_Hotline_Skin"); 
 }
