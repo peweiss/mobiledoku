@@ -20,8 +20,9 @@
 			import renderers.MenuRenderer;
 
 			protected function onViewActivated():void{
-				FlexGlobals.topLevelApplication.myTAMain.text="t1";
 				FlexGlobals.topLevelApplication.someColorConstant = 0xff0000;
+				FlexGlobals.topLevelApplication.text="home";
+				
 			//	var test:MobileDoku = new MobileDoku();
 			//	MobileDoku._style = 0xff0000; // OK
 				
@@ -45,6 +46,7 @@
 			paddingLeft="10" paddingRight="10"
 			paddingTop="10"
 			gap="5"/>
+		
 	</s:layout>
 	
 <!--	
@@ -56,18 +58,20 @@
 	</s:ButtonBar>
 -->
 	
-	<s:HGroup height="480">
-		<s:VGroup horizontalAlign="center" width="455" paddingTop="40" >
+	<s:HGroup height="30%" paddingTop="50" paddingBottom="-5">
+		<s:VGroup horizontalAlign="center" width="455" paddingTop="45" >
 			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="homebtn-ibn" />
 			<s:Label click="navigator.pushView(Getraenkezubereitung)" text="{resourceManager.getString('resources', 'IBN')}" />
 		</s:VGroup>
-		<!-- Trennlinie vertikal 
-		<s:Line xFrom="6" xTo="6" height="480" yFrom="0" yTo="480">
-			<s:stroke>
-				<s:SolidColorStroke color="#bfbfbf" weight="2" caps="square"/>
-			</s:stroke>
-		</s:Line> -->
-		<s:VGroup horizontalAlign="center" width="455" paddingTop="40" >
+		<s:VGroup paddingTop="40">
+			<!-- Trennlinie vertikal -->
+			<s:Line xFrom="6" xTo="6" yFrom="0" yTo="480" height="100%">
+				<s:stroke>
+					<s:SolidColorStroke color="#bfbfbf" weight="2" caps="square"/>
+				</s:stroke>
+			</s:Line> 			
+		</s:VGroup>
+		<s:VGroup horizontalAlign="center" width="455" paddingTop="45">
 			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="homebtn-gzb" />
 			<!-- separate Ressource für langes Wort, damit korrekt getrennt wird in D -->
 			<s:Label width="300" textAlign="center" click="navigator.pushView(Getraenkezubereitung)">
@@ -76,22 +80,24 @@
 		</s:VGroup>
 	</s:HGroup>	
 	<!-- Trennlinie horizontal -->
-	<s:Rect bottom="0" width="90%" horizontalCenter="0">
+	<s:Rect bottom="0" width="90%" >
 		<s:stroke>
 			<s:SolidColorStroke color="#bfbfbf" weight="2" />
 		</s:stroke>
 	</s:Rect>
-	<s:HGroup height="480">
-		<s:VGroup horizontalAlign="center" width="455" paddingTop="40" >
+	<s:HGroup height="30%" paddingTop="-5" paddingBottom="-5">
+		<s:VGroup horizontalAlign="center" width="455" paddingTop="45" >
 			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="homebtn-reinigung" />
 			<s:Label click="navigator.pushView(Getraenkezubereitung)" text="{resourceManager.getString('resources', 'REINIGUNG')}" />
 		</s:VGroup>
-		<!-- Trennlinie vertikal
-		<s:Line xFrom="6" xTo="6" height="480" yFrom="0" yTo="480">
-			<s:stroke>
-				<s:SolidColorStroke color="#bfbfbf" weight="2" caps="square"/>
-			</s:stroke>
-		</s:Line> -->
+		<s:VGroup>
+			<!-- Trennlinie vertikal -->
+			<s:Line xFrom="6" xTo="6" yFrom="0" yTo="550" height="100%">
+				<s:stroke>
+					<s:SolidColorStroke color="#bfbfbf" weight="2" caps="square"/>
+				</s:stroke>
+			</s:Line> 			
+		</s:VGroup>
 		<s:VGroup horizontalAlign="center" width="455" paddingTop="40" >
 			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="homebtn-entkalkung" />
 			<s:Label click="navigator.pushView(Getraenkezubereitung)" text="{resourceManager.getString('resources', 'ENTKALKUNG')}" />
@@ -103,7 +109,7 @@
 			<s:SolidColorStroke color="#bfbfbf" weight="2" />
 		</s:stroke>
 	</s:Rect>
-	<s:HGroup height="480">
+	<s:HGroup height="30%" paddingTop="-5">
 		<s:VGroup horizontalAlign="center" width="455" paddingTop="40" >
 			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="homebtn-sbh" />
 			<!-- separate Ressource für langes Wort, damit korrekt getrennt wird in D -->
@@ -111,16 +117,17 @@
 				<s:text>{resourceManager.getString('resources', 'SBH_H')}</s:text>
 			</s:Label>
 		</s:VGroup>
-		<!-- Trennlinie vertikal
-		<s:Line xFrom="6" xTo="6" height="480" yFrom="0" yTo="480">
-			<s:stroke>
-				<s:SolidColorStroke color="#bfbfbf" weight="2" caps="square"/>
-			</s:stroke>
-		</s:Line> -->
+		<s:VGroup>
+			<!-- Trennlinie vertikal -->
+			<s:Line xFrom="6" xTo="6" yFrom="0" yTo="480" height="100%">
+				<s:stroke>
+					<s:SolidColorStroke color="#bfbfbf" weight="2" caps="square"/>
+				</s:stroke>
+			</s:Line> 			
+		</s:VGroup>
 		<s:VGroup horizontalAlign="center" width="455" paddingTop="40" >
 			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="homebtn-hotline" />
 			<s:Label click="navigator.pushView(Getraenkezubereitung)" text="{resourceManager.getString('resources', 'HOTLINE')}" />
 		</s:VGroup>
 	</s:HGroup>	
-	
 </s:View>

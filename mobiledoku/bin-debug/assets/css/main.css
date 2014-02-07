@@ -37,16 +37,6 @@ s|Label {
 	color: #1d1d1b;
 }
 
-/* Header-Leiste */
-s|ActionBar {
-/*	chromeColor: #2f2f2f; */
-	/*	skinClass: ClassReference("assets.skins.CustomActionBarSkin"); */
-	chromeColor:PropertyReference("someColorConstant");  /* Variable für Farbe */
-	titleAlign: left;
-	titleLeft: 0;
-	color: #e6e9e9;
-}
-
 .headernav-btn {
 	fontFamily: FontAwesome;
 	fontSize: 85px;
@@ -74,10 +64,6 @@ s|List {
 }
 
 /* Home-Screen */
-.homebtn-container {
-	horizontalAlign: center;
-	paddingTop: ;
-}
 .homebtn-ibn {
 	skinClass: ClassReference("assets.skins.HomeBtn_IBN_Skin"); 
 }

@@ -7,27 +7,31 @@ package assets.skins {
 	
 	public class CustomActionBarSkin extends ActionBarSkin {		
 		
-	/*	[Bindable]
-		private var testtext:String = FlexGlobals.topLevelApplication.testFunction(views.Home);
-	*/
+		[Bindable]
+		private var text:String = FlexGlobals.topLevelApplication.text;
+	
+		
 		
 		public function CustomActionBarSkin() {
 			super();
+			
 			//backgroundActionBar is the name of the FXG file
-			borderClass = backgroundActionBar;
+	//		borderClass = backgroundActionBar;
 			
-			
-		/* Für Test mit Farbwechsel Header-Nav	
-			if (testtext == null) {
-				borderClass = null;
-			} else if (testtext == "Getr") {
+			/* Für Test mit Farbwechsel Header-Nav	*/
+			if (text == null) {
+				borderClass = backgroundActionBar;
+			} else {
 				borderClass = backgroundActionBar;
 			} 
-		*/
+
+		
 		}
 		
 		override protected function drawBackground(unscaledWidth:Number, unscaledHeight:Number):void {
 
+
+			
 		}
 	}
 }

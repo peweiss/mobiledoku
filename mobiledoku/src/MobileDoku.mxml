@@ -11,7 +11,9 @@
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
 			   xmlns:mx="library://ns.adobe.com/flex/mx"
 			   applicationDPI="480"
-			   applicationComplete="init(event)">
+			   applicationComplete="init(event)"
+			   splashScreenImage="@Embed('assets/images/splash_1080x1920.jpg')"
+			   splashScreenScaleMode="letterbox">
 	
 	<fx:Script>
 		<![CDATA[
@@ -28,7 +30,9 @@
 			import views.Home;
 			
 			// Farb-Konstante für Headernavigation
+			[Bindable]
 			public var someColorConstant:uint;
+
 			
 	/*		public var _style:uint;
 			public var dataProviderChanged:Boolean;
@@ -69,7 +73,7 @@
 				ResourceManager.getInstance().localeChain = sortedLocales;
 				// Test mit bestimmter Sprache
 				// ResourceManager.getInstance().localeChain=["en_US"];
-				
+				someColorConstant = 0xff0000;
 			}
 			
 			// Orientierung Gerät Portrait/Landscape -> evtl. deaktivieren
@@ -101,7 +105,8 @@
 				moveOut.play();
 				// zeige ausgewählte View
 				navigator.pushView(componentsList.selectedItem.view);
-
+				
+				someColorConstant = 0x000000;
 			}
 
 			protected function menuBackgroundHandler(event:MouseEvent):void {
@@ -112,10 +117,29 @@
 			// rendert das Menu
 			import renderers.MenuRenderer;
 			
+			
+			[Bindable]
+			public var text:String;
+			
 		]]>
 	</fx:Script>
 
 	<fx:Style source="/assets/css/main.css"/>
+	<fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		@namespace mx "library://ns.adobe.com/flex/mx";
+		
+		/* Header-Leiste */
+		s|ActionBar {
+			/*	chromeColor: #2f2f2f; */
+			skinClass: ClassReference("assets.skins.CustomActionBarSkin"); 
+			/*chromeColor:PropertyReference("someColorConstant"); /*  Variable für Farbe */
+			titleAlign: left;
+			titleLeft: 0;
+			color: #e6e9e9;
+		}
+	</fx:Style>
+	
 	
 	<!-- Aktiviere Ressourcen-Bundle für die Sprachen -->
 	<fx:Metadata>
@@ -125,9 +149,12 @@
 	<fx:Declarations>
 		<s:Move id="moveIn" duration="200" target="{lateralMenu}" xTo="0"/>
 		<s:Move id="moveOut" duration="200" target="{lateralMenu}" xTo="{currentStageWidth-500}"/>
+		
+		
+
 	</fx:Declarations>
 	
-	<s:TextArea id="myTAMain" top="430"  />
+	<s:TextArea id="test" text="{text}" top="470"  />
 
 	<!-- Header-Leiste / firstView ist der HomeScreen --> 
 	<s:ViewNavigator id="navigator" firstView="views.Home" width="100%" height="100%">

@@ -2,29 +2,50 @@
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
 		xmlns:s="library://ns.adobe.com/flex/spark" 
 		title="Getraenkezubereitung"
-		viewActivate="onViewActivated()">
+		viewActivate="onViewActivated()"
+		gestureSwipe="onSwipe(event)">
 
 	
 	<fx:Script>
 		<![CDATA[
 			import mx.core.FlexGlobals;
-	//		import mx.core.FlexGlobals;
-	//		private var testtext:String = FlexGlobals.topLevelApplication.getSalutation();
-
 			
-			protected function onViewActivated():void{
-				FlexGlobals.topLevelApplication.myTAMain.text="t2";
-				
-			//	FlexGlobals.topLevelApplication._style = 0xffffff;
+			import views.gzb.gzb_2;
+			
+			protected function onViewActivated():void{				
+				FlexGlobals.topLevelApplication.text = "gzb";
+				FlexGlobals.topLevelApplication.someColorConstant = 0xffffff;
 			}
-			
+
+			private function onSwipe(event:TransformGestureEvent):void {
+				// offsetX -1: Swipe nach links (vor)
+				// offsetX 1: Swipe nach rechts (zurück)
+				if(event.offsetX == -1) {
+					navigator.pushView(gzb_2, null, null, pushLeft);
+				}
+			}
+		
 		]]>
 	</fx:Script>
 	
-	<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
-		<s:Label text="{resourceManager.getString('resources', 'GZB')}" color="black" />
-		<s:Button label="" click="navigator.popView()" styleName="back" />
-	</s:VGroup>
+	<fx:Declarations>
+		<!-- definiere Push-Richtungen (für Slider in Anleitung) -->
+		<s:SlideViewTransition id="pushRight" mode="push" duration="200" direction="right" />
+		<s:SlideViewTransition id="pushLeft" mode="push" duration="200" direction="left" />
+	</fx:Declarations>
+	
 
-
+	<s:Group width="100%" height="148" bottom="0">
+		<s:Rect width="100%" height="100%">
+			<s:fill><s:SolidColor color="0x4e2900" /></s:fill>
+		</s:Rect>
+		<s:HGroup horizontalCenter="0">
+			<s:Button click="navigator.pushView(Getraenkezubereitung)" label="o" />
+			<s:Button click="navigator.pushView(Getraenkezubereitung)" label="o" />
+			<s:Button click="navigator.pushView(Getraenkezubereitung)" label="o" />
+			<s:Button click="navigator.pushView(Getraenkezubereitung)" label="o" />
+			<s:Button click="navigator.pushView(Getraenkezubereitung)" label="o" />
+		</s:HGroup>
+	</s:Group>
+	
 </s:View>
