@@ -22,6 +22,13 @@
 }
 
 /* Global */
+/* Header-Leiste */
+s|ActionBar {
+	/*chromeColor:PropertyReference("someColorConstant"); /*  Variable für Farbe */
+	titleAlign: left;
+	titleLeft: 0;
+	color: #e6e9e9;
+}
 s|View {
 	backgroundColor: #f7f8f8;
 }
@@ -81,4 +88,12 @@ s|List {
 }
 .homebtn-hotline {
 	skinClass: ClassReference("assets.skins.HomeBtn_Hotline_Skin"); 
+}
+
+/* Detail-Screens */
+.sliderbtn {
+	skinClass: ClassReference("assets.skins.Btn_Slider_Skin"); 
+}
+.sliderbtn-active {
+	skinClass: ClassReference("assets.skins.BtnActive_Slider_Skin"); 
 }

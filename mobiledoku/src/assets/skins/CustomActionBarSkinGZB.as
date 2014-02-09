@@ -3,16 +3,17 @@ package assets.skins {
 	
 	import spark.skins.mobile.ActionBarSkin;
 		
-	public class CustomActionBarSkin extends ActionBarSkin {		
+	public class CustomActionBarSkinGZB extends ActionBarSkin {		
 		
 //		[Bindable]
 //		private var text:String = FlexGlobals.topLevelApplication.test;	
 		
-		public function CustomActionBarSkin() {
+		public function CustomActionBarSkinGZB() {
 			
 			super();
-			// Background-FXG-Datei Home Screen
-			borderClass = backgroundActionBar;
+
+			// Background-FXG-Datei GZB Screens
+			borderClass = backgroundActionBarGZB;
 			
 			/* Für Test mit Farbwechsel Header-Nav	*/
 	/*		if (text == null) {
@@ -21,7 +22,6 @@ package assets.skins {
 				borderClass = backgroundActionBar;
 			} 
 */
-		
 		}
 		
 		override protected function drawBackground(unscaledWidth:Number, unscaledHeight:Number):void {

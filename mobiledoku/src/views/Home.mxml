@@ -13,30 +13,16 @@
 
 	<fx:Script>
 		<![CDATA[
-			import mx.core.FlexGlobals;
-			
-			import spark.events.IndexChangeEvent;
-			
-			import renderers.MenuRenderer;
+			import assets.skins.ViewNavigatorSkin;
 
 			protected function onViewActivated():void{
-				FlexGlobals.topLevelApplication.someColorConstant = 0xff0000;
-				FlexGlobals.topLevelApplication.text="home";
+				// DEBUG
+				// FlexGlobals.topLevelApplication.text = "home";
 				
-			//	var test:MobileDoku = new MobileDoku();
-			//	MobileDoku._style = 0xff0000; // OK
-				
-				// Farbwechsel .. Variable überschreiben. 
-			//	FlexGlobals.topLevelApplication._style = 0xff0000;
-			//	dispatchEvent( new Event( "dataProviderChanged" ) );
+				// Setze Farbe der ActionBar
+				navigator.setStyle("skinClass", Class(assets.skins.ViewNavigatorSkin));
 			}
 			
-	/*		protected function buttonbarHandler(event:IndexChangeEvent):void {
-				// zeige ausgewählte View
-				navigator.pushView(buttonbar.selectedItem.view, 'selected');
-				
-			}
-	*/
 		]]>
 	</fx:Script>	
 	
@@ -48,15 +34,6 @@
 			gap="5"/>
 		
 	</s:layout>
-	
-<!--	
-	<s:ButtonBar id="buttonbar" itemRenderer="renderers.MenuRenderer" change="buttonbarHandler(event)" left="5" right="5" top="5">
-		<s:ArrayList>
-			<fx:Object label="Button 1" type="view" view="{Getraenkezubereitung}" />
-			<fx:Object label="Button 2" type="view" view="{Getraenkezubereitung}" />
-		</s:ArrayList>
-	</s:ButtonBar>
--->
 	
 	<s:HGroup height="30%" paddingTop="50" paddingBottom="-5">
 		<s:VGroup horizontalAlign="center" width="455" paddingTop="45" >

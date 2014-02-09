@@ -82,3 +82,11 @@ s|List {
 .homebtn-hotline {
 	skinClass: ClassReference("assets.skins.HomeBtn_Hotline_Skin"); 
 }
+
+/* Detail-Screens */
+.sliderbtn {
+	skinClass: ClassReference("assets.skins.Btn_Slider_Skin"); 
+}
+.sliderbtn-active {
+	skinClass: ClassReference("assets.skins.BtnActive_Slider_Skin"); 
+}

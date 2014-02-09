@@ -26,8 +26,13 @@
 			
 			import spark.events.IndexChangeEvent;
 			
+			import assets.skins.ViewNavigatorSkinGZB;
+			
 			import views.Getraenkezubereitung;
 			import views.Home;
+			import views.gzb.gzb_2;
+			import views.gzb.gzb_3;
+			import views.gzb.gzb_4;
 			
 			// Farb-Konstante für Headernavigation
 			[Bindable]
@@ -106,7 +111,7 @@
 				// zeige ausgewählte View
 				navigator.pushView(componentsList.selectedItem.view);
 				
-				someColorConstant = 0x000000;
+				//someColorConstant = 0x000000;
 			}
 
 			protected function menuBackgroundHandler(event:MouseEvent):void {
@@ -117,29 +122,13 @@
 			// rendert das Menu
 			import renderers.MenuRenderer;
 			
-			
-			[Bindable]
-			public var text:String;
-			
+			// DEBUG
+			// [Bindable]
+			// public var text:String;			
 		]]>
 	</fx:Script>
 
 	<fx:Style source="/assets/css/main.css"/>
-	<fx:Style>
-		@namespace s "library://ns.adobe.com/flex/spark";
-		@namespace mx "library://ns.adobe.com/flex/mx";
-		
-		/* Header-Leiste */
-		s|ActionBar {
-			/*	chromeColor: #2f2f2f; */
-			skinClass: ClassReference("assets.skins.CustomActionBarSkin"); 
-			/*chromeColor:PropertyReference("someColorConstant"); /*  Variable für Farbe */
-			titleAlign: left;
-			titleLeft: 0;
-			color: #e6e9e9;
-		}
-	</fx:Style>
-	
 	
 	<!-- Aktiviere Ressourcen-Bundle für die Sprachen -->
 	<fx:Metadata>
@@ -149,13 +138,11 @@
 	<fx:Declarations>
 		<s:Move id="moveIn" duration="200" target="{lateralMenu}" xTo="0"/>
 		<s:Move id="moveOut" duration="200" target="{lateralMenu}" xTo="{currentStageWidth-500}"/>
-		
-		
-
 	</fx:Declarations>
-	
+	<!-- DEBUG
 	<s:TextArea id="test" text="{text}" top="470"  />
-
+	-->
+	
 	<!-- Header-Leiste / firstView ist der HomeScreen --> 
 	<s:ViewNavigator id="navigator" firstView="views.Home" width="100%" height="100%">
 		<s:navigationContent>
@@ -215,7 +202,17 @@
 		</s:List>
 	</s:Group>
 	
-
-
-	
+<!--
+	<s:Group width="100%" height="148" bottom="0" alpha="{variable}">
+		<s:Rect width="100%" height="100%">
+			<s:fill><s:SolidColor color="0x4e2900" /></s:fill>
+		</s:Rect>
+		<s:HGroup horizontalCenter="0" gap="50" paddingTop="35">
+			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="sliderbtn" />
+			<s:Button click="navigator.pushView(gzb_2)" styleName="sliderbtn" />
+			<s:Button click="navigator.pushView(gzb_3)" styleName="sliderbtn" />
+			<s:Button click="navigator.pushView(gzb_4)" styleName="sliderbtn-active" />
+		</s:HGroup>
+	</s:Group>
+-->	
 </s:Application>
