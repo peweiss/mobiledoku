@@ -1,6 +1,6 @@
 /* CSS Mobile Doku */
 /** Autor: Petra Weiss **/
-/** Datum: 4.2.14 **/
+/** Datum: 10.2.14 **/
 
 @namespace s "library://ns.adobe.com/flex/spark";
 
@@ -21,6 +21,7 @@
 	embedAsCFF: false;
 }
 
+/* ***** ***** ***** */
 /* Global */
 /* Header-Leiste */
 .headernav-title {
@@ -49,15 +50,9 @@ s|Application {
 	backgroundColor: #f7f8f8;
 }
 
-s|Label {
-	fontFamily: NunitoBold;
-	fontSize: 36px;
-	typographicCase: uppercase;
-	color: #1d1d1b;
-}
-
+/* ***** ***** ***** */
 /* Navigation */
-s|List {
+s|List#componentsList {
     fontFamily: NunitoBold;
 	fontSize: 36px;
 	typographicCase: uppercase;
@@ -69,7 +64,14 @@ s|List {
 	contentBackgroundAlpha: 0.5; /* Alpha der Navigation */
 }
 
+/* ***** ***** ***** */
 /* Home-Screen */
+.homelabel {
+	fontFamily: NunitoBold;
+	fontSize: 36px;
+	typographicCase: uppercase;
+	color: #1d1d1b;
+}
 .homebtn-ibn {
 	skinClass: ClassReference("assets.skins.HomeBtn_IBN_Skin"); 
 }
@@ -89,10 +91,26 @@ s|List {
 	skinClass: ClassReference("assets.skins.HomeBtn_Hotline_Skin"); 
 }
 
+/* ***** ***** ***** */
 /* Detail-Screens */
+.slider-title {
+	fontFamily: NunitoBold;
+	fontSize: 60px;
+	typographicCase: uppercase;
+	color: #1d1d1b;
+}
 .sliderbtn {
 	skinClass: ClassReference("assets.skins.Btn_Slider_Skin"); 
 }
 .sliderbtn-active {
 	skinClass: ClassReference("assets.skins.BtnActive_Slider_Skin"); 
+}
+s|List#sliderList {
+	fontFamily: OpenSansRegular;
+	fontSize: 48;
+	color: #1d1d1b;
+	alternatingItemColors: #f7f8f8; /* Hintergrund alle Listenpunkte */
+	selectionColor: #f7f8f8; /* aktiver Navigationspunkt */
+	downColor: #f7f8f8; /* "onClick/onPress" */
+	contentBackgroundColor: #f7f8f8;
 }

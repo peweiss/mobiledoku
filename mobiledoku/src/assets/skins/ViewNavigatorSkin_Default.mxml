@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	Default ViewNavigator Skin. Definiert die default ActionBar (schwarz).
+
+	Autor: 		Petra Weiss
+	Datum:		8.2.2014
+	Gesehen:	
+-->	
 <s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark"
 		creationComplete="creationCompleteHandler(event)">

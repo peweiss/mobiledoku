@@ -64,14 +64,7 @@ limitations under the License.
 			 scaleMode="letterbox" smooth="true" smoothingQuality="high"
 			 verticalCenter="0" x="60" width="50" height="50"
 			 />
-	
-	<!--<s:Graphic verticalCenter="0" x="60" width="50" height="50" >
-		<s:BitmapImage source ="{data.iconNormal}" 
-					   source.down="{data.iconActive}"
-					   source.selected="{data.iconActive}"
-					   />
-	</s:Graphic> -->
-	
+
 	<!-- Linie unterhalb List-Item -->
 	<s:Rect bottom="0" width="90%" horizontalCenter="0">
 		<s:stroke>

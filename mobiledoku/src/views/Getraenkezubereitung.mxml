@@ -10,7 +10,7 @@
 		<![CDATA[
 			import mx.core.FlexGlobals;
 			
-			import assets.skins.ViewNavigatorSkin_Default;
+			import assets.skins.ViewNavigatorSkin_GZB;
 			
 			import views.gzb.gzb_2;
 			import views.gzb.gzb_3;
@@ -41,27 +41,42 @@
 		<s:SlideViewTransition id="pushLeft" mode="push" duration="200" direction="left" />
 	</fx:Declarations>
 	
-	<s:VGroup width="100%" height="100%" verticalAlign="top" horizontalAlign="center">
-		<s:Label text="Getränkezubereitung" color="black" />
+	<s:layout>
+		<s:VerticalLayout 
+			verticalAlign="top"
+			paddingLeft="80" paddingRight="80"
+			paddingTop="105"
+			gap="5"/>	
+	</s:layout>
+	
+	<s:HGroup height="220" verticalAlign="top" horizontalAlign="left">
+		<s:Label text="{resourceManager.getString('resources', 'GZB')}" color="black" styleName="slider-title" />
+	</s:HGroup>
+	
+	<!-- Container Medieninhalt-->
+	<s:HGroup height="740" horizontalAlign="center">
 		<s:Image source="@Embed('assets/icons/btn_header_suche_w.png')"
 				 scaleMode="letterbox" smooth="true" smoothingQuality="high"
 				 horizontalCenter="0" verticalCenter="0"
 				 />
-		
-		<!-- Trennlinie horizontal -->
-		<s:Rect bottom="0" width="90%" >
-			<s:stroke>
-				<s:SolidColorStroke color="#bfbfbf" weight="2" />
-			</s:stroke>
-		</s:Rect>
-		
-		<s:RichEditableText id="myRET" width="500">
-			<s:list id="list2" listStyleType="decimal">
-				<s:li>Quart of milk</s:li>
-				<s:li>Loaf of bread</s:li>
-			</s:list>
-		</s:RichEditableText>
-	</s:VGroup>
+	</s:HGroup>
+	
+	<!-- Trennlinie horizontal -->
+	<s:Rect bottom="0" width="920">
+		<s:stroke>
+			<s:SolidColorStroke color="#bfbfbf" weight="2" />
+		</s:stroke>
+	</s:Rect>
+	
+	<s:HGroup height="100%" horizontalAlign="left">
+		<s:List id="sliderList" itemRenderer="renderers.SliderListRenderer" width="900">
+			<s:ArrayList>
+				<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/01.png')" label="{resourceManager.getString('resources', 'SLIDE_121_1')}" />
+				<fx:Object styleName="ts" icon="@Embed('assets/icons/numbers/02.png')" label="{resourceManager.getString('resources', 'SLIDE_121_2')}" />
+				
+			</s:ArrayList>
+		</s:List>
+	</s:HGroup>
 
 	<s:Group width="100%" height="148" bottom="0">
 		<s:Rect width="100%" height="100%">

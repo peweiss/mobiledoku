@@ -43,7 +43,7 @@
 	<s:HGroup height="30%" paddingTop="50" paddingBottom="-5">
 		<s:VGroup horizontalAlign="center" width="455" paddingTop="45" >
 			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="homebtn-ibn" />
-			<s:Label click="navigator.pushView(Getraenkezubereitung)" text="{resourceManager.getString('resources', 'IBN')}" />
+			<s:Label click="navigator.pushView(Getraenkezubereitung)" text="{resourceManager.getString('resources', 'IBN')}" styleName="homelabel" />
 		</s:VGroup>
 		<s:VGroup paddingTop="40">
 			<!-- Trennlinie vertikal -->
@@ -56,7 +56,7 @@
 		<s:VGroup horizontalAlign="center" width="455" paddingTop="45">
 			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="homebtn-gzb" />
 			<!-- separate Ressource für langes Wort, damit korrekt getrennt wird in D -->
-			<s:Label width="300" textAlign="center" click="navigator.pushView(Getraenkezubereitung)">
+			<s:Label width="300" textAlign="center" click="navigator.pushView(Getraenkezubereitung)" styleName="homelabel">
 				<s:text>{resourceManager.getString('resources', 'GZB_H')}</s:text>
 			</s:Label>
 		</s:VGroup>
@@ -70,7 +70,7 @@
 	<s:HGroup height="30%" paddingTop="-5" paddingBottom="-5">
 		<s:VGroup horizontalAlign="center" width="455" paddingTop="45" >
 			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="homebtn-reinigung" />
-			<s:Label click="navigator.pushView(Getraenkezubereitung)" text="{resourceManager.getString('resources', 'REINIGUNG')}" />
+			<s:Label click="navigator.pushView(Getraenkezubereitung)" text="{resourceManager.getString('resources', 'REINIGUNG')}" styleName="homelabel" />
 		</s:VGroup>
 		<s:VGroup>
 			<!-- Trennlinie vertikal -->
@@ -82,7 +82,7 @@
 		</s:VGroup>
 		<s:VGroup horizontalAlign="center" width="455" paddingTop="40" >
 			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="homebtn-entkalkung" />
-			<s:Label click="navigator.pushView(Getraenkezubereitung)" text="{resourceManager.getString('resources', 'ENTKALKUNG')}" />
+			<s:Label click="navigator.pushView(Getraenkezubereitung)" text="{resourceManager.getString('resources', 'ENTKALKUNG')}" styleName="homelabel" />
 		</s:VGroup>
 	</s:HGroup>	
 	<!-- Trennlinie horizontal -->
@@ -95,7 +95,7 @@
 		<s:VGroup horizontalAlign="center" width="455" paddingTop="40" >
 			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="homebtn-sbh" />
 			<!-- separate Ressource für langes Wort, damit korrekt getrennt wird in D -->
-			<s:Label width="300" textAlign="center" click="navigator.pushView(Getraenkezubereitung)">
+			<s:Label width="300" textAlign="center" click="navigator.pushView(Getraenkezubereitung)" styleName="homelabel">
 				<s:text>{resourceManager.getString('resources', 'SBH_H')}</s:text>
 			</s:Label>
 		</s:VGroup>
@@ -109,7 +109,7 @@
 		</s:VGroup>
 		<s:VGroup horizontalAlign="center" width="455" paddingTop="40" >
 			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="homebtn-hotline" />
-			<s:Label click="navigator.pushView(Getraenkezubereitung)" text="{resourceManager.getString('resources', 'HOTLINE')}" />
+			<s:Label click="navigator.pushView(Getraenkezubereitung)" text="{resourceManager.getString('resources', 'HOTLINE')}" styleName="homelabel" />
 		</s:VGroup>
 	</s:HGroup>	
 </s:View>

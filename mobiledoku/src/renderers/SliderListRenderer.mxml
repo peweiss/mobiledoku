@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	SliderListRenderer. Rendert die Listen für die einzelnen Slider-Screens.
+	
+	Autor: 		Petra Weiss
+	Datum:		10.2.2014
+	Gesehen:	
+-->	
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009"
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				height="115" cacheAsBitmap="false">
+
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			private var bulletColor:uint; // Bullet-Farbe
+			
+			override public function set data(value:Object):void{
+				super.data = value;
+				
+				if(data){
+					
+					// Definiere Bullet-Farbe
+					if(data.styleName == "gzb") {
+						bulletColor = 0x4e2900; // Braun
+					} else {
+						bulletColor = 0x1d1d1b; // Default Schwarz
+					}
+					
+					itemLabel.text = data.label; // Text Listenpunkt
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<!-- Listenpunkt-Text -->
+	<s:Label id="itemLabel" x="90" verticalCenter="0" width="830" />
+	
+	<!-- Listenpunkt-Button -->
+	<s:Ellipse width="50" height="50"
+			   verticalCenter="0" x="0">	
+		<s:fill><s:SolidColor color="{bulletColor}" /></s:fill> 
+	</s:Ellipse>
+	
+	<!-- Listenpunkt-Icon (einzelne Zahl, transparent/weiss) -->
+	<s:Image source ="{data.icon}" 
+			 scaleMode="letterbox" smooth="true" smoothingQuality="high"
+			 verticalCenter="0" x="0" width="50" height="50"
+	/>
+	
+</s:ItemRenderer>
