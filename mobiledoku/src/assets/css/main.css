@@ -18,17 +18,29 @@
 @font-face {
 	src:url("../fonts/fontawesome-webfont.ttf");
 	fontFamily: FontAwesome;
-	embedAsCFF: true;
+	embedAsCFF: false;
 }
 
 /* Global */
 /* Header-Leiste */
-s|ActionBar {
-	/*chromeColor:PropertyReference("someColorConstant"); /*  Variable für Farbe */
-	titleAlign: left;
-	titleLeft: 0;
-	color: #e6e9e9;
+.headernav-title {
+	fontFamily: NunitoBold;
+	fontSize: 36px;
+	typographicCase: uppercase;
+	color: #f7f8f8;
+	verticalCenter: 0;
 }
+
+s|ActionBar s|Group#navigationGroup s|Button.headernav-nav {
+	skinClass: ClassReference("assets.skins.HeaderBtn_Nav_Skin"); 
+}
+s|ActionBar s|Group#actionGroup s|Button.headernav-sbh {
+	skinClass: ClassReference("assets.skins.HeaderBtn_SHW_Skin"); 
+}
+s|ActionBar s|Group#actionGroup s|Button.headernav-suche {
+	skinClass: ClassReference("assets.skins.HeaderBtn_Suche_Skin"); 
+}
+
 s|View {
 	backgroundColor: #f7f8f8;
 }
@@ -44,29 +56,16 @@ s|Label {
 	color: #1d1d1b;
 }
 
-.headernav-btn {
-	fontFamily: FontAwesome;
-	fontSize: 85px;
-	paddingLeft: 0;
-}
-
-.headernav-title {
-	fontFamily: NunitoBold;
-	fontSize: 36px;
-	typographicCase: uppercase;
-	color: #e6e9e9;
-}
-
 /* Navigation */
 s|List {
     fontFamily: NunitoBold;
 	fontSize: 36px;
 	typographicCase: uppercase;
 	alternatingItemColors: #2f2f2f; /* Hintergrund alle Listenpunkte */
-	selectionColor: #e6e9e9; /* aktiver Navigationspunkt */
-	downColor: #e6e9e9; /* "onClick/onPress" */
-	contentBackgroundColor: #e6e9e9;
-	color: #e6e9e9;
+	selectionColor: #f7f8f8; /* aktiver Navigationspunkt */
+	downColor: #f7f8f8; /* "onClick/onPress" */
+	contentBackgroundColor: #f7f8f8;
+	color: #f7f8f8;
 	contentBackgroundAlpha: 0.5; /* Alpha der Navigation */
 }
 

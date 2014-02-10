@@ -12,8 +12,12 @@
 			   xmlns:mx="library://ns.adobe.com/flex/mx"
 			   applicationDPI="480"
 			   applicationComplete="init(event)"
-			   splashScreenImage="@Embed('assets/images/splash_1080x1920.jpg')"
-			   splashScreenScaleMode="letterbox">
+				>
+
+	<!--
+	splashScreenImage="@Embed('assets/images/splash_1080x1920.jpg')"
+	splashScreenScaleMode="letterbox"
+	-->
 	
 	<fx:Script>
 		<![CDATA[
@@ -25,32 +29,11 @@
 			import mx.resources.ResourceManager;
 			
 			import spark.events.IndexChangeEvent;
-			
-			import assets.skins.ViewNavigatorSkinGZB;
+			import spark.transitions.CrossFadeViewTransition;
 			
 			import views.Getraenkezubereitung;
 			import views.Home;
-			import views.gzb.gzb_2;
-			import views.gzb.gzb_3;
-			import views.gzb.gzb_4;
 			
-			// Farb-Konstante für Headernavigation
-			[Bindable]
-			public var someColorConstant:uint;
-
-			
-	/*		public var _style:uint;
-			public var dataProviderChanged:Boolean;
-			public function set style(value:uint):void
-			{
-				_style = value;
-				dataProviderChanged = true;
-				invalidateProperties();
-			}
-			[Bindable] public function get style():uint {
-				return _style;
-			}
-*/		
 			// deklariere Variablen für Navigation
 			private var isOpen:Boolean;	
 			
@@ -63,6 +46,12 @@
 			
 			// wenn App initialisiert wird ...
 			protected function init(event:FlexEvent):void {
+				
+				// Definiere Default Einblende-Art für einzelne Views
+				// CrossFadeViewTransition: View wird überblendend angezeigt
+				navigator.defaultPushTransition = new CrossFadeViewTransition();
+				navigator.defaultPopTransition = new CrossFadeViewTransition();
+				
 				stage.addEventListener(Event.RESIZE, orientationHandler);
 				
 				currentStageWidth = stage.stageWidth*-1;
@@ -78,7 +67,6 @@
 				ResourceManager.getInstance().localeChain = sortedLocales;
 				// Test mit bestimmter Sprache
 				// ResourceManager.getInstance().localeChain=["en_US"];
-				someColorConstant = 0xff0000;
 			}
 			
 			// Orientierung Gerät Portrait/Landscape -> evtl. deaktivieren
@@ -110,8 +98,6 @@
 				moveOut.play();
 				// zeige ausgewählte View
 				navigator.pushView(componentsList.selectedItem.view);
-				
-				//someColorConstant = 0x000000;
 			}
 
 			protected function menuBackgroundHandler(event:MouseEvent):void {
@@ -142,12 +128,12 @@
 	<!-- DEBUG
 	<s:TextArea id="test" text="{text}" top="470"  />
 	-->
-	
+
 	<!-- Header-Leiste / firstView ist der HomeScreen --> 
-	<s:ViewNavigator id="navigator" firstView="views.Home" width="100%" height="100%">
+	<s:ViewNavigator id="navigator" firstView="views.Home" width="100%" height="100%" skinClass="assets.skins.ViewNavigatorSkin_Default">
 		<s:navigationContent>
-			<!--<s:Button  height="70" width="154" label="Menu" click="menuHandler(event)"/>-->
-			<s:Button styleName="headernav_btn" height="100%" width="100%" label="" click="menuHandler(event)"/>
+	<!--		<s:Button styleName="headernav-btn" label=" " icon="@Embed('assets/icons/btn_nav_w.png')" click="menuHandler(event)" />	-->		
+			<s:Button styleName="headernav-nav" click="menuHandler(event)" />
 		</s:navigationContent>
 		
 		<s:titleContent>
@@ -155,8 +141,8 @@
 		</s:titleContent>
 		
 		<s:actionContent>
-			<s:Button styleName="headernav-btn" label="" click="navigator.popToFirstView()"/>
-			<s:Button styleName="headernav-btn" label="" click="navigator.popToFirstView()"/>
+			<s:Button click="navigator.popToFirstView()" styleName="headernav-sbh" x="-136" />
+			<s:Button click="navigator.popToFirstView()" styleName="headernav-suche" />
 		</s:actionContent>
 	</s:ViewNavigator>
 	<!-- Navigation von links -->
@@ -168,35 +154,35 @@
 		
 		<s:List id="componentsList" itemRenderer="renderers.MenuRenderer" width="700" height="100%" change="changeHandler(event)" contentBackgroundColor="#2f2f2f" alpha="0.95">
 			<s:ArrayList>
-				<fx:Object iconNormal="@Embed('assets/icons/nav_home_w.svg')" 
-						   iconActive="@Embed('assets/icons/nav_home_b.svg')" label="{resourceManager.getString('resources', 'HOME')}" type="view" view="{Home}" />
+				<fx:Object iconNormal="@Embed('assets/icons/btn_home_w.png')" 
+						   iconActive="@Embed('assets/icons/btn_home_b.png')" label="{resourceManager.getString('resources', 'HOME')}" type="view" view="{Home}" />
 				
-				<fx:Object iconNormal="@Embed('assets/icons/nav_suche_w.svg')" 
-						   iconActive="@Embed('assets/icons/nav_suche_b.svg')" label="{resourceManager.getString('resources', 'SUCHE')}" type="view" view="{Home}" />
+				<fx:Object iconNormal="@Embed('assets/icons/btn_suche_w.png')" 
+						   iconActive="@Embed('assets/icons/btn_suche_b.png')" label="{resourceManager.getString('resources', 'SUCHE')}" type="view" view="{Home}" />
 				
-				<fx:Object iconNormal="@Embed('assets/icons/nav_ibn_w.svg')" 
-						   iconActive="@Embed('assets/icons/nav_ibn_b.svg')" label="{resourceManager.getString('resources', 'IBN')}" type="view" view="{Home}" />				
+				<fx:Object iconNormal="@Embed('assets/icons/btn_ibn_w.png')" 
+						   iconActive="@Embed('assets/icons/btn_ibn_b.png')" label="{resourceManager.getString('resources', 'IBN')}" type="view" view="{Home}" />				
 				
-				<fx:Object iconNormal="@Embed('assets/icons/nav_gzb_w.svg')" 
-						   iconActive="@Embed('assets/icons/nav_gzb_b.svg')" label="{resourceManager.getString('resources', 'GZB')}" type="view" view="{Getraenkezubereitung}" />
+				<fx:Object iconNormal="@Embed('assets/icons/btn_gzb_w.png')" 
+						   iconActive="@Embed('assets/icons/btn_gzb_b.png')" label="{resourceManager.getString('resources', 'GZB')}" type="view" view="{Getraenkezubereitung}" />
 			
-				<fx:Object iconNormal="@Embed('assets/icons/nav_reinigung_w.svg')" 
-						   iconActive="@Embed('assets/icons/nav_reinigung_b.svg')" label="{resourceManager.getString('resources', 'REINIGUNG')}" type="view" view="{Getraenkezubereitung}"/>
+				<fx:Object iconNormal="@Embed('assets/icons/btn_reinigung_w.png')" 
+						   iconActive="@Embed('assets/icons/btn_reinigung_b.png')" label="{resourceManager.getString('resources', 'REINIGUNG')}" type="view" view="{Getraenkezubereitung}"/>
 				
-				<fx:Object iconNormal="@Embed('assets/icons/nav_entkalkung_w.svg')" 
-						   iconActive="@Embed('assets/icons/nav_entkalkung_b.svg')" label="{resourceManager.getString('resources', 'ENTKALKUNG')}" type="view" view="{Getraenkezubereitung}"/>
+				<fx:Object iconNormal="@Embed('assets/icons/btn_entkalkung_w.png')" 
+						   iconActive="@Embed('assets/icons/btn_entkalkung_b.png')" label="{resourceManager.getString('resources', 'ENTKALKUNG')}" type="view" view="{Getraenkezubereitung}"/>
 
-				<fx:Object iconNormal="@Embed('assets/icons/nav_sbh_w.svg')" 
-						   iconActive="@Embed('assets/icons/nav_sbh_b.svg')" label="{resourceManager.getString('resources', 'SBH')}" type="view" view="{Getraenkezubereitung}"/>
+				<fx:Object iconNormal="@Embed('assets/icons/btn_sbh_w.png')" 
+						   iconActive="@Embed('assets/icons/btn_sbh_b.png')" label="{resourceManager.getString('resources', 'SBH')}" type="view" view="{Getraenkezubereitung}"/>
 
-				<fx:Object iconNormal="@Embed('assets/icons/nav_hotline_w.svg')" 
-						   iconActive="@Embed('assets/icons/nav_hotline_b.svg')" label="{resourceManager.getString('resources', 'HOTLINE')}" type="view" view="{Getraenkezubereitung}"/>
+				<fx:Object iconNormal="@Embed('assets/icons/btn_hotline_w.png')" 
+						   iconActive="@Embed('assets/icons/btn_hotline_b.png')" label="{resourceManager.getString('resources', 'HOTLINE')}" type="view" view="{Getraenkezubereitung}"/>
 
-				<fx:Object iconNormal="@Embed('assets/icons/nav_shw_w.svg')" 
-						   iconActive="@Embed('assets/icons/nav_shw_b.svg')" label="{resourceManager.getString('resources', 'SHW')}" type="view" view="{Getraenkezubereitung}"/>
+				<fx:Object iconNormal="@Embed('assets/icons/btn_shw_w.png')" 
+						   iconActive="@Embed('assets/icons/btn_shw_b.png')" label="{resourceManager.getString('resources', 'SHW')}" type="view" view="{Getraenkezubereitung}"/>
 
-				<fx:Object iconNormal="@Embed('assets/icons/nav_shw_w.svg')" 
-						   iconActive="@Embed('assets/icons/nav_shw_b.svg')" label="{resourceManager.getString('resources', 'SPRACHE')}" type="view" view="{Getraenkezubereitung}"/>
+				<fx:Object iconNormal="@Embed('assets/icons/btn_sprache_w.png')" 
+						   iconActive="@Embed('assets/icons/btn_sprache_b.png')" label="{resourceManager.getString('resources', 'SPRACHE')}" type="view" view="{Getraenkezubereitung}"/>
 
 			</s:ArrayList>
 		</s:List>

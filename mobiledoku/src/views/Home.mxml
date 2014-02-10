@@ -13,18 +13,23 @@
 
 	<fx:Script>
 		<![CDATA[
-			import assets.skins.ViewNavigatorSkin;
+			import assets.skins.ViewNavigatorSkin_Default;
 
 			protected function onViewActivated():void{
 				// DEBUG
 				// FlexGlobals.topLevelApplication.text = "home";
 				
 				// Setze Farbe der ActionBar
-				navigator.setStyle("skinClass", Class(assets.skins.ViewNavigatorSkin));
+				navigator.setStyle("skinClass", Class(assets.skins.ViewNavigatorSkin_Default));
 			}
 			
 		]]>
 	</fx:Script>	
+	
+	<fx:Declarations>
+		<!-- definiere CrossFade -->
+		<s:CrossFadeViewTransition id="crossFade" duration="200" />
+	</fx:Declarations>
 	
 	<s:layout>
 		<s:VerticalLayout 

@@ -54,20 +54,28 @@ limitations under the License.
 	</s:states>
 	
 	<!-- Navigations-Text mit verschiedenen Stati -->
-	<s:Label id="itemLabel" color.normal="#e6e9e9" color.down="#1d1d1b" color.selected="#1d1d1b" x="150" verticalCenter="0" />
+	<s:Label id="itemLabel" color.normal="#f7f8f8" color.down="#1d1d1b" color.selected="#1d1d1b" x="150" verticalCenter="0" />
 	
 	<!-- Navigations-Grafik mit verschiedenen Stati -->
-	<s:Graphic verticalCenter="0" x="60">
+	<s:Image source ="{data.iconNormal}" 
+			 source.down="{data.iconActive}"
+			 source.selected="{data.iconActive}"
+			
+			 scaleMode="letterbox" smooth="true" smoothingQuality="high"
+			 verticalCenter="0" x="60" width="50" height="50"
+			 />
+	
+	<!--<s:Graphic verticalCenter="0" x="60" width="50" height="50" >
 		<s:BitmapImage source ="{data.iconNormal}" 
 					   source.down="{data.iconActive}"
 					   source.selected="{data.iconActive}"
-					   scaleMode="stretch" smooth="true" smoothingQuality="high" />
-	</s:Graphic>
+					   />
+	</s:Graphic> -->
 	
 	<!-- Linie unterhalb List-Item -->
 	<s:Rect bottom="0" width="90%" horizontalCenter="0">
 		<s:stroke>
-			<s:SolidColorStroke color="#e6e9e9" weight="1" />
+			<s:SolidColorStroke color="#f7f8f8" weight="1" />
 		</s:stroke>
 	</s:Rect>
 

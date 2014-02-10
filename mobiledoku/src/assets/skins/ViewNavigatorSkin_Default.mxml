@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		creationComplete="creationCompleteHandler(event)">
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("spark.components.ViewNavigator")]
+	</fx:Metadata>
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			protected function creationCompleteHandler(event:FlexEvent):void
+			{
+//				defaultPushTransition = new CrossFadeViewTransition();
+//				defaultPopTransition = new CrossFadeViewTransition();
+				
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<!-- states -->
+	<s:states>
+		<s:State name="landscapeAndOverlay" />
+		<s:State name="portraitAndOverlay" />
+		<s:State name="landscape" />
+		<s:State name="portrait" />
+		<s:State name="disabled" />
+		<s:State name="normal" />
+	</s:states>
+	
+	<s:ActionBar id="actionBar" left="0" right="0" height="138" skinClass="assets.skins.ActionBar_Default_Skin" />
+	
+	<s:Group left="0" right="0" top="136" bottom="0" id="contentGroup" /> 
+	
+</s:Skin>

@@ -79,15 +79,15 @@
 	</s:Ellipse>
 	
 	<!-- Icons -->
- 	<s:Image source.up ="@Embed('assets/icons/btn_home_test.png')"
-			 scaleMode="stretch" smooth="true" smoothingQuality="high"
-			 horizontalCenter="-6" verticalCenter="-4"   
+	<s:Image source.up ="@Embed('assets/icons/btn_reinigung_w.png')"
+			 width="200" height="200"
+			 scaleMode="letterbox" smooth="true" smoothingQuality="high"
+			 horizontalCenter="-4" verticalCenter="-8"   
 	/>
-	<s:Image source.over="@Embed('assets/icons/btn_home_test.png')"
-				   source.down="@Embed('assets/icons/btn_home_test.png')"
-				   scaleMode="stretch" smooth="true" smoothingQuality="high"
-				   width="40%" height="40%"
-				   horizontalCenter="-6" verticalCenter="-4" 
-				   />
-
+	<s:Image source.over="@Embed('assets/icons/btn_reinigung_w.png')"
+			 source.down="@Embed('assets/icons/btn_reinigung_w.png')"
+			 width="150" height="150"
+			 scaleMode="letterbox" smooth="true" smoothingQuality="high"
+			 horizontalCenter="-6" verticalCenter="-4" 
+	/>
 </s:SparkSkin>
