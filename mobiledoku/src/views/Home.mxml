@@ -9,20 +9,38 @@
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
 		xmlns:s="library://ns.adobe.com/flex/spark"
 		title="Home"
-		viewActivate="onViewActivated()">
+		viewActivate="onViewActivated()" 
+		viewDeactivate="onViewDeactivated()">
 
 	<fx:Script>
 		<![CDATA[
+			import mx.core.FlexGlobals;
 			import assets.skins.ViewNavigatorSkin_Default;
 
+			import renderers.MenuRenderer;
+			private var item:MenuRenderer = new MenuRenderer();
+			
 			protected function onViewActivated():void{
 				// DEBUG
 				// FlexGlobals.topLevelApplication.text = "home";
 				
 				// Setze Farbe der ActionBar
 				navigator.setStyle("skinClass", Class(assets.skins.ViewNavigatorSkin_Default));
+				
+				// Change ITEM Status bei aktiver View ...
+				// vgl. UpdateRenderer()
+				
+				// aktiviere ersten Navigationspunkt in Navigation links
+				(FlexGlobals.topLevelApplication.componentsList.dataGroup.getElementAt(0) as Object).setNavState();
+				//item.itemLabel.getElementAt(3).currentState = "selected";
+				//item.getElementAt(3).currentState = "selected";
+				//item.itemLabel.currentState = "selected";
 			}
-			
+			protected function onViewDeactivated():void {
+				// deaktiviere ersten Navigationspunkt in Navigation links
+				(FlexGlobals.topLevelApplication.componentsList.dataGroup.getElementAt(0) as Object).resetNavState();
+			}
+
 		]]>
 	</fx:Script>	
 	

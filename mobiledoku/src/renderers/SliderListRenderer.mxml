@@ -8,7 +8,7 @@
 -->	
 <s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009"
 				xmlns:s="library://ns.adobe.com/flex/spark" 
-				height="115" cacheAsBitmap="false">
+				height="115" cacheAsBitmap="false" dragging="false">
 
 	<fx:Script>
 		<![CDATA[
@@ -22,13 +22,19 @@
 					
 					// Definiere Bullet-Farbe
 					if(data.styleName == "gzb") {
-						bulletColor = 0x4e2900; // Braun
-					} else {
+						bulletColor = 0x4e2900; // Getränkezubereitungs-Braun
+					} 
+					
+					else {
 						bulletColor = 0x1d1d1b; // Default Schwarz
 					}
 					
 					itemLabel.text = data.label; // Text Listenpunkt
 				}
+			}
+			
+			private function creationComplete():void {
+				data.scroller.setStyle("horizontalScrollPolicy", "off"); // horizontaler Scrollbalken wird deaktiviert
 			}
 			
 		]]>

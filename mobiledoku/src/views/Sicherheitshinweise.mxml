@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	Sicherheitshinweise-Screen mit Implementierung der Sicherheitshinweise
+	
+	Autor: 		Petra Weiss
+	Datum:		12.2.2014
+	Gesehen:	
+-->	
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		title="Sicherheitshinweise"
+		viewActivate="onViewActivated()"
+		viewDeactivate="onViewDeactivated()"
+		>
+
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.core.FlexGlobals;
+			import assets.skins.ViewNavigatorSkin_Default;
+			
+			protected function onViewActivated():void{				
+				// DEBUG
+				// FlexGlobals.topLevelApplication.text = "gzb";
+				
+				// Setze Farbe der ActionBar
+				navigator.setStyle("skinClass", Class(assets.skins.ViewNavigatorSkin_Default));
+				
+				// aktiviere ersten Navigationspunkt in Navigation links
+				(FlexGlobals.topLevelApplication.componentsList.dataGroup.getElementAt(8) as Object).setNavState();
+			}
+			protected function onViewDeactivated():void {
+				// deaktiviere ersten Navigationspunkt in Navigation links
+				(FlexGlobals.topLevelApplication.componentsList.dataGroup.getElementAt(8) as Object).resetNavState();
+			}
+		]]>
+	</fx:Script>
+
+	<s:VGroup verticalAlign="top">
+		<!-- Container Titel -->
+		<s:HGroup verticalAlign="top" horizontalAlign="left" paddingTop="105" paddingLeft="80" paddingRight="80" paddingBottom="50">
+			<s:Label text="{resourceManager.getString('resources', 'SHW')}" color="black" styleName="slider-title" />
+		</s:HGroup>
+		
+		<!-- Container Sicherheitshinweise -->
+		<s:HGroup horizontalAlign="left" paddingLeft="80" paddingRight="80" >
+			<s:SkinnableDataContainer id="sliderList" itemRenderer="renderers.SHWRenderer" width="900">
+				<s:ArrayList>
+					<fx:Object icon="@Embed('assets/icons/numbers/01.png')" label="{resourceManager.getString('resources', 'SHW_1')}" />
+					<fx:Object icon="@Embed('assets/icons/numbers/02.png')" label="{resourceManager.getString('resources', 'SHW_2')}" />
+					<fx:Object icon="@Embed('assets/icons/numbers/03.png')" label="{resourceManager.getString('resources', 'SHW_3')}" />
+					<fx:Object icon="@Embed('assets/icons/numbers/04.png')" label="{resourceManager.getString('resources', 'SHW_4')}" />
+					<fx:Object icon="@Embed('assets/icons/numbers/05.png')" label="{resourceManager.getString('resources', 'SHW_5')}" />
+					
+				</s:ArrayList>
+			</s:SkinnableDataContainer>
+		</s:HGroup>
+	</s:VGroup>	
+	
+</s:View>

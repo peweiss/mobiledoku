@@ -19,10 +19,12 @@ limitations under the License.
 -->
 <s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009"
 				xmlns:s="library://ns.adobe.com/flex/spark" 
-				height="150" width="100%" cacheAsBitmap="false">
+				height="150" width="100%" cacheAsBitmap="false"
+				>
 
 	<fx:Script>
 		<![CDATA[
+			import assets.skins.ViewNavigatorSkin_GZB;
 			
 			override public function set data(value:Object):void{
 				super.data = value;
@@ -43,6 +45,19 @@ limitations under the License.
 				}
 			}
 			
+			[Bindable]
+			private var sichtbar:uint = 0; // Alpha Wert für Navigations Trick ..
+			public function setNavState():void {
+				currentState = "selected";
+				sichtbar = 1;
+			}
+			
+			public function resetNavState():void {
+				currentState = "normal";
+				sichtbar = 0;
+			}
+
+
 		]]>
 	</fx:Script>
 	
@@ -52,6 +67,10 @@ limitations under the License.
 		<s:State name="down" /> <!-- on click -->
 		<s:State name="selected" /> <!-- ausgewählt -->
 	</s:states>
+	
+	<s:Rect width="100%" height="100%">
+		<s:fill><s:SolidColor color.normal="blue" color.down="yellow"  color.selected="red" alpha="{sichtbar}" /></s:fill>
+	</s:Rect>
 	
 	<!-- Navigations-Text mit verschiedenen Stati -->
 	<s:Label id="itemLabel" color.normal="#f7f8f8" color.down="#1d1d1b" color.selected="#1d1d1b" x="150" verticalCenter="0" />

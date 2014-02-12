@@ -35,19 +35,24 @@
 s|ActionBar s|Group#navigationGroup s|Button.headernav-nav {
 	skinClass: ClassReference("assets.skins.HeaderBtn_Nav_Skin"); 
 }
-s|ActionBar s|Group#actionGroup s|Button.headernav-sbh {
+s|ActionBar s|Group#actionGroup s|Button.headernav-shw {
 	skinClass: ClassReference("assets.skins.HeaderBtn_SHW_Skin"); 
 }
 s|ActionBar s|Group#actionGroup s|Button.headernav-suche {
 	skinClass: ClassReference("assets.skins.HeaderBtn_Suche_Skin"); 
 }
 
+s|Application {
+	backgroundColor: #f7f8f8;
+}
+
+
 s|View {
 	backgroundColor: #f7f8f8;
 }
 
-s|Application {
-	backgroundColor: #f7f8f8;
+s|VideoPlayer {
+	skinClass: ClassReference("assets.skins.videoSlider_Skin"); 
 }
 
 /* ***** ***** ***** */
@@ -57,7 +62,7 @@ s|List#componentsList {
 	fontSize: 36px;
 	typographicCase: uppercase;
 	alternatingItemColors: #2f2f2f; /* Hintergrund alle Listenpunkte */
-	selectionColor: #f7f8f8; /* aktiver Navigationspunkt */
+	selectionColor: yellow; /* aktiver Navigationspunkt */
 	downColor: #f7f8f8; /* "onClick/onPress" */
 	contentBackgroundColor: #f7f8f8;
 	color: #f7f8f8;
@@ -93,18 +98,24 @@ s|List#componentsList {
 
 /* ***** ***** ***** */
 /* Detail-Screens */
+.slider-title {
+	fontFamily: NunitoBold;
+	fontSize: 60px;
+	typographicCase: uppercase;
+	color: #1d1d1b;
+}
+s|SkinnableDataContainer#sliderList {
+	fontFamily: OpenSansRegular;
+	fontSize: 48;
+	color: #1d1d1b;
+	alternatingItemColors: #f7f8f8; /* Hintergrund alle Zeilen */
+	selectionColor: #f7f8f8; /* aktiver Navigationspunkt */
+	downColor: #f7f8f8; /* "onClick/onPress" */
+	contentBackgroundColor: #f7f8f8;
+}
 .sliderbtn {
 	skinClass: ClassReference("assets.skins.Btn_Slider_Skin"); 
 }
 .sliderbtn-active {
 	skinClass: ClassReference("assets.skins.BtnActive_Slider_Skin"); 
-}
-s|List#sliderList {
-	fontFamily: OpenSansRegular;
-	fontSize: 48;
-	color: #1d1d1b;
-	alternatingItemColors: #f7f8f8; /* Hintergrund alle Listenpunkte */
-	selectionColor: #f7f8f8; /* aktiver Navigationspunkt */
-	downColor: #f7f8f8; /* "onClick/onPress" */
-	contentBackgroundColor: #f7f8f8;
 }

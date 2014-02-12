@@ -34,6 +34,7 @@
 	</s:states> 
 	
 	<s:Ellipse width="100%" height="100%">	
+		<!-- definiere Button-Kontur und -Fläche für up-Status -->
 		<s:stroke.up>
 			<s:SolidColorStroke color="#ffffff" alpha="0.3" weight="8"/> 
 		</s:stroke.up> 
@@ -48,6 +49,7 @@
 			</s:LinearGradient> 
 		</s:fill.up>  
 
+		<!-- definiere Button-Kontur und -Fläche für over-Status -->
 		<s:stroke.over>
 			<s:SolidColorStroke color="#ffffff" alpha="0.3" weight="20" /> 
 		</s:stroke.over> 
@@ -62,6 +64,7 @@
 			</s:LinearGradient> 
 		</s:fill.over>  
 
+		<!-- definiere Button-Kontur und -Fläche für down-Status -->
 		<s:stroke.down>
 			<s:SolidColorStroke color="#ffffff" alpha="0.3" weight="20" /> 
 		</s:stroke.down> 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	SHWRenderer. Rendert die Sicherheitshinweise-Liste.
+	
+	Autor: 		Petra Weiss
+	Datum:		12.2.2014
+	Gesehen:	
+-->	
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009"
+				xmlns:s="library://ns.adobe.com/flex/spark" cacheAsBitmap="false">
+
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			private var bulletColor:uint; // Bullet-Farbe
+			
+			override public function set data(value:Object):void{
+				super.data = value;
+				
+				if(data){
+					bulletColor = 0x1d1d1b; // Default Schwarz
+					itemLabel.text = data.label; // Text Listenpunkt
+				}
+			}
+			
+			private function creationComplete():void {
+				data.scroller.setStyle("horizontalScrollPolicy", "off"); // horizontaler Scrollbalken wird deaktiviert
+			}
+			
+		]]>
+	</fx:Script>
+	<s:HGroup horizontalAlign="left" paddingBottom="60" >
+		<!-- Listenpunkt-Text -->
+		<s:Label id="itemLabel" x="90" verticalCenter="0" width="830" />
+		
+		<!-- Listenpunkt-Button -->
+		<s:Ellipse width="50" height="50"
+				   verticalCenter="0" x="0">	
+			<s:fill><s:SolidColor color="{bulletColor}" /></s:fill> 
+		</s:Ellipse>
+		
+		<!-- Listenpunkt-Icon (einzelne Zahl, transparent/weiss) -->
+		<s:Image source ="{data.icon}" 
+				 scaleMode="letterbox" smooth="true" smoothingQuality="high"
+				 verticalCenter="0" x="0" width="50" height="50"
+		/>
+	</s:HGroup>
+	<!-- Container Trennlinie horizontal -->
+	<s:HGroup horizontalAlign="left" paddingLeft="80" paddingRight="80" paddingTop="35">	
+		<s:Rect bottom="0" width="920" >
+			<s:stroke>
+				<s:SolidColorStroke color="#bfbfbf" weight="2" />
+			</s:stroke>
+		</s:Rect>
+	</s:HGroup>
+</s:ItemRenderer>
