@@ -39,20 +39,18 @@
 			
 		]]>
 	</fx:Script>
-	
 	<!-- Listenpunkt-Text -->
-	<s:Label id="itemLabel" x="90" verticalCenter="0" width="830" />
+	<s:Label id="itemLabel" top="0" x="90" width="830"/>
 	
 	<!-- Listenpunkt-Button -->
-	<s:Ellipse width="50" height="50"
-			   verticalCenter="0" x="0">	
+	<s:Ellipse width="50" height="50" top="0" x="0">	
 		<s:fill><s:SolidColor color="{bulletColor}" /></s:fill> 
 	</s:Ellipse>
 	
 	<!-- Listenpunkt-Icon (einzelne Zahl, transparent/weiss) -->
 	<s:Image source ="{data.icon}" 
 			 scaleMode="letterbox" smooth="true" smoothingQuality="high"
-			 verticalCenter="0" x="0" width="50" height="50"
+			 top="0" x="0" width="50" height="50"
 	/>
 	
 </s:ItemRenderer>

@@ -15,7 +15,6 @@
 	<fx:Script>
 		<![CDATA[
 			import mx.core.FlexGlobals;
-			import assets.skins.ViewNavigatorSkin_Default;
 
 			import renderers.MenuRenderer;
 			private var item:MenuRenderer = new MenuRenderer();
@@ -23,9 +22,9 @@
 			protected function onViewActivated():void{
 				// DEBUG
 				// FlexGlobals.topLevelApplication.text = "home";
-				
-				// Setze Farbe der ActionBar
-				navigator.setStyle("skinClass", Class(assets.skins.ViewNavigatorSkin_Default));
+
+				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
+				navigator.setStyle("styleName", "default");
 				
 				// Change ITEM Status bei aktiver View ...
 				// vgl. UpdateRenderer()
@@ -40,7 +39,14 @@
 				// deaktiviere ersten Navigationspunkt in Navigation links
 				(FlexGlobals.topLevelApplication.componentsList.dataGroup.getElementAt(0) as Object).resetNavState();
 			}
-
+			
+			// Funktion für Hotline-Anruf
+			import flash.net.navigateToURL; // importiere navigateToURL-Klasse
+			
+			private function callHotline(event:MouseEvent):void{
+				navigateToURL(new URLRequest("tel:0790000000")); // Test it: Test-Nummer hinterlegt ..
+			}
+			
 		]]>
 	</fx:Script>	
 	
@@ -111,9 +117,9 @@
 	</s:Rect>
 	<s:HGroup height="30%" paddingTop="-5">
 		<s:VGroup horizontalAlign="center" width="455" paddingTop="40" >
-			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="homebtn-sbh" />
+			<s:Button click="navigator.pushView(Stoerungsbehebung)" styleName="homebtn-sbh" />
 			<!-- separate Ressource für langes Wort, damit korrekt getrennt wird in D -->
-			<s:Label width="300" textAlign="center" click="navigator.pushView(Getraenkezubereitung)" styleName="homelabel">
+			<s:Label width="300" textAlign="center" click="navigator.pushView(Stoerungsbehebung)" styleName="homelabel">
 				<s:text>{resourceManager.getString('resources', 'SBH_H')}</s:text>
 			</s:Label>
 		</s:VGroup>
@@ -126,8 +132,8 @@
 			</s:Line> 			
 		</s:VGroup>
 		<s:VGroup horizontalAlign="center" width="455" paddingTop="40" >
-			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="homebtn-hotline" />
-			<s:Label click="navigator.pushView(Getraenkezubereitung)" text="{resourceManager.getString('resources', 'HOTLINE')}" styleName="homelabel" />
+			<s:Button click="callHotline(event)" styleName="homebtn-hotline" />
+			<s:Label click="callHotline(event)" text="{resourceManager.getString('resources', 'HOTLINE')}" styleName="homelabel" />
 		</s:VGroup>
 	</s:HGroup>	
 </s:View>

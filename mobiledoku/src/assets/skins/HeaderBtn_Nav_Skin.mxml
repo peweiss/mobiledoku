@@ -41,7 +41,7 @@
 	</s:Rect>
 
 	<!-- Icons -->
-	<s:Image source="@Embed('assets/icons/btn_nav_w.png')"
+	<s:Image source="@Embed('assets/icons/btn_header_nav_w.png')"
 			 scaleMode="letterbox" smooth="true" smoothingQuality="high"
 			 horizontalCenter="0" verticalCenter="0"
 			 />

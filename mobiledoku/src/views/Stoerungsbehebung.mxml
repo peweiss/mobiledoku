@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	Störungsbehebung-Screen mit Unternavigation über alle Störungsbehebungs-Fälle
+	
+	Autor: 		Petra Weiss
+	Datum:		16.2.2014
+	Gesehen:	
+-->	
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		title="Sicherheitshinweise"
+		viewActivate="onViewActivated()"
+		viewDeactivate="onViewDeactivated()"
+		>
+
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.core.FlexGlobals;
+			
+			import spark.events.IndexChangeEvent;
+			
+			import views.sbh.sbh_1_2;
+			
+			protected function onViewActivated():void{				
+				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
+				navigator.setStyle("styleName", "sbh");
+				
+				// aktiviere Störungsbehebung Navigationspunkt in Navigation links
+				(FlexGlobals.topLevelApplication.componentsList.dataGroup.getElementAt(6) as Object).setNavState();
+			}
+			protected function onViewDeactivated():void {
+				// deaktiviere Störungsbehebung Navigationspunkt in Navigation links
+				(FlexGlobals.topLevelApplication.componentsList.dataGroup.getElementAt(6) as Object).resetNavState();
+			}
+			
+			// zeige ausgewählte View
+			protected function changeHandler(event:IndexChangeEvent):void {
+				navigator.pushView(sbhList.selectedItem.view);
+			}
+		]]>
+	</fx:Script>
+	
+	<s:VGroup verticalAlign="top">
+		<!-- Container Titel -->
+		<s:HGroup verticalAlign="top" horizontalAlign="left" paddingTop="105" paddingLeft="80" paddingRight="80" paddingBottom="50">
+			<s:Label text="{resourceManager.getString('resources', 'SBH')}" color="black" styleName="slider-title" />
+		</s:HGroup>
+
+		<!-- List Navigation Störungsbehebung // wird mit separatem Item Renderer (SBHRenderer) gerendert -->
+		<s:HGroup horizontalAlign="left">
+			<s:List id="sbhList" itemRenderer="renderers.SBHRenderer" width="100%" change="changeHandler(event)">
+				<s:ArrayList>
+					<fx:Object icon="@Embed('assets/icons/btn_sbh01.png')" label="{resourceManager.getString('resources', 'SBH_T1')}" view="{sbh_1_2}" />
+					<fx:Object icon="@Embed('assets/icons/btn_sbh02.png')" label="{resourceManager.getString('resources', 'SBH_T2')}" view="{Home}" />
+					<fx:Object icon="@Embed('assets/icons/btn_sbh03.png')" label="{resourceManager.getString('resources', 'SBH_T3')}" view="{Home}" />
+					<fx:Object icon="@Embed('assets/icons/btn_sbh04.png')" label="{resourceManager.getString('resources', 'SBH_T4')}" view="{Home}" />
+					<fx:Object icon="@Embed('assets/icons/btn_sbh05.png')" label="{resourceManager.getString('resources', 'SBH_T5')}" view="{Home}" />
+					<fx:Object icon="@Embed('assets/icons/btn_sbh06.png')" label="{resourceManager.getString('resources', 'SBH_T6')}" view="{Home}" />
+					<fx:Object icon="@Embed('assets/icons/btn_sbh07.png')" label="{resourceManager.getString('resources', 'SBH_T7')}" view="{Home}" />					
+				</s:ArrayList>
+			</s:List>
+		</s:HGroup>
+		
+		<!-- Horizontale Trennlinie --> 
+		<s:HGroup bottom="0" paddingLeft="80" paddingRight="80" horizontalAlign="left">
+			<s:Rect bottom="0" width="920">
+				<s:stroke>
+					<s:SolidColorStroke color="#bfbfbf" weight="2" />
+				</s:stroke>
+			</s:Rect>
+		</s:HGroup>
+	</s:VGroup>	
+</s:View>

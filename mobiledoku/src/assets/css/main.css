@@ -23,7 +23,7 @@
 
 /* ***** ***** ***** */
 /* Global */
-/* Header-Leiste */
+/* ActionBar */
 .headernav-title {
 	fontFamily: NunitoBold;
 	fontSize: 36px;
@@ -42,10 +42,21 @@ s|ActionBar s|Group#actionGroup s|Button.headernav-suche {
 	skinClass: ClassReference("assets.skins.HeaderBtn_Suche_Skin"); 
 }
 
+/* Farbe der ActionBar -> Klasse liegt auf s:ViewNavigator*/
+.default s|ActionBar {
+	skinClass: ClassReference("assets.skins.ActionBar_Default_Skin"); 
+}
+.gzb s|ActionBar {
+	skinClass: ClassReference("assets.skins.ActionBar_GZB_Skin"); 
+}
+.sbh s|ActionBar {
+	skinClass: ClassReference("assets.skins.ActionBar_SBH_Skin"); 
+}
+
+/* Content */
 s|Application {
 	backgroundColor: #f7f8f8;
 }
-
 
 s|View {
 	backgroundColor: #f7f8f8;
@@ -118,4 +129,14 @@ s|SkinnableDataContainer#sliderList {
 }
 .sliderbtn-active {
 	skinClass: ClassReference("assets.skins.BtnActive_Slider_Skin"); 
+}
+
+s|SkinnableDataContainer#sbhList {
+	alternatingItemColors: #f7f8f8; /* Hintergrund alle Zeilen */
+	selectionColor: #fecb00; /* aktiver Navigationspunkt */
+	downColor: #fecb00; /* "onClick/onPress" */
+	contentBackgroundColor: #f7f8f8;
+}
+.decisionbtn {
+	skinClass: ClassReference("assets.skins.DecisionBtn_Skin"); 
 }

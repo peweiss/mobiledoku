@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
+<!--	
+	Überschreibe Standard Play-/Pause-Button-Skin
+
+	Autor: 		Petra Weiss
+	Datum:		10.2.2014
+	Gesehen:
+
 
 Licensed to the Apache Software Foundation (ASF) under one or more
 contributor license agreements.  See the NOTICE file distributed with
@@ -169,7 +175,7 @@ one of the <code>fullScreen</code> skin states.
 	<s:Group horizontalCenter="0" verticalCenter="0" includeIn="selectedStates" id="pauseSymbol">
 		
 		<s:Image source ="@Embed('assets/icons/btn_pause_w.png')"			 
-				 width="60" height="60"
+				 width="55" height="55"
 				 scaleMode="letterbox" smooth="true" smoothingQuality="high"
 				 horizontalCenter="0" verticalCenter="0"   
 				 />

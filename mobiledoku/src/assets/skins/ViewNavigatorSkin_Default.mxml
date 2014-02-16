@@ -1,32 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-	Default ViewNavigator Skin. Definiert die default ActionBar (schwarz).
+	Default ViewNavigator Skin. Definiert Abstände und Höhe der ActionBar, Abstand des Contents zur ActionBar.
 
 	Autor: 		Petra Weiss
 	Datum:		8.2.2014
 	Gesehen:	
 -->	
 <s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark"
-		creationComplete="creationCompleteHandler(event)">
+		xmlns:s="library://ns.adobe.com/flex/spark">
 	<!-- host component -->
 	<fx:Metadata>
 		[HostComponent("spark.components.ViewNavigator")]
 	</fx:Metadata>
-	
-	<fx:Script>
-		<![CDATA[
-			import mx.events.FlexEvent;
-			
-			protected function creationCompleteHandler(event:FlexEvent):void
-			{
-//				defaultPushTransition = new CrossFadeViewTransition();
-//				defaultPopTransition = new CrossFadeViewTransition();
-				
-			}
-			
-		]]>
-	</fx:Script>
 	
 	<!-- states -->
 	<s:states>
@@ -37,9 +22,11 @@
 		<s:State name="disabled" />
 		<s:State name="normal" />
 	</s:states>
-	
-	<s:ActionBar id="actionBar" left="0" right="0" height="138" skinClass="assets.skins.ActionBar_Default_Skin" />
-	
+
+	<!-- Definiere ActionBar (separater Skin für Farbe ist in CSS definiert) -->
+	<s:ActionBar id="actionBar" left="0" right="0" height="138" />
+
+	<!-- Definiere Inhalts-Bereich mit Abstand zur ActionBar -->
 	<s:Group left="0" right="0" top="136" bottom="0" id="contentGroup" /> 
 	
 </s:Skin>

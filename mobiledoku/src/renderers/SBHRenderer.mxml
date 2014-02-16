@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	SBHRenderer. Rendert die Störungsbehebungs-Übersichtsliste.
+	
+	Autor: 		Petra Weiss
+	Datum:		16.2.2014
+	Gesehen:	
+-->	
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009"
+				xmlns:s="library://ns.adobe.com/flex/spark" cacheAsBitmap="false"
+				height="180">
+
+	<fx:Script>
+		<![CDATA[
+			override public function set data(value:Object):void{
+				super.data = value;
+				
+				if(data){
+					itemLabel.text = data.label; // Text Listenpunkt
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<!-- Listenpunkt-Text -->
+	<s:Label id="itemLabel" styleName="homelabel" top="0" x="280" width="830" verticalCenter="0" />
+	
+	<!-- Listenpunkt-Icon -->
+	<s:Image source ="{data.icon}" 
+			 scaleMode="letterbox" smooth="true" smoothingQuality="high"
+			 top="35" x="110" width="130" height="130"
+	/>
+	
+	<!-- Horizontale Trennlinie --> 
+	<s:VGroup paddingLeft="80" paddingRight="80" gap="0">
+		<s:Rect bottom="0" width="920">
+			<s:stroke>
+				<s:SolidColorStroke color="#bfbfbf" weight="2" />
+			</s:stroke>
+		</s:Rect>
+	</s:VGroup>
+
+</s:ItemRenderer>

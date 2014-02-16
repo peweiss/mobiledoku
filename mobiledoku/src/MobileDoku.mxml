@@ -35,6 +35,7 @@
 			import views.Getraenkezubereitung;
 			import views.Home;
 			import views.Sicherheitshinweise;
+			import views.Stoerungsbehebung;
 			
 			// deklariere Variablen für Navigation
 			private var isOpen:Boolean;	
@@ -133,7 +134,7 @@
 	-->
 
 	<!-- Header-Leiste / firstView ist der HomeScreen --> 
-	<s:ViewNavigator id="navigator" firstView="views.Home" width="100%" height="100%" skinClass="assets.skins.ViewNavigatorSkin_Default">
+	<s:ViewNavigator id="navigator" firstView="views.Home" width="100%" height="100%" skinClass="assets.skins.ViewNavigatorSkin_Default" styleName="default">
 		<s:navigationContent>
 	<!--		<s:Button styleName="headernav-btn" label=" " icon="@Embed('assets/icons/btn_nav_w.png')" click="menuHandler(event)" />	-->		
 			<s:Button styleName="headernav-nav" click="menuHandler(event)" />
@@ -176,7 +177,7 @@
 						   iconActive="@Embed('assets/icons/btn_entkalkung_b.png')" label="{resourceManager.getString('resources', 'ENTKALKUNG')}" type="view" view="{Getraenkezubereitung}"/>
 
 				<fx:Object iconNormal="@Embed('assets/icons/btn_sbh_w.png')" 
-						   iconActive="@Embed('assets/icons/btn_sbh_b.png')" label="{resourceManager.getString('resources', 'SBH')}" type="view" view="{Getraenkezubereitung}"/>
+						   iconActive="@Embed('assets/icons/btn_sbh_b.png')" label="{resourceManager.getString('resources', 'SBH')}" type="view" view="{Stoerungsbehebung}"/>
 
 				<fx:Object iconNormal="@Embed('assets/icons/btn_hotline_w.png')" 
 						   iconActive="@Embed('assets/icons/btn_hotline_b.png')" label="{resourceManager.getString('resources', 'HOTLINE')}" type="view" view="{Getraenkezubereitung}"/>

@@ -18,8 +18,6 @@
 		<![CDATA[
 			import mx.core.FlexGlobals;
 			
-			import assets.skins.ViewNavigatorSkin_GZB;
-			
 			import renderers.SliderListRenderer;
 			
 			import views.gzb.gzb_2;
@@ -30,14 +28,14 @@
 				// DEBUG
 				// FlexGlobals.topLevelApplication.text = "gzb";
 				
-				// Setze Farbe der ActionBar
-				navigator.setStyle("skinClass", Class(assets.skins.ViewNavigatorSkin_GZB));
+				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
+				navigator.setStyle("styleName", "gzb");
 				
-				// aktiviere ersten Navigationspunkt in Navigation links
+				// aktiviere Getränkezubereitungs Navigationspunkt in Navigation links
 				(FlexGlobals.topLevelApplication.componentsList.dataGroup.getElementAt(3) as Object).setNavState();
 			}
 			protected function onViewDeactivated():void {
-				// deaktiviere ersten Navigationspunkt in Navigation links
+				// deaktiviere Getränkezubereitungs Navigationspunkt in Navigation links
 				(FlexGlobals.topLevelApplication.componentsList.dataGroup.getElementAt(3) as Object).resetNavState();
 			}
 
@@ -70,7 +68,7 @@
 			scaleMode="letterbox" smooth="true" smoothingQuality="high"
 			horizontalCenter="0" verticalCenter="0"
 			/>-->
-			<s:VideoPlayer source="ressources/videos/h264_1280x720_audio.mp4" autoPlay="true" width="1080" height="638" />
+			<s:VideoPlayer source="ressources/videos/5_2.mp4" autoPlay="true" autoRewind="false" width="1080" height="638" />
 		</s:HGroup>
 		
 		<!-- Container Trennlinie horizontal -->
@@ -86,9 +84,10 @@
 		<s:HGroup horizontalAlign="left" paddingLeft="80" paddingRight="80" >
 			<s:SkinnableDataContainer id="sliderList" itemRenderer="renderers.SliderListRenderer" width="900">
 				<s:ArrayList>
-					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/01.png')" label="{resourceManager.getString('resources', 'SLIDE_121_1')}" />
-					<fx:Object styleName="ts" icon="@Embed('assets/icons/numbers/02.png')" label="{resourceManager.getString('resources', 'SLIDE_121_2')}" />
-					
+					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/01.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_1')}" />
+					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/02.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_2')}" />
+					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/03.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_3')}" />
+					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/04.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_4')}" />					
 				</s:ArrayList>
 			</s:SkinnableDataContainer>
 		</s:HGroup>
