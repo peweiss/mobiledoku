@@ -26,7 +26,7 @@
 		]]>
 	</fx:Script>
 	<!-- Listenpunkt-Text -->
-	<s:Label id="itemLabel" top="0" x="90" width="830" paddingBottom="35" paddingTop="35" />
+	<s:Label id="itemLabel" top="0" x="90" width="830" paddingBottom="35" paddingTop="35" lineHeight="60" />
 	
 	<!-- Listenpunkt-Button -->
 	<s:Ellipse width="50" height="50" top="35" x="0">	

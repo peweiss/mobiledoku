@@ -64,10 +64,6 @@
 		
 		<!-- Container Medieninhalt-->
 		<s:HGroup horizontalAlign="center" paddingBottom="30">
-			<!--	<s:Image source="@Embed('assets/icons/btn_header_suche_w.png')"
-			scaleMode="letterbox" smooth="true" smoothingQuality="high"
-			horizontalCenter="0" verticalCenter="0"
-			/>-->
 			<s:VideoPlayer source="ressources/videos/5_2.mp4" autoPlay="true" autoRewind="false" width="1080" height="638" />
 		</s:HGroup>
 		

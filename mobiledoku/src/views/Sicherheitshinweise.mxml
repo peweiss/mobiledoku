@@ -49,6 +49,8 @@
 						<fx:Object icon="@Embed('assets/icons/numbers/04.png')" label="{resourceManager.getString('resources', 'SHW_4')}" />
 						<fx:Object icon="@Embed('assets/icons/numbers/05.png')" label="{resourceManager.getString('resources', 'SHW_5')}" />
 						
+						
+						<fx:Object icon="@Embed('assets/icons/numbers/36.png')" label="{resourceManager.getString('resources', 'SHW_36')}" />
 					</s:ArrayList>
 				</s:SkinnableDataContainer>
 			</s:HGroup>

@@ -24,12 +24,12 @@
 	</fx:Script>
 	
 	<!-- Listenpunkt-Text -->
-	<s:Label id="itemLabel" styleName="homelabel" top="0" x="280" width="830" verticalCenter="0" />
+	<s:Label id="itemLabel" styleName="homelabel" top="0" x="230" width="830" verticalCenter="0" />
 	
 	<!-- Listenpunkt-Icon -->
 	<s:Image source ="{data.icon}" 
 			 scaleMode="letterbox" smooth="true" smoothingQuality="high"
-			 top="35" x="110" width="130" height="130"
+			 top="35" x="60" width="130" height="130"
 	/>
 	
 	<!-- Horizontale Trennlinie --> 

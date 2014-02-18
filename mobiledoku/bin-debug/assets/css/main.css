@@ -137,6 +137,9 @@ s|SkinnableDataContainer#sbhList {
 	downColor: #fecb00; /* "onClick/onPress" */
 	contentBackgroundColor: #f7f8f8;
 }
-.decisionbtn {
-	skinClass: ClassReference("assets.skins.DecisionBtn_Skin"); 
+.decisionbtn-ja {
+	skinClass: ClassReference("assets.skins.DecisionBtn_Ja_Skin"); 
+}
+.decisionbtn-nein {
+	skinClass: ClassReference("assets.skins.DecisionBtn_Nein_Skin"); 
 }
