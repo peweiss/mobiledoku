@@ -22,16 +22,25 @@ limitations under the License.
 				height="150" width="100%" cacheAsBitmap="false"
 				>
 
+	<!-- Stati Navigation -->
+	<s:states>
+		<s:State name="normal" /> <!-- Normal-Ansicht -->
+		<s:State name="down" /> <!-- on click -->
+		<s:State name="selected" /> <!-- ausgewählt -->
+	</s:states>
+	
 	<fx:Script>
 		<![CDATA[
-			import assets.skins.ViewNavigatorSkin_GZB;
+			[Bindable]
+			private var navActive:Class;
+			[Bindable]
+			private var navNormal:Class;	
 			
 			override public function set data(value:Object):void{
-				super.data = value;
 				
-				if(data){
+				if(value){
 					
-					if(data.type == "view"){
+					if(value.type == "view"){
 						autoDrawBackground = true;
 						currentState = "normal";	
 					}
@@ -41,45 +50,25 @@ limitations under the License.
 						currentState = "normal";	
 					}
 					
-					itemLabel.text = data.label; // Navigations-Text
+					itemLabel.text = value.label; // Navigations-Text
+					
+					// Navigations-Icons fuer verschiedene Stati
+					navActive = value.iconActive;
+					navNormal = value.iconNormal;
 				}
 			}
-			
-			[Bindable]
-			private var sichtbar:uint = 0; // Alpha Wert für Navigations Trick ..
-			public function setNavState():void {
-				currentState = "selected";
-				sichtbar = 1;
-			}
-			
-			public function resetNavState():void {
-				currentState = "normal";
-				sichtbar = 0;
-			}
-
 
 		]]>
 	</fx:Script>
-	
-	<!-- Stati Navigation -->
-	<s:states>
-		<s:State name="normal" /> <!-- Normal-Ansicht -->
-		<s:State name="down" /> <!-- on click -->
-		<s:State name="selected" /> <!-- ausgewählt -->
-	</s:states>
-	
-	<s:Rect width="100%" height="100%">
-		<s:fill><s:SolidColor color.normal="blue" color.down="yellow"  color.selected="red" alpha="{sichtbar}" /></s:fill>
-	</s:Rect>
-	
+
 	<!-- Navigations-Text mit verschiedenen Stati -->
 	<s:Label id="itemLabel" color.normal="#f7f8f8" color.down="#1d1d1b" color.selected="#1d1d1b" x="150" verticalCenter="0" />
 	
 	<!-- Navigations-Grafik mit verschiedenen Stati -->
-	<s:Image source ="{data.iconNormal}" 
-			 source.down="{data.iconActive}"
-			 source.selected="{data.iconActive}"
-			
+	<s:Image source="{navNormal}"
+			 source.down = "{navActive}"
+			 source.selected = "{navActive}"
+			 
 			 scaleMode="letterbox" smooth="true" smoothingQuality="high"
 			 verticalCenter="0" x="60" width="50" height="50"
 			 />

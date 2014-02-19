@@ -25,6 +25,7 @@
 			
 			import flash.utils.getDefinitionByName;
 			
+			import mx.core.FlexGlobals;
 			import mx.events.FlexEvent;
 			import mx.resources.ResourceManager;
 			
@@ -115,6 +116,57 @@
 			// [Bindable]
 			// public var text:String;	
 			
+			// aktiviert Navigationspunkt, wenn Inhalt nicht über Navigation sondern Button geladen wurde
+			public function activateView(event:MouseEvent, targetView:Class):void{
+				trace('###deactivateHome###');
+				
+				// Definiere Variable für den zu verändernden Menupunkt
+				var menuItem:int;
+	
+				// Ausgabe aktueller State
+				trace('current State:' + FlexGlobals.topLevelApplication.componentsList.dataGroup.getElementAt(0).currentState);
+				
+				// Ausgabe des aktuellen caret Item
+				trace('caret Item:' + FlexGlobals.topLevelApplication.componentsList.caretIndex);
+				
+				
+				// Switch Case um zu bestimmen welcher Button gedrueckt wurde. So können wir jedem Button einen Menupunkt in der 
+				// Navigation zuweisen.
+				// @menuItem: Variable mit dem zu änderten Listenelement in der Navigation. 
+				
+				switch(targetView){
+					//case Inbetriebnahme:
+					//menuItem = 2;
+					//trace("Der User hat Inbetriebnahme gewählt");
+					//break;
+					case Getraenkezubereitung:
+						menuItem = 3;
+						trace("Der User hat Getränkezubereitzung gewählt");
+						break;
+					//case Reinigung:
+					//menuItem = 4;
+					//trace("Der User hat Reinigung gewählt");
+					//break;
+					//case Entkalkung:
+					//menuItem = 5;
+					//trace("Der User hat Reinigung gewählt");
+					//break;
+					case Stoerungsbehebung:
+						menuItem = 6;
+						trace("Der User hat Reinigung gewählt");
+						break;
+					default:
+						trace("Es wurde nichts ausgewählt");
+				}
+				
+				// Setze den Focus auf den angewaehlten Menupunkt
+				componentsList.selectedIndex = menuItem;
+				
+				// Gehe zur angewaehlten View
+				navigator.pushView(targetView);
+			}
+			
+			
 		]]>
 	</fx:Script>
 
@@ -191,18 +243,5 @@
 			</s:ArrayList>
 		</s:List>
 	</s:Group>
-	
-<!--
-	<s:Group width="100%" height="148" bottom="0" alpha="{variable}">
-		<s:Rect width="100%" height="100%">
-			<s:fill><s:SolidColor color="0x4e2900" /></s:fill>
-		</s:Rect>
-		<s:HGroup horizontalCenter="0" gap="50" paddingTop="35">
-			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="sliderbtn" />
-			<s:Button click="navigator.pushView(gzb_2)" styleName="sliderbtn" />
-			<s:Button click="navigator.pushView(gzb_3)" styleName="sliderbtn" />
-			<s:Button click="navigator.pushView(gzb_4)" styleName="sliderbtn-active" />
-		</s:HGroup>
-	</s:Group>
--->	
+
 </s:Application>

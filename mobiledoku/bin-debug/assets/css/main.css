@@ -73,7 +73,7 @@ s|List#componentsList {
 	fontSize: 36px;
 	typographicCase: uppercase;
 	alternatingItemColors: #2f2f2f; /* Hintergrund alle Listenpunkte */
-	selectionColor: yellow; /* aktiver Navigationspunkt */
+	selectionColor: #f7f8f8; /* aktiver Navigationspunkt */
 	downColor: #f7f8f8; /* "onClick/onPress" */
 	contentBackgroundColor: #f7f8f8;
 	color: #f7f8f8;

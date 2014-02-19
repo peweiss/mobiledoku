@@ -12,11 +12,11 @@
 
 	<fx:Script>
 		<![CDATA[
-			override public function set data(value:Object):void{
-				super.data = value;
-				
-				if(data){
-					itemLabel.text = data.label; // Text Listenpunkt
+			override public function set data(value:Object):void{				
+				if(value){
+					itemLabel.text = value.label; // Text Listenpunkt
+					
+					listIcon.source = value.icon; // Icon Listenpunkt
 				}
 			}
 			
@@ -27,7 +27,7 @@
 	<s:Label id="itemLabel" styleName="homelabel" top="0" x="230" width="830" verticalCenter="0" />
 	
 	<!-- Listenpunkt-Icon -->
-	<s:Image source ="{data.icon}" 
+	<s:Image id ="listIcon" 
 			 scaleMode="letterbox" smooth="true" smoothingQuality="high"
 			 top="35" x="60" width="130" height="130"
 	/>

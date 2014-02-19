@@ -9,8 +9,7 @@
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
 		xmlns:s="library://ns.adobe.com/flex/spark" 
 		title="sbh_1_2"
-		viewActivate="onViewActivated()"
-		viewDeactivate="onViewDeactivated()">
+		viewActivate="onViewActivated()">
 	
 	
 	<fx:Script>
@@ -23,15 +22,7 @@
 			protected function onViewActivated():void{				
 				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
 				navigator.setStyle("styleName", "sbh");
-				
-				// aktiviere Getränkezubereitungs Navigationspunkt in Navigation links
-				(FlexGlobals.topLevelApplication.componentsList.dataGroup.getElementAt(6) as Object).setNavState();
 			}
-			protected function onViewDeactivated():void {
-				// deaktiviere Getränkezubereitungs Navigationspunkt in Navigation links
-				(FlexGlobals.topLevelApplication.componentsList.dataGroup.getElementAt(6) as Object).resetNavState();
-			}
-
 		]]>
 	</fx:Script>
 	

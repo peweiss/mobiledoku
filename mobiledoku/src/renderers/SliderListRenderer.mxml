@@ -15,13 +15,11 @@
 			[Bindable]
 			private var bulletColor:uint; // Bullet-Farbe
 			
-			override public function set data(value:Object):void{
-				super.data = value;
-				
-				if(data){
+			override public function set data(value:Object):void{				
+				if(value){
 					
 					// Definiere Bullet-Farbe
-					if(data.styleName == "gzb") {
+					if(value.styleName == "gzb") {
 						bulletColor = 0x4e2900; // Getränkezubereitungs-Braun
 					} 
 					
@@ -29,7 +27,8 @@
 						bulletColor = 0x1d1d1b; // Default Schwarz
 					}
 					
-					itemLabel.text = data.label; // Text Listenpunkt
+					itemLabel.text = value.label; // Text Listenpunkt
+					listIcon.source = value.icon; // Icon Listenpunkt
 				}
 			}
 			
@@ -48,7 +47,7 @@
 	</s:Ellipse>
 	
 	<!-- Listenpunkt-Icon (einzelne Zahl, transparent/weiss) -->
-	<s:Image source ="{data.icon}" 
+	<s:Image id="listIcon" 
 			 scaleMode="letterbox" smooth="true" smoothingQuality="high"
 			 top="0" x="0" width="50" height="50"
 	/>

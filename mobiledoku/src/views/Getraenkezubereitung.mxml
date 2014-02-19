@@ -10,7 +10,6 @@
 		xmlns:s="library://ns.adobe.com/flex/spark" 
 		title="Getraenkezubereitung"
 		viewActivate="onViewActivated()"
-		viewDeactivate="onViewDeactivated()"
 		gestureSwipe="onSwipe(event)">
 
 	
@@ -25,18 +24,8 @@
 			import views.gzb.gzb_4;
 			
 			protected function onViewActivated():void{				
-				// DEBUG
-				// FlexGlobals.topLevelApplication.text = "gzb";
-				
 				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
 				navigator.setStyle("styleName", "gzb");
-				
-				// aktiviere Getränkezubereitungs Navigationspunkt in Navigation links
-				(FlexGlobals.topLevelApplication.componentsList.dataGroup.getElementAt(3) as Object).setNavState();
-			}
-			protected function onViewDeactivated():void {
-				// deaktiviere Getränkezubereitungs Navigationspunkt in Navigation links
-				(FlexGlobals.topLevelApplication.componentsList.dataGroup.getElementAt(3) as Object).resetNavState();
 			}
 
 			// handelt Swipe-Verhalten (via gestureSwipe="")
@@ -64,7 +53,7 @@
 		
 		<!-- Container Medieninhalt-->
 		<s:HGroup horizontalAlign="center" paddingBottom="30">
-			<s:VideoPlayer source="ressources/videos/5_2.mp4" autoPlay="true" autoRewind="false" width="1080" height="638" />
+			<s:VideoPlayer id="videoPlayer" source="ressources/videos/5_2.mp4" autoPlay="true" autoRewind="false" width="1080" height="638" />
 		</s:HGroup>
 		
 		<!-- Container Trennlinie horizontal -->
@@ -94,7 +83,7 @@
 		<s:Rect width="100%" height="100%">
 			<s:fill><s:SolidColor color="0x4e2900" /></s:fill>
 		</s:Rect>
-		<s:HGroup horizontalCenter="0" gap="50" paddingTop="35">
+		<s:HGroup horizontalCenter="0" gap="50" paddingTop="50">
 			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="sliderbtn-active" />
 			<s:Button click="navigator.pushView(gzb_2, null, null, pushLeft)" styleName="sliderbtn" />
 			<s:Button click="navigator.pushView(gzb_3, null, null, pushLeft)" styleName="sliderbtn" />

@@ -10,7 +10,6 @@
 		xmlns:s="library://ns.adobe.com/flex/spark" 
 		title="Sicherheitshinweise"
 		viewActivate="onViewActivated()"
-		viewDeactivate="onViewDeactivated()"
 		>
 
 	
@@ -21,13 +20,6 @@
 			protected function onViewActivated():void{				
 				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
 				navigator.setStyle("styleName", "default");
-				
-				// aktiviere Sicherheitshinweise Navigationspunkt in Navigation links
-				(FlexGlobals.topLevelApplication.componentsList.dataGroup.getElementAt(8) as Object).setNavState();
-			}
-			protected function onViewDeactivated():void {
-				// deaktiviere Sicherheitshinweise Navigationspunkt in Navigation links
-				(FlexGlobals.topLevelApplication.componentsList.dataGroup.getElementAt(8) as Object).resetNavState();
 			}
 		]]>
 	</fx:Script>
