@@ -23,17 +23,24 @@
 			}
 		]]>
 	</fx:Script>
+
+	<s:layout>
+		<s:VerticalLayout verticalAlign="top" horizontalAlign="left"
+			paddingLeft="80" paddingRight="80"
+			gap="5"/>
+		
+	</s:layout>
 	<!-- s:Scroller // es kann vertikal, nicht aber horizontal gescrollt werden -->
 	<s:Scroller width="100%" height="100%" horizontalScrollPolicy="off">
 		<s:VGroup verticalAlign="top">
 			<!-- Container Titel -->
-			<s:HGroup verticalAlign="top" horizontalAlign="left" paddingTop="105" paddingLeft="80" paddingRight="80" paddingBottom="15">
+			<s:HGroup verticalAlign="top" horizontalAlign="left" paddingTop="105" paddingBottom="15">
 				<s:Label text="{resourceManager.getString('resources', 'SHW')}" color="black" styleName="slider-title" />
 			</s:HGroup>
 			
 			<!-- Container Sicherheitshinweise // wird mit separatem Item Renderer (SHWRenderer) gerendert -->
-			<s:HGroup horizontalAlign="left" paddingLeft="80" paddingRight="80" >
-				<s:SkinnableDataContainer id="sliderList" itemRenderer="renderers.SHWRenderer" width="900">
+			<s:HGroup horizontalAlign="left" >
+				<s:SkinnableDataContainer id="sliderList" itemRenderer="renderers.SHWRenderer">
 					<s:ArrayList>
 						<fx:Object icon="@Embed('assets/icons/numbers/01.png')" label="{resourceManager.getString('resources', 'SHW_1')}" />
 						<fx:Object icon="@Embed('assets/icons/numbers/02.png')" label="{resourceManager.getString('resources', 'SHW_2')}" />

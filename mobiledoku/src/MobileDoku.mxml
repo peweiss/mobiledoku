@@ -23,6 +23,7 @@
 		<![CDATA[
 			import com.adobe.utils.LocaleUtil;
 			
+			import flash.net.navigateToURL;
 			import flash.utils.getDefinitionByName;
 			
 			import mx.core.FlexGlobals;
@@ -32,11 +33,14 @@
 			import spark.events.IndexChangeEvent;
 			import spark.transitions.CrossFadeViewTransition;
 			
-			// importiere Views, auf die verlinkt wird
 			import views.Getraenkezubereitung;
 			import views.Home;
 			import views.Sicherheitshinweise;
 			import views.Stoerungsbehebung;
+			import views.Sprache;
+			
+			// rendert das Menu
+			import renderers.MenuRenderer;
 			
 			// deklariere Variablen für Navigation
 			private var isOpen:Boolean;	
@@ -46,7 +50,6 @@
 			
 			[Bindable]
 			private var currentStageHeight:Number;
-
 			
 			// wenn App initialisiert wird ...
 			protected function init(event:FlexEvent):void {
@@ -97,24 +100,28 @@
 				}
 			}
 			
+			// Hotline-Anruf -> verwendet in Navigation, Home- und Störungsbehebung-View
+			public function callHotline():void{
+				navigateToURL(new URLRequest("tel:0790000000")); // Test it: Test-Nummer hinterlegt ..
+			}
+			
 			protected function changeHandler(event:IndexChangeEvent):void {
 				isOpen = false;
 				moveOut.play();
-				// zeige ausgewählte View
-				navigator.pushView(componentsList.selectedItem.view);
+				
+				// ist das Hotline-Element ausgewaehlt?
+				if (componentsList.selectedIndex == 7) {
+					callHotline();
+				} else {
+					// zeige ausgewählte View
+					navigator.pushView(componentsList.selectedItem.view);	
+				}
 			}
 
 			protected function menuBackgroundHandler(event:MouseEvent):void {
 				isOpen = false;
 				moveOut.play();
 			}
-		
-			// rendert das Menu
-			import renderers.MenuRenderer;
-			
-			// DEBUG
-			// [Bindable]
-			// public var text:String;	
 			
 			// aktiviert Navigationspunkt, wenn Inhalt nicht über Navigation sondern Button geladen wurde
 			public function activateView(event:MouseEvent, targetView:Class):void{
@@ -155,6 +162,10 @@
 						menuItem = 6;
 						trace("Der User hat Reinigung gewählt");
 						break;
+					case Sicherheitshinweise:
+						menuItem = 8;
+						trace("Der User hat Sicherheitshinweise gewählt");
+						break;
 					default:
 						trace("Es wurde nichts ausgewählt");
 				}
@@ -188,16 +199,13 @@
 	<!-- Header-Leiste / firstView ist der HomeScreen --> 
 	<s:ViewNavigator id="navigator" firstView="views.Home" width="100%" height="100%" skinClass="assets.skins.ViewNavigatorSkin_Default" styleName="default">
 		<s:navigationContent>
-	<!--		<s:Button styleName="headernav-btn" label=" " icon="@Embed('assets/icons/btn_nav_w.png')" click="menuHandler(event)" />	-->		
 			<s:Button styleName="headernav-nav" click="menuHandler(event)" />
+			<!-- Label wird hier platziert, damit sie bei Swipe stehen bleibt -->
+			<s:Label styleName="headernav-title" text="{resourceManager.getString('resources', 'MAIN_TITLE')}" paddingLeft="150" height="136" verticalAlign="middle" click="menuHandler(event)" />
 		</s:navigationContent>
-		
-		<s:titleContent>
-			<s:Label styleName="headernav-title" text="{resourceManager.getString('resources', 'MAIN_TITLE')}" />
-		</s:titleContent>
-		
+
 		<s:actionContent>
-			<s:Button click="navigator.pushView(Sicherheitshinweise)" styleName="headernav-shw" x="-136" />
+			<s:Button click="activateView(event, Sicherheitshinweise)" styleName="headernav-shw" x="-136" />
 			<s:Button click="navigator.popToFirstView()" styleName="headernav-suche" />
 		</s:actionContent>
 	</s:ViewNavigator>
@@ -238,7 +246,7 @@
 						   iconActive="@Embed('assets/icons/btn_shw_b.png')" label="{resourceManager.getString('resources', 'SHW')}" type="view" view="{Sicherheitshinweise}"/>
 
 				<fx:Object iconNormal="@Embed('assets/icons/btn_sprache_w.png')" 
-						   iconActive="@Embed('assets/icons/btn_sprache_b.png')" label="{resourceManager.getString('resources', 'SPRACHE')}" type="view" view="{Getraenkezubereitung}"/>
+						   iconActive="@Embed('assets/icons/btn_sprache_b.png')" label="{resourceManager.getString('resources', 'SPRACHE')}" type="view" view="{Sprache}"/>
 
 			</s:ArrayList>
 		</s:List>

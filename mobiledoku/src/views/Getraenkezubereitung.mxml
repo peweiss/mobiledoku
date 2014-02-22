@@ -53,12 +53,12 @@
 		
 		<!-- Container Medieninhalt-->
 		<s:HGroup horizontalAlign="center" paddingBottom="30">
-			<s:VideoPlayer id="videoPlayer" source="ressources/videos/5_2.mp4" autoPlay="true" autoRewind="false" width="1080" height="638" />
+			<s:VideoPlayer id="videoPlayer" source="ressources/videos/5_1.mp4" autoPlay="true" autoRewind="false" width="1080" height="638" />
 		</s:HGroup>
 		
 		<!-- Container Trennlinie horizontal -->
 		<s:HGroup horizontalAlign="left" paddingLeft="80" paddingRight="80" paddingBottom="60" >	
-			<s:Rect bottom="0" width="920" >
+			<s:Rect bottom="0" width="920">
 				<s:stroke>
 					<s:SolidColorStroke color="#bfbfbf" weight="2" />
 				</s:stroke>
@@ -67,14 +67,14 @@
 		
 		<!-- Container Text-Beschreibung -->
 		<s:HGroup horizontalAlign="left" paddingLeft="80" paddingRight="80" >
-			<s:SkinnableDataContainer id="sliderList" itemRenderer="renderers.SliderListRenderer" width="900">
+			<s:List id="sliderList" itemRenderer="renderers.SliderListRenderer" width="900" horizontalScrollPolicy="off">
 				<s:ArrayList>
 					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/01.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_1')}" />
 					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/02.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_2')}" />
 					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/03.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_3')}" />
 					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/04.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_4')}" />					
 				</s:ArrayList>
-			</s:SkinnableDataContainer>
+			</s:List>
 		</s:HGroup>
 	</s:VGroup>	
 	

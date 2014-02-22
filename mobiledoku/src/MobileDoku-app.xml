@@ -15,7 +15,7 @@
 
 	<!-- A universally unique application identifier. Must be unique across all AIR applications.
 	Using a reverse DNS-style name as the id is recommended. (Eg. com.example.ExampleApplication.) Required. -->
-	<id>MobileDoku</id>
+	<id>com.mobiledoku.</id>
 
 	<!-- Used as the filename for the application. Required. -->
 	<filename>MobileDoku</filename>
@@ -112,9 +112,9 @@
 		<!-- Display Resolution for the app (either "standard" or "high"). Optional, OSX-only. Default "standard" -->
 		<!-- <requestedDisplayResolution></requestedDisplayResolution> -->
 	<autoOrients>false</autoOrients>
-        <fullScreen>false</fullScreen>
-        <visible>true</visible>
-        <softKeyboardBehavior>none</softKeyboardBehavior>
+    <fullScreen>true</fullScreen>
+    <visible>true</visible>
+    <softKeyboardBehavior>none</softKeyboardBehavior>
     </initialWindow>
 
 	<!-- We recommend omitting the supportedProfiles element, -->
@@ -294,6 +294,8 @@
 				<string>1</string>
 				<string>2</string>
 			</array>
+			<key>UIViewControllerBasedStatusBarAppearance</key>
+			<false />
 		]]></InfoAdditions>
         <requestedDisplayResolution>high</requestedDisplayResolution>
     </iPhone>

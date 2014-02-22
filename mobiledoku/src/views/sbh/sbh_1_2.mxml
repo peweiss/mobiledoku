@@ -29,7 +29,7 @@
 	<s:VGroup verticalAlign="top">
 		<!-- Container Titel -->
 		<s:HGroup verticalAlign="top" horizontalAlign="left" paddingTop="105" paddingLeft="80" paddingRight="80" paddingBottom="50">
-			<s:Label text="{resourceManager.getString('resources', 'SBH_T1')}" color="black" styleName="slider-title" />
+			<s:Label text="{resourceManager.getString('resources', 'SBH_T1')}" color="black" styleName="slider-title" width="880" />
 		</s:HGroup>
 		
 		<!-- Container Medieninhalt-->

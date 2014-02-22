@@ -31,7 +31,6 @@
 			<s:fill><s:SolidColor color="0x2f2f2f" /></s:fill> <!-- Hintergrundfarbe ActionBar -->
 		</s:Rect>
 		<s:Group id="navigationGroup" left="0" height="100%"  />
-		<s:Group id="titleGroup" left="155" height="100%" />
 		<s:Group id="actionGroup" right="0" height="100%" />
 	</s:Group>
 

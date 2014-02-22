@@ -12,7 +12,7 @@
 	<fx:Metadata>
 		[HostComponent("spark.components.ViewNavigator")]
 	</fx:Metadata>
-	
+
 	<!-- states -->
 	<s:states>
 		<s:State name="landscapeAndOverlay" />

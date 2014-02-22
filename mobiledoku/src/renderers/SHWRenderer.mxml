@@ -24,8 +24,9 @@
 			
 		]]>
 	</fx:Script>
+	
 	<!-- Listenpunkt-Text -->
-	<s:Label id="itemLabel" top="0" x="90" width="830" paddingBottom="35" paddingTop="35" lineHeight="60" />
+	<s:Label id="itemLabel" top="0" x="90" width="830" paddingBottom="35" paddingTop="35" lineHeight="60" styleName="ioslabel" />
 	
 	<!-- Listenpunkt-Button -->
 	<s:Ellipse width="50" height="50" top="35" x="0">	
@@ -33,13 +34,13 @@
 	</s:Ellipse>
 	
 	<!-- Listenpunkt-Icon (einzelne Zahl, transparent/weiss) -->
-	<s:Image id ="listIcon" 
+	<s:Image id ="listIcon"
 			 scaleMode="letterbox" smooth="true" smoothingQuality="high"
 			 top="35" x="0" width="50" height="50"
 	/>
 	
 	<!-- Horizontale Trennlinie --> 
-	<s:Rect bottom="0" width="920">
+	<s:Rect bottom="0" width="100%">
 		<s:stroke>
 			<s:SolidColorStroke color="#bfbfbf" weight="2" />
 		</s:stroke>

@@ -31,7 +31,6 @@
 	color: #f7f8f8;
 	verticalCenter: 0;
 }
-
 s|ActionBar s|Group#navigationGroup s|Button.headernav-nav {
 	skinClass: ClassReference("assets.skins.HeaderBtn_Nav_Skin"); 
 }
@@ -40,6 +39,14 @@ s|ActionBar s|Group#actionGroup s|Button.headernav-shw {
 }
 s|ActionBar s|Group#actionGroup s|Button.headernav-suche {
 	skinClass: ClassReference("assets.skins.HeaderBtn_Suche_Skin"); 
+}
+
+/* Hack für Label-Darstellung auf iOS in SliderListRenderer,SHWRenderer */
+@media (os-platform: "IOS") {
+	.ioslabel {
+		paddingLeft: -10;
+		paddingRight: 120;
+	} 
 }
 
 /* Farbe der ActionBar -> Klasse liegt auf s:ViewNavigator*/

@@ -8,7 +8,7 @@
 -->	
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
 		xmlns:s="library://ns.adobe.com/flex/spark" 
-		title="Sicherheitshinweise"
+		title="Stoerungsbehebung"
 		viewActivate="onViewActivated()"
 		>
 
@@ -26,9 +26,14 @@
 				navigator.setStyle("styleName", "sbh");
 			}
 			
-			// zeige ausgewählte View
+			// zeige ausgewählte View oder tätige Hotline-Anruf
 			protected function changeHandler(event:IndexChangeEvent):void {
-				navigator.pushView(sbhList.selectedItem.view);
+				// ist das Hotline-Element ausgewählt?
+				if (sbhList.selectedIndex == 6) {
+					FlexGlobals.topLevelApplication.callHotline();
+				} else {
+					navigator.pushView(sbhList.selectedItem.view);
+				}
 			}
 		]]>
 	</fx:Script>
@@ -37,6 +42,15 @@
 		<!-- Container Titel -->
 		<s:HGroup verticalAlign="top" horizontalAlign="left" paddingTop="105" paddingLeft="80" paddingRight="80" paddingBottom="50">
 			<s:Label text="{resourceManager.getString('resources', 'SBH')}" color="black" styleName="slider-title" />
+		</s:HGroup>
+		
+		<!-- Horizontale Trennlinie --> 
+		<s:HGroup bottom="0" paddingLeft="80" paddingRight="80" horizontalAlign="left">
+			<s:Rect bottom="0" width="920">
+				<s:stroke>
+					<s:SolidColorStroke color="#bfbfbf" weight="2" />
+				</s:stroke>
+			</s:Rect>
 		</s:HGroup>
 
 		<!-- List Navigation Störungsbehebung // wird mit separatem Item Renderer (SBHRenderer) gerendert -->
@@ -49,18 +63,11 @@
 					<fx:Object icon="@Embed('assets/icons/btn_sbh04.png')" label="{resourceManager.getString('resources', 'SBH_T4')}" view="{Home}" />
 					<fx:Object icon="@Embed('assets/icons/btn_sbh05.png')" label="{resourceManager.getString('resources', 'SBH_T5')}" view="{Home}" />
 					<fx:Object icon="@Embed('assets/icons/btn_sbh06.png')" label="{resourceManager.getString('resources', 'SBH_T6')}" view="{Home}" />
+					<!-- Hotline-Button -->
 					<fx:Object icon="@Embed('assets/icons/btn_sbh07.png')" label="{resourceManager.getString('resources', 'SBH_T7')}" view="{Home}" />					
 				</s:ArrayList>
 			</s:List>
 		</s:HGroup>
-		
-		<!-- Horizontale Trennlinie --> 
-		<s:HGroup bottom="0" paddingLeft="80" paddingRight="80" horizontalAlign="left">
-			<s:Rect bottom="0" width="920">
-				<s:stroke>
-					<s:SolidColorStroke color="#bfbfbf" weight="2" />
-				</s:stroke>
-			</s:Rect>
-		</s:HGroup>
+
 	</s:VGroup>	
 </s:View>

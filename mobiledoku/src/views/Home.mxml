@@ -26,13 +26,6 @@
 				FlexGlobals.topLevelApplication.componentsList.selectedIndex = 0;
 			}
 			
-			// Funktion für Hotline-Anruf
-			import flash.net.navigateToURL; // importiere navigateToURL-Klasse
-			
-			private function callHotline(event:MouseEvent):void{
-				navigateToURL(new URLRequest("tel:0790000000")); // Test it: Test-Nummer hinterlegt ..
-			}
-			
 		]]>
 	</fx:Script>	
 	
@@ -43,14 +36,13 @@
 	
 	<s:layout>
 		<s:VerticalLayout 
-			verticalAlign="top" horizontalAlign="center"
+			verticalAlign="middle" horizontalAlign="center"
 			paddingLeft="10" paddingRight="10"
-			paddingTop="10"
 			gap="5"/>
 		
 	</s:layout>
 	
-	<s:HGroup height="30%" paddingTop="50" paddingBottom="-5">
+	<s:HGroup height="30%" paddingBottom="-25">
 		<s:VGroup horizontalAlign="center" width="455" paddingTop="45" >
 			<s:Button click="FlexGlobals.topLevelApplication.activateView(event, Getraenkezubereitung)" styleName="homebtn-ibn" />
 			<s:Label click="FlexGlobals.topLevelApplication.activateView(event, Getraenkezubereitung)" text="{resourceManager.getString('resources', 'IBN')}" styleName="homelabel" />
@@ -77,8 +69,8 @@
 			<s:SolidColorStroke color="#bfbfbf" weight="2" />
 		</s:stroke>
 	</s:Rect>
-	<s:HGroup height="30%" paddingTop="-5" paddingBottom="-5">
-		<s:VGroup horizontalAlign="center" width="455" paddingTop="45" >
+	<s:HGroup height="30%" paddingTop="-25" paddingBottom="-25">
+		<s:VGroup horizontalAlign="center" width="455" paddingTop="65" >
 			<s:Button click="FlexGlobals.topLevelApplication.activateView(event, Getraenkezubereitung)" styleName="homebtn-reinigung" />
 			<s:Label click="FlexGlobals.topLevelApplication.activateView(event, Getraenkezubereitung)" text="{resourceManager.getString('resources', 'REINIGUNG')}" styleName="homelabel" />
 		</s:VGroup>
@@ -90,7 +82,7 @@
 				</s:stroke>
 			</s:Line> 			
 		</s:VGroup>
-		<s:VGroup horizontalAlign="center" width="455" paddingTop="40" >
+		<s:VGroup horizontalAlign="center" width="455" paddingTop="60" >
 			<s:Button click="FlexGlobals.topLevelApplication.activateView(event, Getraenkezubereitung)" styleName="homebtn-entkalkung" />
 			<s:Label click="FlexGlobals.topLevelApplication.activateView(event, Getraenkezubereitung)" text="{resourceManager.getString('resources', 'ENTKALKUNG')}" styleName="homelabel" />
 		</s:VGroup>
@@ -101,8 +93,8 @@
 			<s:SolidColorStroke color="#bfbfbf" weight="2" />
 		</s:stroke>
 	</s:Rect>
-	<s:HGroup height="30%" paddingTop="-5">
-		<s:VGroup horizontalAlign="center" width="455" paddingTop="40" >
+	<s:HGroup height="30%" paddingTop="-25">
+		<s:VGroup horizontalAlign="center" width="455" paddingTop="60" >
 			<s:Button click="FlexGlobals.topLevelApplication.activateView(event, Stoerungsbehebung)" styleName="homebtn-sbh" />
 			<!-- separate Ressource für langes Wort, damit korrekt getrennt wird in D -->
 			<s:Label width="300" textAlign="center" click="FlexGlobals.topLevelApplication.activateView(event, Stoerungsbehebung)" styleName="homelabel">
@@ -117,9 +109,9 @@
 				</s:stroke>
 			</s:Line> 			
 		</s:VGroup>
-		<s:VGroup horizontalAlign="center" width="455" paddingTop="40" >
-			<s:Button click="callHotline(event)" styleName="homebtn-hotline" />
-			<s:Label click="callHotline(event)" text="{resourceManager.getString('resources', 'HOTLINE')}" styleName="homelabel" />
+		<s:VGroup horizontalAlign="center" width="455" paddingTop="60" >
+			<s:Button click="FlexGlobals.topLevelApplication.callHotline()" styleName="homebtn-hotline" />
+			<s:Label click="FlexGlobals.topLevelApplication.callHotline()" text="{resourceManager.getString('resources', 'HOTLINE')}" styleName="homelabel" />
 		</s:VGroup>
 	</s:HGroup>	
 </s:View>
