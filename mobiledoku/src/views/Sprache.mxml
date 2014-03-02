@@ -7,7 +7,7 @@
 	Gesehen:	
 -->	
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
-		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
 		title="Sprache"
 		viewActivate="onViewActivated()"
 		>
@@ -19,16 +19,35 @@
 				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
 				navigator.setStyle("styleName", "default");
 			}
+			
+			import flash.events.Event;
+			import mx.core.FlexGlobals;
+			
+			// setze Sprache und wechsle sie in der Main MXML
+			private function setLanguage(event:Event):void {
+				if (event.currentTarget.selectedValue == "deutsch") {
+					FlexGlobals.topLevelApplication.changeLanguage(event, "deutsch");
+				} else if (event.currentTarget.selectedValue == "franzoesisch") {
+					FlexGlobals.topLevelApplication.changeLanguage(event, "englisch");
+				}
+			}
 
 		]]>
 	</fx:Script>
+	
+	<fx:Declarations>
+		<s:RadioButtonGroup id="language" itemClick="setLanguage(event)"/>
+	</fx:Declarations>
 	
 	<s:VGroup verticalAlign="top">
 		<!-- Container Titel -->
 		<s:HGroup verticalAlign="top" horizontalAlign="left" paddingTop="105" paddingLeft="80" paddingRight="80" paddingBottom="50">
 			<s:Label text="{resourceManager.getString('resources', 'SPRACHE')}" color="black" styleName="slider-title" />
 		</s:HGroup>
-
-
+		
+		<s:RadioButton label="Deutsch" groupName="language" value="deutsch" />
+		<s:RadioButton label="Französisch" groupName="language" value="franzoesisch" />
+		<s:RadioButton label="Italienisch" groupName="language" value="italienisch" />
+		
 	</s:VGroup>	
 </s:View>

@@ -69,10 +69,6 @@ s|View {
 	backgroundColor: #f7f8f8;
 }
 
-s|VideoPlayer {
-	skinClass: ClassReference("assets.skins.videoSlider_Skin"); 
-}
-
 /* ***** ***** ***** */
 /* Navigation */
 s|List#componentsList {

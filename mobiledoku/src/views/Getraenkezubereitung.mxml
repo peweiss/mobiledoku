@@ -9,7 +9,7 @@
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
 		xmlns:s="library://ns.adobe.com/flex/spark" 
 		title="Getraenkezubereitung"
-		viewActivate="onViewActivated()"
+		viewActivate="onViewActivated(), initPlayer()"
 		gestureSwipe="onSwipe(event)">
 
 	
@@ -18,16 +18,37 @@
 			import mx.core.FlexGlobals;
 			
 			import renderers.SliderListRenderer;
-			
+			// importiere verweisende Views
 			import views.gzb.gzb_2;
 			import views.gzb.gzb_3;
 			import views.gzb.gzb_4;
 			
+			// onViewActivated und initPlayer werden bei "viewActivate" ausgeführt
 			protected function onViewActivated():void{				
 				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
 				navigator.setStyle("styleName", "gzb");
 			}
-
+			
+			// VideoPlayer
+			import assets.skins.PlayButtonSkin;
+			import assets.classes.VideoPlayer;
+			public var videoPlayer:VideoPlayer;
+			
+			public function initPlayer():void {				
+				videoPlayer = new VideoPlayer("ressources/videos/5_2.flv", fadePlayButtonIn, fadePlayButtonOut, videoFadeIn, videoFadeOut, playBtn, screen, vid);
+				// lokale IDs an Klasse übergeben
+				videoPlayer.screen = screen;
+				videoPlayer.vid = vid;
+				videoPlayer.playBtn = playBtn;
+				videoPlayer.videoFadeIn = videoFadeIn;
+				videoPlayer.videoFadeOut = videoFadeOut;
+				videoPlayer.fadePlayButtonIn = fadePlayButtonIn;
+				videoPlayer.fadePlayButtonOut = fadePlayButtonOut;
+				
+				// füge Videoplayer hinzu
+				vid.addChild(videoPlayer.movie);
+			}
+			
 			// handelt Swipe-Verhalten (via gestureSwipe="")
 			private function onSwipe(event:TransformGestureEvent):void {
 				// offsetX -1: Swipe nach links (vor)
@@ -36,6 +57,7 @@
 					navigator.pushView(gzb_2, null, null, pushLeft);
 				}
 			}
+	
 		]]>
 	</fx:Script>
 	
@@ -43,6 +65,11 @@
 		<!-- definiere Push-Richtungen (für Slider in Anleitung) -->
 		<s:SlideViewTransition id="pushRight" mode="push" duration="200" direction="right" />
 		<s:SlideViewTransition id="pushLeft" mode="push" duration="200" direction="left" />
+		<!-- Deklaration Ein- und Ausfaden des Playbuttons und des Videocontainer-->
+		<s:Fade id="fadePlayButtonIn" duration="500" target="{playBtn}" alphaFrom="0" alphaTo="1"/>
+		<s:Fade id="fadePlayButtonOut" duration="500" target="{playBtn}" alphaFrom="1" alphaTo="0"/>	
+		<s:Fade id="videoFadeIn" duration="2000" target="{vid}" alphaFrom="0" alphaTo="1"/>	
+		<s:Fade id="videoFadeOut" duration="500" target="{vid}" alphaFrom="1" alphaTo="0"/>	
 	</fx:Declarations>
 
 	<s:VGroup verticalAlign="top">
@@ -51,9 +78,11 @@
 			<s:Label text="{resourceManager.getString('resources', 'GZB')}" color="black" styleName="slider-title" />
 		</s:HGroup>
 		
-		<!-- Container Medieninhalt-->
-		<s:HGroup horizontalAlign="center" paddingBottom="30">
-			<s:VideoPlayer id="videoPlayer" source="ressources/videos/5_1.mp4" autoPlay="true" autoRewind="false" width="1080" height="638" />
+		<!-- Container Medieninhalt -->
+		<s:HGroup horizontalAlign="center">
+			<!--<s:VideoPlayer id="videoPlayer" source="ressources/videos/5_1.mp4" autoPlay="true" autoRewind="false" width="1080" height="638" />-->
+			<s:SWFLoader id="vid"  />
+			<s:Button id="playBtn" horizontalCenter="1" verticalCenter="1" skinClass="assets.skins.PlayButtonSkin"/>
 		</s:HGroup>
 		
 		<!-- Container Trennlinie horizontal -->
@@ -63,10 +92,9 @@
 					<s:SolidColorStroke color="#bfbfbf" weight="2" />
 				</s:stroke>
 			</s:Rect>
-		</s:HGroup>
-		
+		</s:HGroup>	
 		<!-- Container Text-Beschreibung -->
-		<s:HGroup horizontalAlign="left" paddingLeft="80" paddingRight="80" >
+		<s:HGroup horizontalAlign="left" paddingLeft="80" paddingRight="80">
 			<s:List id="sliderList" itemRenderer="renderers.SliderListRenderer" width="900" horizontalScrollPolicy="off">
 				<s:ArrayList>
 					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/01.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_1')}" />

@@ -33,14 +33,13 @@
 			import spark.events.IndexChangeEvent;
 			import spark.transitions.CrossFadeViewTransition;
 			
+			import renderers.MenuRenderer;
+			
 			import views.Getraenkezubereitung;
 			import views.Home;
 			import views.Sicherheitshinweise;
-			import views.Stoerungsbehebung;
 			import views.Sprache;
-			
-			// rendert das Menu
-			import renderers.MenuRenderer;
+			import views.Stoerungsbehebung;
 			
 			// deklariere Variablen für Navigation
 			private var isOpen:Boolean;	
@@ -70,12 +69,22 @@
 				
 				// definiere Array mit den Sprachen, die unterstützt werden. Fallback-Sprache ist "de_CH"
 				var sortedLocales:Array = LocaleUtil.sortLanguagesByPreference(['de_CH', 'en_US'], Capabilities.languages, 'de_CH');
-				// verwendeten Sprachraum erkennen
+				// verwendeten Sprachraum erkennen und zuweisen
 				ResourceManager.getInstance().localeChain = sortedLocales;
-				// Test mit bestimmter Sprache
-				// ResourceManager.getInstance().localeChain=["en_US"];
 			}
-			
+			// via View:Sprache kann Sprache gesetzt (übersteuert) werden
+			public function changeLanguage(event:Event, language:String):void {
+				// setze je nach übergebenem Sprache-String die Sprache neu
+				switch(language){
+					case "deutsch":
+						ResourceManager.getInstance().localeChain=["de_CH"];
+						break;
+					case "englisch":
+						ResourceManager.getInstance().localeChain=["en_US"];
+						break;
+				}
+				
+			}
 			// Orientierung Gerät Portrait/Landscape -> evtl. deaktivieren
 			private function orientationHandler(event:Event):void {
 				currentStageWidth = stage.stageWidth*-1;
@@ -177,7 +186,6 @@
 				navigator.pushView(targetView);
 			}
 			
-			
 		]]>
 	</fx:Script>
 
@@ -192,9 +200,6 @@
 		<s:Move id="moveIn" duration="200" target="{lateralMenu}" xTo="0"/>
 		<s:Move id="moveOut" duration="200" target="{lateralMenu}" xTo="{currentStageWidth-500}"/>
 	</fx:Declarations>
-	<!-- DEBUG
-	<s:TextArea id="test" text="{text}" top="470"  />
-	-->
 
 	<!-- Header-Leiste / firstView ist der HomeScreen --> 
 	<s:ViewNavigator id="navigator" firstView="views.Home" width="100%" height="100%" skinClass="assets.skins.ViewNavigatorSkin_Default" styleName="default">
