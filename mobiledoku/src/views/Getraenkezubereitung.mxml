@@ -10,6 +10,7 @@
 		xmlns:s="library://ns.adobe.com/flex/spark" 
 		title="Getraenkezubereitung"
 		viewActivate="onViewActivated(), initPlayer()"
+		viewDeactivate="videoPlayer.stopMovie()"
 		gestureSwipe="onSwipe(event)">
 
 	
@@ -30,7 +31,6 @@
 			}
 			
 			// VideoPlayer
-			import assets.skins.PlayButtonSkin;
 			import assets.classes.VideoPlayer;
 			public var videoPlayer:VideoPlayer;
 			
@@ -79,14 +79,13 @@
 		</s:HGroup>
 		
 		<!-- Container Medieninhalt -->
-		<s:HGroup horizontalAlign="center">
-			<!--<s:VideoPlayer id="videoPlayer" source="ressources/videos/5_1.mp4" autoPlay="true" autoRewind="false" width="1080" height="638" />-->
+		<s:Group>
 			<s:SWFLoader id="vid"  />
-			<s:Button id="playBtn" horizontalCenter="1" verticalCenter="1" skinClass="assets.skins.PlayButtonSkin"/>
-		</s:HGroup>
+			<s:Button id="playBtn" horizontalCenter="1" verticalCenter="1" skinClass="assets.skins.PlayerBtn_Play_Skin"/>
+		</s:Group>
 		
 		<!-- Container Trennlinie horizontal -->
-		<s:HGroup horizontalAlign="left" paddingLeft="80" paddingRight="80" paddingBottom="60" >	
+		<s:HGroup horizontalAlign="left" paddingTop="50" paddingLeft="80" paddingRight="80" paddingBottom="50" >	
 			<s:Rect bottom="0" width="920">
 				<s:stroke>
 					<s:SolidColorStroke color="#bfbfbf" weight="2" />

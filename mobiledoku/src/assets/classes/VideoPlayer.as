@@ -40,7 +40,7 @@ package assets.classes {
 		public var status:String = "playing";	
 		
 		// Start Konstruktor 
-		// "assets/5_2.flv", fadePlayButtonIn, fadePlayButtonOut, videoFadeIn, videoFadeOut, playBtn, screen, vid
+		// übergebene Werte: "assets/5_2.flv", fadePlayButtonIn, fadePlayButtonOut, videoFadeIn, videoFadeOut, playBtn, screen, vid
 		public function VideoPlayer(pfad:String, fadePlayButtonIn:Fade, fadePlayButtonOut:Fade, videoFadeIn:Fade, videoFadeOut:Fade, playBtn:Button, screen:Object, vid:SWFLoader){
 			trace ('Funktionaufruf und Pfad uebergeben: ' + pfad);
 
@@ -126,6 +126,10 @@ package assets.classes {
 			}
 		}
 		
+		// Stoppe das Video bei Deaktivierung der View
+		public function stopMovie():void {
+			ns.pause();	
+		}
 		
 	}
 }
