@@ -24,6 +24,9 @@
 			protected function onViewActivated():void{				
 				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
 				navigator.setStyle("styleName", "sbh");
+				
+				// definiere Breite der Trennlinie 
+				trennlinie.width = FlexGlobals.topLevelApplication.setContentWidth();
 			}
 			
 			// zeige ausgewählte View oder tätige Hotline-Anruf
@@ -46,7 +49,7 @@
 		
 		<!-- Horizontale Trennlinie --> 
 		<s:HGroup bottom="0" paddingLeft="80" paddingRight="80" horizontalAlign="left">
-			<s:Rect bottom="0" width="920">
+			<s:Rect bottom="0" id="trennlinie">
 				<s:stroke>
 					<s:SolidColorStroke color="#bfbfbf" weight="2" />
 				</s:stroke>

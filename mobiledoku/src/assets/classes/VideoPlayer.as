@@ -93,8 +93,6 @@ package assets.classes {
 				trace('Video am Ende');
 				status = 'stopped'; // Status auf stopped wechseln
 				trace('gestoppt');
-				ns.seek(ns.time); // Wechsle zum Anfang des Videos
-				ns.pause(); // Stoppe das Video
 				videoFadeOut.play(); 
 				ns.seek(0); // Wechsle zum Anfang des Videos
 				ns.pause(); // Stoppe das Video

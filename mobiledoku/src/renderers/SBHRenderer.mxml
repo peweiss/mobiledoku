@@ -12,11 +12,15 @@
 
 	<fx:Script>
 		<![CDATA[
+			import mx.core.FlexGlobals;
 			override public function set data(value:Object):void{				
 				if(value){
 					itemLabel.text = value.label; // Text Listenpunkt
 					
 					listIcon.source = value.icon; // Icon Listenpunkt
+					
+					// definiere Breite der Trennlinie
+					trennlinie.width = FlexGlobals.topLevelApplication.setContentWidth();
 				}
 			}
 			
@@ -34,7 +38,7 @@
 
 	<!-- Horizontale Trennlinie --> 
 	<s:HGroup bottom="0" paddingLeft="80" paddingRight="80" horizontalAlign="left">
-		<s:Rect bottom="0" width="920">
+		<s:Rect bottom="0" id="trennlinie">
 			<s:stroke>
 				<s:SolidColorStroke color="#bfbfbf" weight="2" />
 			</s:stroke>

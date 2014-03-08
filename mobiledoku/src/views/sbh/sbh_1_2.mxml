@@ -34,7 +34,7 @@
 		
 		<!-- Container Medieninhalt-->
 		<s:HGroup horizontalAlign="center" paddingBottom="30">
-			<s:Image source="@Embed('ressources/images/9_1_2.jpg')"
+			<s:Image source="@Embed('ressources/images/5_6.png')"
 					 width="1080" height="608"
 					 scaleMode="letterbox" smooth="true" smoothingQuality="high"
 					 horizontalCenter="0" verticalCenter="0"

@@ -12,12 +12,10 @@
 			   xmlns:mx="library://ns.adobe.com/flex/mx"
 			   applicationDPI="480"
 			   applicationComplete="init(event)"
+			   splashScreenImage="@Embed('assets/images/splashscreen.png')"
+			   splashScreenMinimumDisplayTime="3000"
+			   splashScreenScaleMode="letterbox"
 				>
-
-	<!--
-	splashScreenImage="@Embed('assets/images/splash_1080x1920.jpg')"
-	splashScreenScaleMode="letterbox"
-	-->
 	
 	<fx:Script>
 		<![CDATA[
@@ -35,7 +33,9 @@
 			
 			import renderers.MenuRenderer;
 			
+			// importiere Views
 			import views.Getraenkezubereitung;
+			import views.Inbetriebnahme;
 			import views.Home;
 			import views.Sicherheitshinweise;
 			import views.Sprache;
@@ -50,6 +50,15 @@
 			[Bindable]
 			private var currentStageHeight:Number;
 			
+			// deklariere Variable contentWidth für Content-Breite (Abstand links/rechts: 80px)
+			[Bindable]
+			private var contentWidth:Number;
+			// setContentWidth gibt Inhaltsbreite zurück (für Definition von Trennlinien, Breite Mediainhalte etc.)
+			public function setContentWidth():Number {
+				contentWidth = screen.width-160; // -PaddingLeft (80) und -PaddingRight (80)
+				return contentWidth;
+			}
+			
 			// wenn App initialisiert wird ...
 			protected function init(event:FlexEvent):void {
 				
@@ -58,8 +67,7 @@
 				navigator.defaultPushTransition = new CrossFadeViewTransition();
 				navigator.defaultPopTransition = new CrossFadeViewTransition();
 				
-				stage.addEventListener(Event.RESIZE, orientationHandler);
-				
+				// initialisiere Menu
 				currentStageWidth = stage.stageWidth*-1;
 				lateralMenu.x = currentStageWidth-500; // currentStageWidth-500 -> die Navigation wird ausserhalb des sichtbaren Bereichs geschoben
 				currentStageHeight = navigator.height-45;
@@ -67,38 +75,27 @@
 				lateralMenu.x = currentStageWidth-500;
 				isOpen = false;
 				
-				// definiere Array mit den Sprachen, die unterstützt werden. Fallback-Sprache ist "de_CH"
+				// definiere Array mit den Sprachen, die unterstützt und vom System verwendet werden. Fallback-Sprache ist "de_CH"
 				var sortedLocales:Array = LocaleUtil.sortLanguagesByPreference(['de_CH', 'en_US'], Capabilities.languages, 'de_CH');
 				// verwendeten Sprachraum erkennen und zuweisen
 				ResourceManager.getInstance().localeChain = sortedLocales;
 			}
+			
 			// via View:Sprache kann Sprache gesetzt (übersteuert) werden
 			public function changeLanguage(event:Event, language:String):void {
 				// setze je nach übergebenem Sprache-String die Sprache neu
 				switch(language){
 					case "deutsch":
-						ResourceManager.getInstance().localeChain=["de_CH"];
+						resourceManager.localeChain = ["de_CH"];
 						break;
 					case "englisch":
-						ResourceManager.getInstance().localeChain=["en_US"];
+						resourceManager.localeChain = ["en_US"];
 						break;
 				}
 				
 			}
-			// Orientierung Gerät Portrait/Landscape -> evtl. deaktivieren
-			private function orientationHandler(event:Event):void {
-				currentStageWidth = stage.stageWidth*-1;
-				
-				if(isOpen == false){
-					lateralMenu.x = currentStageWidth-500;
-				}
-				
-				currentStageHeight = navigator.height-45;
-				lateralMenu.height = currentStageHeight;	
-				
-				trace(lateralMenu.height);
-			}
 			
+			// Slidet Menu ein oder aus
 			protected function menuHandler(event:MouseEvent):void {
 				if(isOpen == true){
 					moveOut.play();
@@ -115,12 +112,13 @@
 			}
 			
 			protected function changeHandler(event:IndexChangeEvent):void {
+				trace ('Auswahl getroffen'); // sobald Auswahl wechselt, kommt diese Funktion zum Tragen 
 				isOpen = false;
 				moveOut.play();
 				
 				// ist das Hotline-Element ausgewaehlt?
 				if (componentsList.selectedIndex == 7) {
-					callHotline();
+					callHotline(); // ruf Hotline an
 				} else {
 					// zeige ausgewählte View
 					navigator.pushView(componentsList.selectedItem.view);	
@@ -132,7 +130,7 @@
 				moveOut.play();
 			}
 			
-			// aktiviert Navigationspunkt, wenn Inhalt nicht über Navigation sondern Button geladen wurde
+			// aktiviert Navigationspunkt, wenn Inhalt nicht über Navigation sondern über Button geladen wurde
 			public function activateView(event:MouseEvent, targetView:Class):void{
 				trace('###deactivateHome###');
 				
@@ -146,15 +144,14 @@
 				trace('caret Item:' + FlexGlobals.topLevelApplication.componentsList.caretIndex);
 				
 				
-				// Switch Case um zu bestimmen welcher Button gedrueckt wurde. So können wir jedem Button einen Menupunkt in der 
+				// Switch Case, um zu bestimmen, welcher Button gedrueckt wurde. So können wir jedem Button einen Menupunkt in der 
 				// Navigation zuweisen.
 				// @menuItem: Variable mit dem zu änderten Listenelement in der Navigation. 
-				
 				switch(targetView){
-					//case Inbetriebnahme:
-					//menuItem = 2;
-					//trace("Der User hat Inbetriebnahme gewählt");
-					//break;
+					case Inbetriebnahme:
+					menuItem = 2;
+					trace("Der User hat Inbetriebnahme gewählt");
+					break;
 					case Getraenkezubereitung:
 						menuItem = 3;
 						trace("Der User hat Getränkezubereitzung gewählt");
@@ -178,7 +175,6 @@
 					default:
 						trace("Es wurde nichts ausgewählt");
 				}
-				
 				// Setze den Focus auf den angewaehlten Menupunkt
 				componentsList.selectedIndex = menuItem;
 				
@@ -216,11 +212,12 @@
 	</s:ViewNavigator>
 	<!-- Navigation von links -->
 	<s:Group id="lateralMenu" width="100%" y="136">
+		<!-- Transparenz, die sich bei Öffnen Navigation über View schiebt -->
 		<s:Graphic width="100%" height="100%" click="menuBackgroundHandler(event)">
-			<!-- Transparenz, die sich bei Öffnen Navigation über View schiebt -->
 			<s:BitmapImage width="100%" height="100%" scaleMode="zoom" source="@Embed('assets/images/bg.png')"/>
 		</s:Graphic>
 		
+		<!-- Renderer: MenuRenderer / sobald Nutzer mit Navigation integriert wird Funktion changeHandler() aufgerufen -->
 		<s:List id="componentsList" itemRenderer="renderers.MenuRenderer" width="700" height="100%" change="changeHandler(event)" contentBackgroundColor="#2f2f2f" alpha="0.95">
 			<s:ArrayList>
 				<fx:Object iconNormal="@Embed('assets/icons/btn_home_w.png')"  
@@ -230,7 +227,7 @@
 						   iconActive="@Embed('assets/icons/btn_suche_b.png')" label="{resourceManager.getString('resources', 'SUCHE')}" type="view" view="{Home}" />
 				
 				<fx:Object iconNormal="@Embed('assets/icons/btn_ibn_w.png')" 
-						   iconActive="@Embed('assets/icons/btn_ibn_b.png')" label="{resourceManager.getString('resources', 'IBN')}" type="view" view="{Home}" />				
+						   iconActive="@Embed('assets/icons/btn_ibn_b.png')" label="{resourceManager.getString('resources', 'IBN')}" type="view" view="{Inbetriebnahme}" />				
 				
 				<fx:Object iconNormal="@Embed('assets/icons/btn_gzb_w.png')" 
 						   iconActive="@Embed('assets/icons/btn_gzb_b.png')" label="{resourceManager.getString('resources', 'GZB')}" type="view" view="{Getraenkezubereitung}" />

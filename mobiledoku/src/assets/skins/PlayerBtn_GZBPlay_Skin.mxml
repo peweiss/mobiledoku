@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-	Button-Skin für den Play-Button auf dem Videoplayer.	
+	Button-Skin für den GZB-Play-Button auf dem Videoplayer.	
 
 	Autor: 		Petra Weiss
 	Datum:		4.3.2014
@@ -33,9 +33,9 @@
 	</s:states> 
 	
 	<!-- Icon -->
- 	<s:Image source.up ="@Embed('assets/icons/playbutton.png')"
-			 source.over ="@Embed('assets/icons/playbutton.png')"	
-			 source.down ="@Embed('assets/icons/playbutton.png')"	
+ 	<s:Image source.up ="@Embed('assets/icons/btn_play_gzb.png')"
+			 source.over ="@Embed('assets/icons/btn_play_gzb.png')"	
+			 source.down ="@Embed('assets/icons/btn_play_gzb.png')"	
 			 scaleMode="letterbox" smooth="true" smoothingQuality="high"
 	/>
 

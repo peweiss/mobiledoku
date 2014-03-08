@@ -85,7 +85,7 @@
  	<s:Image source.up ="@Embed('assets/icons/btn_ibn_w.png')"
 			 width="200" height="200"
 			 scaleMode="letterbox" smooth="true" smoothingQuality="high"
-			 horizontalCenter="-4" verticalCenter="-8"   
+			 horizontalCenter="0" verticalCenter="-8"   
 	/>
 	<s:Image source.over="@Embed('assets/icons/btn_ibn_w.png')"
 			 source.down="@Embed('assets/icons/btn_ibn_w.png')"

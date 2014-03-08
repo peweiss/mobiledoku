@@ -44,8 +44,8 @@
 	
 	<s:HGroup height="30%" paddingBottom="-25">
 		<s:VGroup horizontalAlign="center" width="455" paddingTop="45" >
-			<s:Button click="FlexGlobals.topLevelApplication.activateView(event, Getraenkezubereitung)" styleName="homebtn-ibn" />
-			<s:Label click="FlexGlobals.topLevelApplication.activateView(event, Getraenkezubereitung)" text="{resourceManager.getString('resources', 'IBN')}" styleName="homelabel" />
+			<s:Button click="FlexGlobals.topLevelApplication.activateView(event, Inbetriebnahme)" styleName="homebtn-ibn" />
+			<s:Label click="FlexGlobals.topLevelApplication.activateView(event, Inbetriebnahme)" text="{resourceManager.getString('resources', 'IBN')}" styleName="homelabel" />
 		</s:VGroup>
 		<s:VGroup paddingTop="40">
 			<!-- Trennlinie vertikal -->

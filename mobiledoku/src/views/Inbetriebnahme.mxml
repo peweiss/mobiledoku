@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-	Getränkezubereitungs-Screen mit Implementierung Video/Grafik, Liste mit Erklärungs-Steps, Slider-Navigation
+	Inbetriebnahme-Start-Screen mit Implementierung Video/Grafik, Liste mit Erklärungs-Steps, Slider-Navigation
 	
 	Autor: 		Petra Weiss
-	Datum:		10.2.2014
+	Datum:		5.3.2014
 	Gesehen:	
 -->	
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
 		xmlns:s="library://ns.adobe.com/flex/spark" 
-		title="Getraenkezubereitung"
+		title="Inbetriebnahme"
 		viewActivate="onViewActivated()"
 		creationComplete="initPlayer()"
 		viewDeactivate="videoPlayer.stopMovie()"
@@ -21,14 +21,18 @@
 			
 			import renderers.SliderListRenderer;
 			
-			import views.gzb.gzb_2;
-			import views.gzb.gzb_3;
-			import views.gzb.gzb_4;
+			// importiere Views, auf die verwiesen wird
+			import views.ibn.ibn_2;
+			import views.ibn.ibn_3;
+			import views.ibn.ibn_4;
+			import views.ibn.ibn_5;
+			import views.ibn.ibn_6;
+			import views.ibn.ibn_7;
 			
 			// onViewActivated und initPlayer werden bei "viewActivate" ausgeführt
 			protected function onViewActivated():void{				
 				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
-				navigator.setStyle("styleName", "gzb");
+				navigator.setStyle("styleName", "ibn");
 				
 				// definiere Breite der Trennlinie & Sliderlist
 				trennlinie.width = FlexGlobals.topLevelApplication.setContentWidth();
@@ -40,7 +44,7 @@
 			public var videoPlayer:VideoPlayer;
 			
 			public function initPlayer():void {				
-				videoPlayer = new VideoPlayer("ressources/videos/5_2.flv", fadePlayButtonIn, fadePlayButtonOut, videoFadeIn, videoFadeOut, playBtn, screen, vid);
+				videoPlayer = new VideoPlayer("ressources/videos/5_1.flv", fadePlayButtonIn, fadePlayButtonOut, videoFadeIn, videoFadeOut, playBtn, screen, vid);
 				// lokale IDs an Klasse übergeben
 				videoPlayer.screen = screen;
 				videoPlayer.vid = vid;
@@ -59,7 +63,7 @@
 				// offsetX -1: Swipe nach links (vor)
 				// offsetX 1: Swipe nach rechts (zurück)
 				if(event.offsetX == -1) {
-					navigator.pushView(gzb_2, null, null, pushLeft);
+					navigator.pushView(ibn_2, null, null, pushLeft);
 				}
 			}
 	
@@ -80,13 +84,13 @@
 	<s:VGroup verticalAlign="top">
 		<!-- Container Titel -->
 		<s:HGroup verticalAlign="top" horizontalAlign="left" paddingTop="105" paddingLeft="80" paddingRight="80" paddingBottom="50">
-			<s:Label text="{resourceManager.getString('resources', 'GZB')}" color="black" styleName="slider-title" />
+			<s:Label text="{resourceManager.getString('resources', 'IBN')}" color="black" styleName="slider-title" />
 		</s:HGroup>
 		
 		<!-- Container Medieninhalt -->
 		<s:Group>
 			<s:SWFLoader id="vid"  />
-			<s:Button id="playBtn" horizontalCenter="1" verticalCenter="1" skinClass="assets.skins.PlayerBtn_GZBPlay_Skin"/>
+			<s:Button id="playBtn" horizontalCenter="1" verticalCenter="1" skinClass="assets.skins.PlayerBtn_IBNPlay_Skin"/>
 		</s:Group>
 		
 		<!-- Container Trennlinie horizontal -->
@@ -101,10 +105,8 @@
 		<s:HGroup horizontalAlign="left" paddingLeft="80" paddingRight="80">
 			<s:List id="sliderList" itemRenderer="renderers.SliderListRenderer" horizontalScrollPolicy="off">
 				<s:ArrayList>
-					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/01.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_1')}" />
-					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/02.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_2')}" />
-					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/03.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_3')}" />
-					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/04.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_4')}" />					
+					<fx:Object styleName="ibn" icon="@Embed('assets/icons/numbers/01.png')" label="{resourceManager.getString('resources', 'SLIDE_5_1_1')}" />
+					<fx:Object styleName="ibn" icon="@Embed('assets/icons/numbers/02.png')" label="{resourceManager.getString('resources', 'SLIDE_5_1_2')}" />
 				</s:ArrayList>
 			</s:List>
 		</s:HGroup>
@@ -113,13 +115,16 @@
 	<!-- Container Slider-Buttons -->
 	<s:Group width="100%" height="148" bottom="0">
 		<s:Rect width="100%" height="100%">
-			<s:fill><s:SolidColor color="0x4e2900" /></s:fill>
+			<s:fill><s:SolidColor color="0xb2bc00" /></s:fill>
 		</s:Rect>
 		<s:HGroup horizontalCenter="0" gap="50" paddingTop="50">
-			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="sliderbtn-active" />
-			<s:Button click="navigator.pushView(gzb_2, null, null, pushLeft)" styleName="sliderbtn" />
-			<s:Button click="navigator.pushView(gzb_3, null, null, pushLeft)" styleName="sliderbtn" />
-			<s:Button click="navigator.pushView(gzb_4, null, null, pushLeft)" styleName="sliderbtn" />
+			<s:Button click="navigator.pushView(Inbetriebnahme)" styleName="sliderbtn-active" />
+			<s:Button click="navigator.pushView(ibn_2, null, null, pushLeft)" styleName="sliderbtn" />
+			<s:Button click="navigator.pushView(ibn_3, null, null, pushLeft)" styleName="sliderbtn" />
+			<s:Button click="navigator.pushView(ibn_4, null, null, pushLeft)" styleName="sliderbtn" />
+			<s:Button click="navigator.pushView(ibn_5, null, null, pushLeft)" styleName="sliderbtn" />
+			<s:Button click="navigator.pushView(ibn_6, null, null, pushLeft)" styleName="sliderbtn" />
+			<s:Button click="navigator.pushView(ibn_7, null, null, pushLeft)" styleName="sliderbtn" />
 		</s:HGroup>
 	</s:Group>	
 

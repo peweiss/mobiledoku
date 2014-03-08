@@ -15,11 +15,6 @@
 	fontFamily: OpenSansRegular;
 	embedAsCFF: true;
 }
-@font-face {
-	src:url("../fonts/fontawesome-webfont.ttf");
-	fontFamily: FontAwesome;
-	embedAsCFF: false;
-}
 
 /* ***** ***** ***** */
 /* Global */
@@ -55,6 +50,9 @@ s|ActionBar s|Group#actionGroup s|Button.headernav-suche {
 }
 .gzb s|ActionBar {
 	skinClass: ClassReference("assets.skins.ActionBar_GZB_Skin"); 
+}
+.ibn s|ActionBar {
+	skinClass: ClassReference("assets.skins.ActionBar_IBN_Skin"); 
 }
 .sbh s|ActionBar {
 	skinClass: ClassReference("assets.skins.ActionBar_SBH_Skin"); 
