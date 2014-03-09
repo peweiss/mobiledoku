@@ -39,7 +39,7 @@
 		<s:Rect width="100%" height="100%">
 			<s:fill><s:SolidColor color="0x4e2900" /></s:fill>
 		</s:Rect>
-		<s:HGroup horizontalCenter="0" gap="50" paddingTop="50">
+		<s:HGroup horizontalCenter="0">
 			<s:Button click="navigator.pushView(Getraenkezubereitung)" styleName="sliderbtn" />
 			<s:Button click="navigator.pushView(gzb_2, null, null, pushRight)" styleName="sliderbtn" />
 			<s:Button click="navigator.pushView(gzb_3, null, null, pushRight)" styleName="sliderbtn" />

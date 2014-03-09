@@ -120,7 +120,7 @@
 		<s:Rect width="100%" height="100%">
 			<s:fill><s:SolidColor color="0xb2bc00" /></s:fill>
 		</s:Rect>
-		<s:HGroup horizontalCenter="0" gap="50" paddingTop="50">
+		<s:HGroup horizontalCenter="0">
 			<s:Button click="navigator.pushView(Inbetriebnahme, null, null, pushRight)" styleName="sliderbtn" />
 			<s:Button click="navigator.pushView(ibn_2, null, null, pushRight)" styleName="sliderbtn" />
 			<s:Button click="navigator.pushView(ibn_3)" styleName="sliderbtn-active" />
