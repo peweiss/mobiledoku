@@ -20,6 +20,7 @@
 			import spark.events.IndexChangeEvent;
 			
 			import views.sbh.sbh_1_2;
+			import views.sbh.sbh_dummy;
 			
 			protected function onViewActivated():void{				
 				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
@@ -61,13 +62,13 @@
 			<s:List id="sbhList" itemRenderer="renderers.SBHRenderer" width="100%" change="changeHandler(event)">
 				<s:ArrayList>
 					<fx:Object icon="@Embed('assets/icons/btn_sbh01.png')" label="{resourceManager.getString('resources', 'SBH_T1')}" view="{sbh_1_2}" />
-					<fx:Object icon="@Embed('assets/icons/btn_sbh02.png')" label="{resourceManager.getString('resources', 'SBH_T2')}" view="{Home}" />
-					<fx:Object icon="@Embed('assets/icons/btn_sbh03.png')" label="{resourceManager.getString('resources', 'SBH_T3')}" view="{Home}" />
-					<fx:Object icon="@Embed('assets/icons/btn_sbh04.png')" label="{resourceManager.getString('resources', 'SBH_T4')}" view="{Home}" />
-					<fx:Object icon="@Embed('assets/icons/btn_sbh05.png')" label="{resourceManager.getString('resources', 'SBH_T5')}" view="{Home}" />
-					<fx:Object icon="@Embed('assets/icons/btn_sbh06.png')" label="{resourceManager.getString('resources', 'SBH_T6')}" view="{Home}" />
+					<fx:Object icon="@Embed('assets/icons/btn_sbh02.png')" label="{resourceManager.getString('resources', 'SBH_T2')}" view="{sbh_dummy}" />
+					<fx:Object icon="@Embed('assets/icons/btn_sbh03.png')" label="{resourceManager.getString('resources', 'SBH_T3')}" view="{sbh_dummy}" />
+					<fx:Object icon="@Embed('assets/icons/btn_sbh04.png')" label="{resourceManager.getString('resources', 'SBH_T4')}" view="{sbh_dummy}" />
+					<fx:Object icon="@Embed('assets/icons/btn_sbh05.png')" label="{resourceManager.getString('resources', 'SBH_T5')}" view="{sbh_dummy}" />
+					<fx:Object icon="@Embed('assets/icons/btn_sbh06.png')" label="{resourceManager.getString('resources', 'SBH_T6')}" view="{sbh_dummy}" />
 					<!-- Hotline-Button -->
-					<fx:Object icon="@Embed('assets/icons/btn_sbh07.png')" label="{resourceManager.getString('resources', 'SBH_T7')}" view="{Home}" />					
+					<fx:Object icon="@Embed('assets/icons/btn_sbh07.png')" label="{resourceManager.getString('resources', 'SBH_T7')}" />					
 				</s:ArrayList>
 			</s:List>
 		</s:HGroup>

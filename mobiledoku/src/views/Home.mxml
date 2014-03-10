@@ -16,9 +16,6 @@
 			import mx.core.FlexGlobals;
 			
 			protected function onViewActivated():void{
-				// DEBUG
-				// FlexGlobals.topLevelApplication.text = "home";
-
 				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
 				navigator.setStyle("styleName", "default");
 
@@ -71,8 +68,8 @@
 	</s:Rect>
 	<s:HGroup height="30%" paddingTop="-25" paddingBottom="-25">
 		<s:VGroup horizontalAlign="center" width="455" paddingTop="65" >
-			<s:Button click="FlexGlobals.topLevelApplication.activateView(event, Getraenkezubereitung)" styleName="homebtn-reinigung" />
-			<s:Label click="FlexGlobals.topLevelApplication.activateView(event, Getraenkezubereitung)" text="{resourceManager.getString('resources', 'REINIGUNG')}" styleName="homelabel" />
+			<s:Button click="FlexGlobals.topLevelApplication.activateView(event, Reinigung)" styleName="homebtn-reinigung" />
+			<s:Label click="FlexGlobals.topLevelApplication.activateView(event, Reinigung)" text="{resourceManager.getString('resources', 'REINIGUNG')}" styleName="homelabel" />
 		</s:VGroup>
 		<s:VGroup>
 			<!-- Trennlinie vertikal -->
@@ -83,8 +80,8 @@
 			</s:Line> 			
 		</s:VGroup>
 		<s:VGroup horizontalAlign="center" width="455" paddingTop="60" >
-			<s:Button click="FlexGlobals.topLevelApplication.activateView(event, Getraenkezubereitung)" styleName="homebtn-entkalkung" />
-			<s:Label click="FlexGlobals.topLevelApplication.activateView(event, Getraenkezubereitung)" text="{resourceManager.getString('resources', 'ENTKALKUNG')}" styleName="homelabel" />
+			<s:Button click="FlexGlobals.topLevelApplication.activateView(event, Entkalkung)" styleName="homebtn-entkalkung" />
+			<s:Label click="FlexGlobals.topLevelApplication.activateView(event, Entkalkung)" text="{resourceManager.getString('resources', 'ENTKALKUNG')}" styleName="homelabel" />
 		</s:VGroup>
 	</s:HGroup>	
 	<!-- Trennlinie horizontal -->

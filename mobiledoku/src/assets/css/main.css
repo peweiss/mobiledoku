@@ -57,6 +57,12 @@ s|ActionBar s|Group#actionGroup s|Button.headernav-suche {
 .sbh s|ActionBar {
 	skinClass: ClassReference("assets.skins.ActionBar_SBH_Skin"); 
 }
+.reinigung s|ActionBar {
+	skinClass: ClassReference("assets.skins.ActionBar_Reinigung_Skin"); 
+}
+.entkalkung s|ActionBar {
+	skinClass: ClassReference("assets.skins.ActionBar_Entkalkung_Skin"); 
+}
 
 /* Content */
 s|Application {

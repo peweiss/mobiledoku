@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	Entkalkung-Screen mit Dummy-Inhalt
+	
+	Autor: 		Petra Weiss
+	Datum:		10.3.2014
+	Gesehen:	
+-->	
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		title="Entkalkung"
+		viewActivate="onViewActivated()"
+		>
+	
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.core.FlexGlobals;
+			protected function onViewActivated():void{				
+				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
+				navigator.setStyle("styleName", "entkalkung");
+				
+				// definiere Breite des Labels 
+				dummyText.width = FlexGlobals.topLevelApplication.setContentWidth();
+			}
+			
+		]]>
+	</fx:Script>
+	<s:layout>
+		<s:VerticalLayout verticalAlign="top" horizontalAlign="left"
+						  paddingLeft="80" paddingRight="80"
+						  gap="5"/>
+		
+	</s:layout>
+	<s:VGroup verticalAlign="top">
+		<!-- Container Titel -->
+		<s:HGroup verticalAlign="top" horizontalAlign="left" paddingTop="105" paddingBottom="50">
+			<s:Label text="{resourceManager.getString('resources', 'ENTKALKUNG')}" color="black" styleName="slider-title" />
+		</s:HGroup>
+		<s:HGroup>
+			<s:Label id="dummyText" text="{resourceManager.getString('resources', 'ENTKALKUNG_DUMMY')}" />
+		</s:HGroup>
+		
+	</s:VGroup>	
+</s:View>

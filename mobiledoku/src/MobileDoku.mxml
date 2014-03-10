@@ -34,9 +34,12 @@
 			import renderers.MenuRenderer;
 			
 			// importiere Views
-			import views.Getraenkezubereitung;
-			import views.Inbetriebnahme;
 			import views.Home;
+			import views.Suche;
+			import views.Inbetriebnahme;
+			import views.Getraenkezubereitung;
+			import views.Reinigung;
+			import views.Entkalkung;
 			import views.Sicherheitshinweise;
 			import views.Sprache;
 			import views.Stoerungsbehebung;
@@ -148,6 +151,10 @@
 				// Navigation zuweisen.
 				// @menuItem: Variable mit dem zu änderten Listenelement in der Navigation. 
 				switch(targetView){
+					case Suche:
+						menuItem = 1;
+						trace("Der User hat Suche gewählt");
+						break;
 					case Inbetriebnahme:
 					menuItem = 2;
 					trace("Der User hat Inbetriebnahme gewählt");
@@ -156,17 +163,17 @@
 						menuItem = 3;
 						trace("Der User hat Getränkezubereitzung gewählt");
 						break;
-					//case Reinigung:
-					//menuItem = 4;
-					//trace("Der User hat Reinigung gewählt");
-					//break;
-					//case Entkalkung:
-					//menuItem = 5;
-					//trace("Der User hat Reinigung gewählt");
-					//break;
+					case Reinigung:
+					menuItem = 4;
+					trace("Der User hat Reinigung gewählt");
+					break;
+					case Entkalkung:
+					menuItem = 5;
+					trace("Der User hat Entkalkung gewählt");
+					break;
 					case Stoerungsbehebung:
 						menuItem = 6;
-						trace("Der User hat Reinigung gewählt");
+						trace("Der User hat Stoerungsbehebung gewählt");
 						break;
 					case Sicherheitshinweise:
 						menuItem = 8;
@@ -207,7 +214,7 @@
 
 		<s:actionContent>
 			<s:Button click="activateView(event, Sicherheitshinweise)" styleName="headernav-shw" x="-136" />
-			<s:Button click="navigator.popToFirstView()" styleName="headernav-suche" />
+			<s:Button click="activateView(event, Suche)" styleName="headernav-suche" />
 		</s:actionContent>
 	</s:ViewNavigator>
 	<!-- Navigation von links -->
@@ -224,7 +231,7 @@
 						   iconActive="@Embed('assets/icons/btn_home_b.png')" label="{resourceManager.getString('resources', 'HOME')}" type="view" view="{Home}" />
 				
 				<fx:Object iconNormal="@Embed('assets/icons/btn_suche_w.png')" 
-						   iconActive="@Embed('assets/icons/btn_suche_b.png')" label="{resourceManager.getString('resources', 'SUCHE')}" type="view" view="{Home}" />
+						   iconActive="@Embed('assets/icons/btn_suche_b.png')" label="{resourceManager.getString('resources', 'SUCHE')}" type="view" view="{Suche}" />
 				
 				<fx:Object iconNormal="@Embed('assets/icons/btn_ibn_w.png')" 
 						   iconActive="@Embed('assets/icons/btn_ibn_b.png')" label="{resourceManager.getString('resources', 'IBN')}" type="view" view="{Inbetriebnahme}" />				
@@ -233,16 +240,16 @@
 						   iconActive="@Embed('assets/icons/btn_gzb_b.png')" label="{resourceManager.getString('resources', 'GZB')}" type="view" view="{Getraenkezubereitung}" />
 			
 				<fx:Object iconNormal="@Embed('assets/icons/btn_reinigung_w.png')" 
-						   iconActive="@Embed('assets/icons/btn_reinigung_b.png')" label="{resourceManager.getString('resources', 'REINIGUNG')}" type="view" view="{Getraenkezubereitung}"/>
+						   iconActive="@Embed('assets/icons/btn_reinigung_b.png')" label="{resourceManager.getString('resources', 'REINIGUNG')}" type="view" view="{Reinigung}"/>
 				
 				<fx:Object iconNormal="@Embed('assets/icons/btn_entkalkung_w.png')" 
-						   iconActive="@Embed('assets/icons/btn_entkalkung_b.png')" label="{resourceManager.getString('resources', 'ENTKALKUNG')}" type="view" view="{Getraenkezubereitung}"/>
+						   iconActive="@Embed('assets/icons/btn_entkalkung_b.png')" label="{resourceManager.getString('resources', 'ENTKALKUNG')}" type="view" view="{Entkalkung}"/>
 
 				<fx:Object iconNormal="@Embed('assets/icons/btn_sbh_w.png')" 
 						   iconActive="@Embed('assets/icons/btn_sbh_b.png')" label="{resourceManager.getString('resources', 'SBH')}" type="view" view="{Stoerungsbehebung}"/>
 
 				<fx:Object iconNormal="@Embed('assets/icons/btn_hotline_w.png')" 
-						   iconActive="@Embed('assets/icons/btn_hotline_b.png')" label="{resourceManager.getString('resources', 'HOTLINE')}" type="view" view="{Getraenkezubereitung}"/>
+						   iconActive="@Embed('assets/icons/btn_hotline_b.png')" label="{resourceManager.getString('resources', 'HOTLINE')}" />
 
 				<fx:Object iconNormal="@Embed('assets/icons/btn_shw_w.png')" 
 						   iconActive="@Embed('assets/icons/btn_shw_b.png')" label="{resourceManager.getString('resources', 'SHW')}" type="view" view="{Sicherheitshinweise}"/>

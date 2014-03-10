@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-	Getränkezubereitungs-Screen mit Implementierung Video/Grafik, Liste mit Erklärungs-Steps, Slider-Navigation
-	
-	Autor: 		Petra Weiss
-	Datum:		10.2.2014
-	Gesehen:	
+Getränkezubereitung-Start-Screen mit Implementierung Video/Grafik, Liste mit Erklärungs-Steps, Slider-Navigation
+
+Autor: 		Petra Weiss
+Datum:		10.3.2014
+Gesehen:	
 -->	
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
 		xmlns:s="library://ns.adobe.com/flex/spark" 
@@ -13,7 +13,7 @@
 		creationComplete="initPlayer()"
 		viewDeactivate="videoPlayer.stopMovie()"
 		gestureSwipe="onSwipe(event)">
-
+	
 	
 	<fx:Script>
 		<![CDATA[
@@ -21,9 +21,11 @@
 			
 			import renderers.SliderListRenderer;
 			
+			// importiere Views, auf die verwiesen wird
 			import views.gzb.gzb_2;
 			import views.gzb.gzb_3;
 			import views.gzb.gzb_4;
+			import views.gzb.gzb_5;
 			
 			// onViewActivated und initPlayer werden bei "viewActivate" ausgeführt
 			protected function onViewActivated():void{				
@@ -40,7 +42,7 @@
 			public var videoPlayer:VideoPlayer;
 			
 			public function initPlayer():void {				
-				videoPlayer = new VideoPlayer("ressources/videos/5_2.flv", fadePlayButtonIn, fadePlayButtonOut, videoFadeIn, videoFadeOut, playBtn, screen, vid);
+				videoPlayer = new VideoPlayer("ressources/videos/6_1.flv", fadePlayButtonIn, fadePlayButtonOut, videoFadeIn, videoFadeOut, playBtn, screen, vid);
 				// lokale IDs an Klasse übergeben
 				videoPlayer.screen = screen;
 				videoPlayer.vid = vid;
@@ -62,7 +64,7 @@
 					navigator.pushView(gzb_2, null, null, pushLeft);
 				}
 			}
-	
+			
 		]]>
 	</fx:Script>
 	
@@ -76,7 +78,7 @@
 		<s:Fade id="videoFadeIn" duration="2000" target="{vid}" alphaFrom="0" alphaTo="1"/>	
 		<s:Fade id="videoFadeOut" duration="500" target="{vid}" alphaFrom="1" alphaTo="0"/>	
 	</fx:Declarations>
-
+	
 	<s:VGroup verticalAlign="top">
 		<!-- Container Titel -->
 		<s:HGroup verticalAlign="top" horizontalAlign="left" paddingTop="105" paddingLeft="80" paddingRight="80" paddingBottom="50">
@@ -101,10 +103,9 @@
 		<s:HGroup horizontalAlign="left" paddingLeft="80" paddingRight="80">
 			<s:List id="sliderList" itemRenderer="renderers.SliderListRenderer" horizontalScrollPolicy="off">
 				<s:ArrayList>
-					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/01.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_1')}" />
-					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/02.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_2')}" />
-					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/03.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_3')}" />
-					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/04.png')" label="{resourceManager.getString('resources', 'SLIDE_5_2_4')}" />					
+					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/01.png')" label="{resourceManager.getString('resources', 'SLIDE_6_1_1')}" />
+					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/02.png')" label="{resourceManager.getString('resources', 'SLIDE_6_1_2')}" />
+					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/03.png')" label="{resourceManager.getString('resources', 'SLIDE_6_1_3')}" />
 				</s:ArrayList>
 			</s:List>
 		</s:HGroup>
@@ -120,7 +121,8 @@
 			<s:Button click="navigator.pushView(gzb_2, null, null, pushLeft)" styleName="sliderbtn" />
 			<s:Button click="navigator.pushView(gzb_3, null, null, pushLeft)" styleName="sliderbtn" />
 			<s:Button click="navigator.pushView(gzb_4, null, null, pushLeft)" styleName="sliderbtn" />
+			<s:Button click="navigator.pushView(gzb_5, null, null, pushLeft)" styleName="sliderbtn" />
 		</s:HGroup>
 	</s:Group>	
-
+	
 </s:View>
