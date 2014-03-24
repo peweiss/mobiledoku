@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	Störungsbehebung Entscheidungsscreen 9.1.1 	
+	Autor: 		Petra Weiss
+	Datum:		24.3.2014
+	Gesehen:	
+-->	
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		title="Stoerungsbehebung"
+		viewActivate="onViewActivated()">
+	
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.core.FlexGlobals;
+			
+			// Deklariere Variable für Höhe Erklärungstextbox
+			// Samsung Galaxy S4: Höhe = 650 Pixel (Entspricht 33,85% Screenhöhe)
+			[Bindable]
+			private var descBox:int = (FlexGlobals.topLevelApplication.height/100)*32;
+			
+			protected function onViewActivated():void{				
+				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
+				navigator.setStyle("styleName", "sbh");
+				
+				// definiere Breite der Trennlinie & Sliderlist
+				sliderTitle.width = FlexGlobals.topLevelApplication.setContentWidth();
+				trennlinie.width = FlexGlobals.topLevelApplication.setContentWidth();
+			}
+		]]>
+	</fx:Script>
+	
+	<s:VGroup verticalAlign="top">
+		<!-- Container Titel -->
+		<s:HGroup verticalAlign="top" horizontalAlign="left" paddingTop="105" paddingLeft="80" paddingRight="80" paddingBottom="50">
+			<s:Label text="{resourceManager.getString('resources', 'SBH_T1')}" color="black" styleName="slider-title" id="sliderTitle" />
+		</s:HGroup>
+		
+		<!-- Container Medieninhalt-->
+		<s:HGroup horizontalAlign="center" paddingBottom="30">
+			<s:Image source="@Embed('ressources/images/9_1_1.png')"
+					 width="1080" height="608"
+					 scaleMode="letterbox" smooth="true" smoothingQuality="high"
+					 horizontalCenter="0" verticalCenter="0"
+					 />
+		</s:HGroup>
+		
+		<!-- Container Trennlinie horizontal -->
+		<s:HGroup horizontalAlign="left" paddingTop="50" paddingLeft="80" paddingRight="80" paddingBottom="50" >	
+			<s:Rect bottom="0" id="trennlinie">
+				<s:stroke>
+					<s:SolidColorStroke color="#bfbfbf" weight="2" />
+				</s:stroke>
+			</s:Rect>
+		</s:HGroup>	
+		<!-- Container Text-Beschreibung -->
+		<s:Scroller width="100%" height="{descBox}" horizontalScrollPolicy="off">
+			<s:HGroup horizontalAlign="left" paddingLeft="80" paddingRight="80">
+				<s:SkinnableDataContainer id="sliderList" itemRenderer="renderers.SliderListRenderer">
+					<s:ArrayList>
+						<fx:Object styleName="sbh" icon="@Embed('assets/icons/numbers/01.png')" label="{resourceManager.getString('resources', 'SBH_9_1_1_1')}" />
+						<fx:Object styleName="sbh" icon="@Embed('assets/icons/numbers/02.png')" label="{resourceManager.getString('resources', 'SBH_9_1_1_2')}" />					
+					</s:ArrayList>
+				</s:SkinnableDataContainer>
+			</s:HGroup>
+		</s:Scroller>
+	</s:VGroup>	
+	
+</s:View>

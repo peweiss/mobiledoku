@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	Kapsel-Screen mit Dummy-Inhalt
+	
+	Autor: 		Petra Weiss
+	Datum:		24.3.2014
+	Gesehen:	
+-->	
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		title="Stoerungsbehebung"
+		viewActivate="onViewActivated()"
+		>
+
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.core.FlexGlobals;
+			
+			import views.Stoerungsbehebung;
+			protected function onViewActivated():void{				
+				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
+				navigator.setStyle("styleName", "sbh");
+				
+				// definiere Breite des Labels 
+				sliderTitle.width = FlexGlobals.topLevelApplication.setContentWidth();
+				dummyText.width = FlexGlobals.topLevelApplication.setContentWidth();
+			}
+
+		]]>
+	</fx:Script>
+	<s:layout>
+		<s:VerticalLayout verticalAlign="top" horizontalAlign="left"
+						  paddingLeft="80" paddingRight="80"
+						  gap="5"/>
+		
+	</s:layout>
+	<s:VGroup verticalAlign="top">
+		<!-- Container Titel -->
+		<s:HGroup verticalAlign="top" horizontalAlign="left" paddingTop="105" paddingBottom="50">
+			<s:Label text="{resourceManager.getString('resources', 'SBH_T1')}" color="black" styleName="slider-title" id="sliderTitle" />
+		</s:HGroup>
+		<s:HGroup>
+			<s:Label id="dummyText" text="{resourceManager.getString('resources', 'SBH_DUMMY_KAPSEL')}" />
+		</s:HGroup>
+		<s:HGroup paddingTop="25">
+			<s:VGroup width="50%">
+				<s:Button click="navigator.pushView(Stoerungsbehebung)" label="{resourceManager.getString('resources', 'DUMMY_BACK')}" />
+			</s:VGroup>
+		</s:HGroup>
+	</s:VGroup>	
+</s:View>

@@ -19,7 +19,7 @@
 			
 			import spark.events.IndexChangeEvent;
 			
-			import views.sbh.sbh_1_2;
+			import views.sbh.sbh_9_1;
 			import views.sbh.sbh_dummy;
 			
 			protected function onViewActivated():void{				
@@ -61,7 +61,7 @@
 		<s:HGroup horizontalAlign="left">
 			<s:List id="sbhList" itemRenderer="renderers.SBHRenderer" width="100%" change="changeHandler(event)">
 				<s:ArrayList>
-					<fx:Object icon="@Embed('assets/icons/btn_sbh01.png')" label="{resourceManager.getString('resources', 'SBH_T1')}" view="{sbh_1_2}" />
+					<fx:Object icon="@Embed('assets/icons/btn_sbh01.png')" label="{resourceManager.getString('resources', 'SBH_T1')}" view="{sbh_9_1}" />
 					<fx:Object icon="@Embed('assets/icons/btn_sbh02.png')" label="{resourceManager.getString('resources', 'SBH_T2')}" view="{sbh_dummy}" />
 					<fx:Object icon="@Embed('assets/icons/btn_sbh03.png')" label="{resourceManager.getString('resources', 'SBH_T3')}" view="{sbh_dummy}" />
 					<fx:Object icon="@Embed('assets/icons/btn_sbh04.png')" label="{resourceManager.getString('resources', 'SBH_T4')}" view="{sbh_dummy}" />

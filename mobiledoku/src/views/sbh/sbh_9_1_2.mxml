@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	Störungsbehebung Entscheidungsscreen 9.1.2
+	
+	Autor: 		Petra Weiss
+	Datum:		24.3.2014
+	Gesehen:	
+-->	
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		title="Stoerungsbehebung"
+		viewActivate="onViewActivated()">
+	
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.core.FlexGlobals;
+			
+			import views.sbh.sbh_dummy_duese;
+			import views.sbh.sbh_dummy_kapsel;
+			
+			protected function onViewActivated():void{				
+				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
+				navigator.setStyle("styleName", "sbh");
+				
+				// definiere Breite der Trennlinie & Sliderlist
+				sliderTitle.width = FlexGlobals.topLevelApplication.setContentWidth();
+				trennlinie.width = FlexGlobals.topLevelApplication.setContentWidth();
+				sbhFrage.width = FlexGlobals.topLevelApplication.setContentWidth();
+			}
+		]]>
+	</fx:Script>
+	
+	<s:VGroup verticalAlign="top">
+		<!-- Container Titel -->
+		<s:HGroup verticalAlign="top" horizontalAlign="left" paddingTop="105" paddingLeft="80" paddingRight="80" paddingBottom="50">
+			<s:Label text="{resourceManager.getString('resources', 'SBH_T1')}" color="black" styleName="slider-title" id="sliderTitle" />
+		</s:HGroup>
+		
+		<!-- Container Medieninhalt-->
+		<s:HGroup horizontalAlign="center" paddingBottom="30">
+			<s:Image source="@Embed('ressources/images/9_1_2.png')"
+					 width="1080" height="608"
+					 scaleMode="letterbox" smooth="true" smoothingQuality="high"
+					 horizontalCenter="0" verticalCenter="0"
+			/>
+		</s:HGroup>
+		
+		<!-- Container Trennlinie horizontal -->
+		<s:HGroup horizontalAlign="left" paddingTop="50" paddingLeft="80" paddingRight="80" paddingBottom="50" >	
+			<s:Rect bottom="0" id="trennlinie">
+				<s:stroke>
+					<s:SolidColorStroke color="#bfbfbf" weight="2" />
+				</s:stroke>
+			</s:Rect>
+		</s:HGroup>	
+		
+		<!-- Container Text-Beschreibung -->
+		<s:HGroup horizontalAlign="left" paddingLeft="80" paddingRight="80">
+			<s:Label text="{resourceManager.getString('resources', 'SBH_9_1_2')}" id="sbhFrage" />
+		</s:HGroup>
+		<s:HGroup horizontalAlign="left" paddingLeft="80" paddingRight="80" paddingTop="30">
+			<s:VGroup width="50%">
+				<s:Button click="navigator.pushView(sbh_dummy_duese)" styleName="decisionbtn-ja" />
+			</s:VGroup>
+			<s:VGroup width="50%" paddingLeft="20">
+				<s:Button click="navigator.pushView(sbh_dummy_kapsel)" styleName="decisionbtn-nein" />
+			</s:VGroup>
+		</s:HGroup>
+	</s:VGroup>	
+
+	
+</s:View>

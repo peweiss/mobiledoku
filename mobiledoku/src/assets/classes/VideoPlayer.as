@@ -1,8 +1,8 @@
 /***
- * VideoPlayer. Erstellt VideoPlayer anhand NetStream-Klasse.
- * Autor: 		Markus Tobler / Petra Weiss
- * Datum:		1.3.2014 
- * Gesehen:		http://blog.flexexamples.com/2008/03/01/displaying-a-video-in-flex-using-the-netconnection-netstream-and-video-classes
+	* VideoPlayer. Erstellt VideoPlayer anhand NetStream-Klasse.
+ 	* Autor: 		Markus Tobler / Petra Weiss
+ 	* Datum:		22.3.2014 
+	* Gesehen:		http://blog.flexexamples.com/2008/03/01/displaying-a-video-in-flex-using-the-netconnection-netstream-and-video-classes
 ***/
 package assets.classes {
 	import flash.events.MouseEvent;
@@ -37,7 +37,7 @@ package assets.classes {
 		
 		// Das Video ist standardmässig auf Autoplay
 		// Die Variable status enthält immer den aktuellen status des Videos --> «stopped» oder «playing»
-		public var status:String = "playing";	
+		public var status:String = "stopped";	
 		
 		// Start Konstruktor 
 		// übergebene Werte: "assets/5_2.flv", fadePlayButtonIn, fadePlayButtonOut, videoFadeIn, videoFadeOut, playBtn, screen, vid
@@ -56,12 +56,32 @@ package assets.classes {
 			
 			movie.attachNetStream(ns);
 			
+			// Setze Timeout --> Pause nach 1sec
+			// Videostreem muss für eine kurze Zeit laufen, damit ein Vorschaubild erscheint
+			setTimeout(setPause, 1000);
+			
+			// Funktion, die nach 1 sec aufgerufen wird
+			// Funktion bezweckt den Stop des Netstreams
+			function setPause():void{
+				//pausiere den Video gleich am Start!
+				ns.pause();
+			}
+			
 			// Setze die PlayButton Grösse anhand der Screenbreite
 			playBtn.width = screen.width/6.75;
 			playBtn.height = screen.width/6.75;
 			
 			// Setze Play-Button bei Start auf nicht sichtbar
 			playBtn.visible = false;
+			
+			
+			// Setze Timeout --> Der Playbutton soll zeitversetzt eingeblendet werden
+			setTimeout(delay, 500);
+			
+			// Funktion die nach dem Timeout aufgerufen wird
+			function delay():void{
+				fadePlayButtonIn.play(); // Einfaden des Playbuttons
+			}
 			
 			// Eventlistener der bei einem neuen Status des Videos (z.B. «Video stoppt») die Funktion «statusChanged» aufruft
 			ns.addEventListener(NetStatusEvent.NET_STATUS, statusChanged);	

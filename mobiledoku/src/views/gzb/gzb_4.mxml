@@ -27,6 +27,15 @@
 			import views.gzb.gzb_2;
 			import views.gzb.gzb_5;
 			
+			// Deklariere Variable für Videocontainer-Höhe
+			[Bindable]
+			private var mediaHeight:int = (FlexGlobals.topLevelApplication.width/16)*9;
+			
+			// Deklariere Variable für Höhe Erklärungstextbox
+			// Samsung Galaxy S4: Höhe = 650 Pixel (Entspricht 33,85% Screenhöhe)
+			[Bindable]
+			private var descBox:int = (FlexGlobals.topLevelApplication.height/100)*32;
+			
 			// onViewActivated und initPlayer werden bei "viewActivate" ausgeführt
 			protected function onViewActivated():void{				
 				// Setze Farbe der ActionBar -> setze Klasse für s:ViewNavigator
@@ -88,7 +97,7 @@
 		</s:HGroup>
 		
 		<!-- Container Medieninhalt -->
-		<s:Group>
+		<s:Group height="{mediaHeight}">
 			<s:SWFLoader id="vid"  />
 			<s:Button id="playBtn" horizontalCenter="1" verticalCenter="1" skinClass="assets.skins.PlayerBtn_GZBPlay_Skin"/>
 		</s:Group>
@@ -102,19 +111,21 @@
 			</s:Rect>
 		</s:HGroup>	
 		<!-- Container Text-Beschreibung -->
-		<s:HGroup horizontalAlign="left" paddingLeft="80" paddingRight="80">
-			<s:List id="sliderList" itemRenderer="renderers.SliderListRenderer" horizontalScrollPolicy="off">
-				<s:ArrayList>
-					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/01.png')" label="{resourceManager.getString('resources', 'SLIDE_6_4_1')}" />
-					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/02.png')" label="{resourceManager.getString('resources', 'SLIDE_6_4_2')}" />
-					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/03.png')" label="{resourceManager.getString('resources', 'SLIDE_6_4_3')}" />
-					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/04.png')" label="{resourceManager.getString('resources', 'SLIDE_6_4_4')}" />
-					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/05.png')" label="{resourceManager.getString('resources', 'SLIDE_6_4_5')}" />
-					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/06.png')" label="{resourceManager.getString('resources', 'SLIDE_6_4_6')}" />
-					<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/07.png')" label="{resourceManager.getString('resources', 'SLIDE_6_4_7')}" />
-				</s:ArrayList>
-			</s:List>
-		</s:HGroup>
+		<s:Scroller width="100%" height="{descBox}" horizontalScrollPolicy="off">
+			<s:HGroup horizontalAlign="left" paddingLeft="80" paddingRight="80">
+				<s:SkinnableDataContainer id="sliderList" itemRenderer="renderers.SliderListRenderer">
+					<s:ArrayList>
+						<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/01.png')" label="{resourceManager.getString('resources', 'SLIDE_6_4_1')}" />
+						<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/02.png')" label="{resourceManager.getString('resources', 'SLIDE_6_4_2')}" />
+						<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/03.png')" label="{resourceManager.getString('resources', 'SLIDE_6_4_3')}" />
+						<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/04.png')" label="{resourceManager.getString('resources', 'SLIDE_6_4_4')}" />
+						<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/05.png')" label="{resourceManager.getString('resources', 'SLIDE_6_4_5')}" />
+						<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/06.png')" label="{resourceManager.getString('resources', 'SLIDE_6_4_6')}" />
+						<fx:Object styleName="gzb" icon="@Embed('assets/icons/numbers/07.png')" label="{resourceManager.getString('resources', 'SLIDE_6_4_7')}" />
+					</s:ArrayList>
+				</s:SkinnableDataContainer>
+			</s:HGroup>
+		</s:Scroller>
 	</s:VGroup>	
 	
 	<!-- Container Slider-Buttons -->

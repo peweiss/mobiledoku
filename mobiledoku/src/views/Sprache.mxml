@@ -51,9 +51,9 @@
 			<s:Label text="{resourceManager.getString('resources', 'SPRACHE')}" color="black" styleName="slider-title" />
 		</s:HGroup>
 		
-		<s:RadioButton label="Deutsch" groupName="language" value="deutsch" />
-		<s:RadioButton label="Französisch" groupName="language" value="franzoesisch" />
-		<s:RadioButton label="Englisch" groupName="language" value="englisch" />
+		<s:RadioButton label="{resourceManager.getString('resources', 'DE')}" groupName="language" value="deutsch" />
+		<s:RadioButton label="{resourceManager.getString('resources', 'FR')}" groupName="language" value="franzoesisch" />
+		<s:RadioButton label="{resourceManager.getString('resources', 'ENGL')}" groupName="language" value="englisch" />
 		
 	</s:VGroup>	
 </s:View>

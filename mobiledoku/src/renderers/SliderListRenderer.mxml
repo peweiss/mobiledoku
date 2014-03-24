@@ -23,6 +23,8 @@
 						bulletColor = 0x4e2900; // Getränkezubereitungs-Braun
 					} else if(value.styleName == "ibn") {
 						bulletColor = 0xb2bc00; // Inbetriebnahme-Grün
+					} else if(value.styleName == "sbh") {
+						bulletColor = 0xfecb00; // SBH-Gelb
 					} 
 					
 					else {
